@@ -89,6 +89,8 @@ body {
 .header_section .container-fluid {
   padding-right: 25px;
   padding-left: 25px;
+  background-color: #000000;
+
 }
 
 .header_section .nav_container {
@@ -120,7 +122,7 @@ body {
 
 .custom_nav-container.navbar-expand-lg .navbar-nav .nav-item.active a::after, .custom_nav-container.navbar-expand-lg .navbar-nav .nav-item:hover a::after {
   display: block;
-  background-color: #ff2953;
+  background-color:  #696969;
 }
 
 a,
@@ -250,8 +252,6 @@ a:focus {
 
 .slider_section .detail-box p {
   margin-top: 25px;
-  width: 330px;
-  margin-left: 300px;
 }
 
 .slider_section .detail-box a {
