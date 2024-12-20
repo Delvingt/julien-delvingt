@@ -1,5 +1,5 @@
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Avenir Next', serif;
   color: #000000;
   background-color: #ffffff;
 }
@@ -69,7 +69,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-image: url(../images/deskview_01.jpg);
+  background-image: url(../images/background_01.png);
   background-size: cover;
   background-attachment: fixed;
 }
@@ -250,6 +250,8 @@ a:focus {
 
 .slider_section .detail-box p {
   margin-top: 25px;
+  width: 330px;
+  margin-left: 300px;
 }
 
 .slider_section .detail-box a {
@@ -295,7 +297,7 @@ a:focus {
 }
 
 .us_section {
-  background-image: url(../images/djtrompette.jpg);
+  background-image: url(../images/background_02.png);
   background-size: cover;
   background-attachment: fixed;
   color: #ffffff;
@@ -387,7 +389,7 @@ a:focus {
 }
 
 .trainer_section {
-  background-image: url(../images/funky_bg_02.jpg);
+  background-image: url(../images/background_02.png);
   background-size: cover;
   background-attachment: fixed;
   color: #ffffff;
@@ -438,7 +440,7 @@ a:focus {
 
 .contact_section {
   position: relative;
-  background-color: #27223f;
+  background-color: #000000;
   color: #ffffff;
 }
 
@@ -510,7 +512,10 @@ a:focus {
 }
 
 .info_section {
-  background-color: #252233;
+  background-image: url(../images/background_02.png);
+  background-size: cover;
+  background-attachment: fixed;
+  color: #ffffff;
 }
 
 .info_items {
@@ -574,7 +579,7 @@ a:focus {
 
 /* footer section*/
 .footer_section {
-  background-color: #fbfdfd;
+  background-color: #000000;
   padding: 20px;
   font-weight: 500;
 }
