@@ -187,6 +187,7 @@ a:focus {
   flex-direction: column;
   background-image: url(../images/background_01.png);
   background-size: cover;
+  background-position: center center;
   background-attachment: fixed;
 }
 
@@ -1040,31 +1041,45 @@ a:focus {
 /* Quotation section*/
 
 .quotation_section{
-
+  height:  100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-image: url(../images/background_01.png);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
 }
 
 .quotation_section .form_container{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 1000px;
-  height: 800px;
+  margin-top: 50px;
+  width: 60%;
+  height: 80%
+
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 992px) {
   .quotation_section .form_container{
-    width: 800px;
+    width: 80%;
 
   }
 }
 
 @media (max-width: 700px) {
-  .quotation_section .form_container{
-    width: 500px;
+  .quotation_section .form_container {
+    width: 95%;
 
   }
+}
 
-/* end Quotation section*/
+  /* end Quotation section*/
 
 /* footer section*/
 .footer_section {
@@ -1082,6 +1097,8 @@ a:focus {
 .footer_section a {
   color: #292929;
 }
+
+
 /* end footer section*/
 
 
