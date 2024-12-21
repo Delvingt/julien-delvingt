@@ -820,9 +820,27 @@ a:focus {
 }
 
 .gallery_1 .smallImage {
+  z-index: 0;
+  opacity: 0.9;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
+  transition: 1s ease;
+  border: 5px solid #ffffff;
+
+}
+
+.gallery_1 .smallImage:hover {
+  z-index: 1;
+  position: relative;
+  opacity: 1;
+  border-radius: 15px;
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  transition: 1s ease;
+
 }
 
 .gallery_1 .project.project1 {
@@ -832,6 +850,7 @@ a:focus {
   padding-right: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
+
 }
 
 .gallery_1 .project.project2 {
@@ -1029,6 +1048,7 @@ a:focus {
     top: 680px;
   }
 }
+
 /* end Gallery section*/
 
 
