@@ -372,6 +372,17 @@ a:focus {
 
 /* Partners Section */
 
+/* Reviews */
+.reviews_section{
+  width: 100%;
+  height: 830px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* End Reviews */
+
+
 /* Gallery section*/
 
 .gallery_1 * {
