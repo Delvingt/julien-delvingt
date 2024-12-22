@@ -32,13 +32,13 @@ body {
 
 .heading_container {
   align-content: center;
-  /* display: -webkit-box;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  text-align: center; */
+  text-align: center;
 }
 
 .heading_container h2 {
@@ -53,9 +53,9 @@ body {
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: 55px;
+  width: 235px;
   height: 5px;
-  background-color: #ff2953;
+  background-color:  #A38A00;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
@@ -128,7 +128,7 @@ a:focus {
 
 .custom_nav-container.navbar-expand-lg .navbar-nav .nav-item.active a::after, .custom_nav-container.navbar-expand-lg .navbar-nav .nav-item:hover a::after {
   display: block;
-  background-color:  #696969;
+  background-color:  #A38A00;
 }
 
 .custom_nav-container .nav_search-btn {
