@@ -92,7 +92,7 @@ a:focus {
   margin: 10px 30px;
 }
 
-/*Header Section*/
+/*Header Section  */
 .header_section .container-fluid {
   padding-right: 25px;
   padding-left: 25px;
@@ -175,7 +175,7 @@ a:focus {
   background-size: 55px;
 }
 
-/*Home section*/
+/*Home Section  */
 .home_area {
   height:  100vh;
   display: -webkit-box;
@@ -203,9 +203,9 @@ a:focus {
   height: auto;
 }
 
-/* End Header Section*/
+/* End Header Section  */
 
-/* Slider section*/
+/* Slider Section  */
 .slider_section {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -300,9 +300,9 @@ a:focus {
   border: 4px solid #ffffff;
 }
 
-/* End Slider section */
+/* End Slider Section  */
 
-/* Partners Section */
+/* Partners Section  */
 
 .partners_section {
   background-image: url(../images/background_02.png);
@@ -382,9 +382,9 @@ a:focus {
   margin-top: -25px;
 }
 
-/* Partners Section */
+/* Partners Section  */
 
-/* Reviews */
+/* Reviews Section  */
 
 .reviews_section{
   width: 100%;
@@ -419,10 +419,140 @@ a:focus {
   }
 }
 
-/* End Reviews */
+/* End Reviews Section  */
 
+/* End Services Section  */
 
-/* Gallery section*/
+.services_section{
+  font-family: 'Avenir Next', serif;
+  color: #000000;
+}
+
+.services_section .wedding_section{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  /* background-color: #ffffff; */
+  background-image: url(../images_services/wedding_bg.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.services_section .dj_section{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  /* background-color: #ffffff; */
+  background-image: url(../images_services/dj_bg.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.services_section .musicians_section{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  /* background-color: #ffffff; */
+  background-image: url(../images_services/musicians_bg.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.services_section .box {
+  margin: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.services_section .img_box_1 {
+  margin: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.services_section .img_box_1 img {
+  object-fit: cover;
+  width: 300px;
+  height: 300px;
+  border-radius: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+}
+
+.services_section .img_box_2 {
+  margin: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+}
+
+.services_section .img_box_2 img {
+  object-fit: cover;
+  width: 300px;
+  height: 300px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border-radius: 15px;
+
+}
+
+.services_section .box h1 {
+  margin: 25px 15px 25px 15px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.services_section .box p {
+  font-size: 1.5em;
+  margin: 30px 40px 40px 40px;
+  text-align: justify;
+}
+
+/* End Services Section  */
+
+/* Gallery Section  */
 
 .gallery_1 * {
   font-family: Nunito, sans-serif;
@@ -875,9 +1005,9 @@ a:focus {
   }
 }
 
-/* end Gallery section*/
+/* End Gallery Section  */
 
-/* Quotation section*/
+/* Quotation Section  */
 
 .form_container{
   display: block;
@@ -903,9 +1033,9 @@ a:focus {
   }
 }
 
-/* end Quotation section*/
+/* End Quotation Section  */
 
-/* footer section*/
+/* footer Section  */
 
 .footer_section {
   background-color: #000000;
@@ -923,7 +1053,7 @@ a:focus {
   color: #292929;
 }
 
-/* end footer section*/
+/* End footer Section  */
 
 
 /*# sourceMappingURL=style.css.map */
