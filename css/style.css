@@ -586,6 +586,44 @@ a:hover {
   width: 100%;
   height: auto;
 }
+
+.gallery_index_section .owl-dot{
+  background: white;
+  align-self: center;
+  display: flex;
+}
+
+.gallery_index_section .owl-nav {
+  position: absolute;
+  width: 350px;
+  top: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  transition: .5s;
+  z-index: 1;
+}
+
+.gallery_index_section:hover .owl-nav {
+  width: 300px;
+  opacity: 1;
+}
+
+.gallery_index_section .owl-nav .owl-prev,
+.gallery_index_section .owl-nav .owl-next {
+  position: relative;
+  color: white;
+  font-size: 45px;
+  transition: .5s;
+}
+
+.gallery_index_section .owl-nav .owl-prev:hover,
+.gallery_index_section .owl-nav .owl-next:hover {
+  color: #856404;
+}
+
 /*******************************/
 /** Gallery Index Section End **/
 /*******************************/
