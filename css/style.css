@@ -60,19 +60,16 @@ h5,.h5{
 h6,.h6{
   font-size:1rem
 }
-
 p{
   margin-top:0;
   margin-bottom:1rem;
   color: #FFFFFF;
 }
-
 a {
   color: #FFFFFF;
   text-decoration: none;
   background-color: transparent;
 }
-
 a:hover {
   color: #FFFFFF;
   text-decoration: underline;
@@ -205,7 +202,9 @@ a:hover {
   font-weight: normal;
 }
 
-/*** Navbar ***/
+/************/
+/** Navbar **/
+/************/
 .navbar{
   background-color: #000000;
 }
@@ -331,10 +330,78 @@ a:hover {
     opacity: 1;
   }
 }
+/****************/
+/** Navbar End **/
+/****************/
 
+/************/
+/** Footer **/
+/************/
+.footer .btn.btn-social {
+  margin-right: 5px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light);
+  border: 1px solid #FFFFFF;
+  transition: .3s;
+}
+
+.footer .btn.btn-social:hover {
+  color: #FFFFFF;
+  background: #e0a800;
+}
+
+.footer .btn.btn-link {
+  display: block;
+  margin-bottom: 5px;
+  padding: 0;
+  text-align: left;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: normal;
+  text-transform: capitalize;
+  transition: .3s;
+}
+
+.footer .btn.btn-link::before {
+  position: relative;
+  content: "\f105";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 10px;
+}
+
+.footer .btn.btn-link:hover {
+  color: #e0a800;
+  letter-spacing: 1px;
+  box-shadow: none;
+}
+
+.footer .copyright {
+  padding: 25px 0;
+  font-size: 15px;
+  border-top: 1px solid rgba(256, 256, 256, .1);
+}
+
+.footer .copyright a {
+  color: var(--light);
+}
+
+.footer .copyright a:hover {
+  color: #e0a800;
+}
+/****************/
+/** Footer End **/
+/****************/
+
+/*******************/
 /** Home Section  **/
+/*******************/
 .home_header {
-  height:  914px;
+  background-image: url(../images/home_header.png);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -342,25 +409,39 @@ a:hover {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-image: url(../images/background_01.png);
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
 }
 
-/** End Home Section  **/
+.home_header .layout_padding {
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
 
+.home_header h1{
+  font-size: 3.5rem;
+  color: white;
+  text-align: center;
+  top: 5%;
+}
+/***********************/
+/** End Home Section  **/
+/***********************/
+
+/*********************/
 /** Slider Section  **/
+/*********************/
 .slider_section {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: #ffffff;
 }
 
@@ -370,8 +451,8 @@ a:hover {
 
 .slider_section .row {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .slider_section .box {
@@ -428,8 +509,8 @@ a:hover {
   margin: 0;
   margin-top: 45px;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .slider_section #carouselExampleIndicators .carousel-indicators li {
@@ -444,8 +525,283 @@ a:hover {
 .slider_section #carouselExampleIndicators .carousel-indicators li.active {
   border: 4px solid #ffffff;
 }
+/************************/
+/** Slider Section End **/
+/************************/
 
-/** End Slider Section  **/
+/****************************/
+/** Services Index Section **/
+/****************************/
+.services_index_section{
+  z-index: 2;
+  background-color: #e0a800;
+  background-image: linear-gradient(90deg, #e0a800 0%, #F76B1C 100%);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transform: skewY(3deg);
+  position: relative;
+  top: -50px;
+  height: 90vh;
+}
+
+.services_index_section .anti_skew{
+  transform: skewY(-3deg);
+}
+
+@media (max-width: 991.98px) {
+  .services_index_section{
+    height: 170vh;
+  }
+}
+
+@media (max-width: 766px) {
+  .services_index_section{
+    height: 270vh;
+  }
+}
+/********************************/
+/** Services Index Section End **/
+/********************************/
+
+
+/***************************/
+/** Gallery Index Section **/
+/***************************/
+.gallery_index_section{
+  background-color: black;
+  z-index: 1;
+  position: relative;
+  top: -100px;
+  height: 800px;
+}
+.gallery_index_section .anti_skew{
+  padding-top: 120px;
+}
+
+.gallery_index_section .owl-carousel .item{
+  margin: 3px;
+}
+
+.gallery_index_section .owl-carousel .item{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/*******************************/
+/** Gallery Index Section End **/
+/*******************************/
+
+/***************************/
+/** Reviews Index Section **/
+/***************************/
+.reviews_index_section {
+  z-index: 2;
+  position: relative;
+  top: -150px;
+  background-color: #e0a800;
+  background-image: linear-gradient(90deg, #e0a800 0%, #F76B1C 100%);
+  width: 150%;
+  left: -25%;
+  height:  600px;
+  border-radius: 50% 50% 50% 50% / 20% 20% 0 0 ;
+}
+
+.reviews_carousel::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  /*background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);*/
+  z-index: 1;
+}
+
+.reviews_carousel::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+  /*background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);*/
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .reviews_carousel::before,
+  .reviews_carousel::after {
+    width: 200px;
+  }
+}
+
+@media (min-width: 992px) {
+  .reviews_carousel::before,
+  .reviews_carousel::after {
+    width: 300px;
+  }
+}
+
+/* Left Item */
+.reviews_carousel .owl-item .reviews_item img {
+  mask-image: linear-gradient(90deg, transparent 50%, black 100%);
+}
+.reviews_carousel .owl-item .reviews_text {
+  background: linear-gradient(90deg, transparent 50%, black 105%);
+  color: purple;
+  transform: scale(.8);
+  transition: .5s;
+}
+.reviews_carousel .owl-item .reviews_text h5{
+  background: white;
+  background: linear-gradient(to right, transparent 50%, white 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.reviews_carousel .owl-item .reviews_text p{
+  background: white;
+  background: linear-gradient(to right, transparent 50%, white 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Right Item */
+.reviews_carousel .owl-item.active .reviews_item img {
+  mask-image: linear-gradient(90deg, black 0%, transparent 50%);
+}
+.reviews_carousel .owl-item.active .reviews_text {
+  background: linear-gradient(90deg, black 0%, transparent 50%);
+  transform: scale(.8);
+  transition: .5s;
+}
+.reviews_carousel .owl-item.active .reviews_text h5{
+  background: white;
+  background: linear-gradient(to right, white 0%, transparent 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.reviews_carousel .owl-item.active .reviews_text p{
+  background: white;
+  background: linear-gradient(to right, white 0%, transparent 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Center Item */
+.reviews_carousel .owl-item.active.center .reviews_item img {
+  mask-image: linear-gradient(90deg, black 0%, black 100%);
+}
+.reviews_carousel .owl-item.active.center .reviews_text {
+  background: black;
+  transform: scale(1);
+}
+.reviews_carousel .owl-item.active.center .reviews_text h5{
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.reviews_carousel .owl-item.active.center .reviews_text p{
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.reviews_carousel .owl-item .reviews_text *,
+.reviews_carousel .owl-item .reviews_item img {
+  transition: .5s;
+}
+
+.reviews_carousel .owl-nav {
+  position: absolute;
+  width: 350px;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  transition: .5s;
+  z-index: 1;
+}
+
+.reviews_carousel:hover .owl-nav {
+  width: 300px;
+  opacity: 1;
+}
+
+.reviews_carousel .owl-nav .owl-prev,
+.reviews_carousel .owl-nav .owl-next {
+  position: relative;
+  color: black;
+  font-size: 45px;
+  transition: .5s;
+}
+
+.reviews_carousel .owl-nav .owl-prev:hover,
+.reviews_carousel .owl-nav .owl-next:hover {
+  color: var(--dark);
+}
+/*******************************/
+/** Reviews Index Section End **/
+/*******************************/
+
+/***************************/
+/** Contact Index Section **/
+/***************************/
+.contact_index_section {
+  background-color: black;
+  top: -200px;
+  position: relative;
+}
+
+.contact_index_section .form_container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  width:  640px;
+  height: 800px;
+}
+/*******************************/
+/** Contact Index Section End **/
+/*******************************/
+
+/*****************************/
+/** Quotation Index Section **/
+/*****************************/
+.quotation_index_section {
+  z-index: 1;
+  position: relative;
+  top: -200px;
+  background-color: #e0a800;
+  background-image: linear-gradient(90deg, #e0a800 0%, #F76B1C 100%);
+  height: 550px;
+}
+
+.quotation_index_section .layout{
+  position: relative;
+  top: 0;
+  background-color: #e0a800;
+  background-image: linear-gradient(90deg, #e0a800 0%, #F76B1C 100%);
+  height: 800px;
+}
+
+/*********************************/
+/** Quotation Index Section End **/
+/*********************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /** Partners Section **/
 .partners_section {
