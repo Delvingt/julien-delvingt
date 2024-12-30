@@ -53,8 +53,15 @@
         $("#gallery_index_carousel").owlCarousel({
             autoPlay: 3000, //Set AutoPlay to 3 seconds
             items : 4,
+            nav : true,
+            dots: true,
+            loop: true,
             itemsDesktop : [1199,3],
-            itemsDesktopSmall : [979,3]
+            itemsDesktopSmall : [979,3],
+            navText : [
+                '<i class="bi bi-arrow-left"></i>',
+                '<i class="bi bi-arrow-right"></i>'
+            ]
 
         });
 
