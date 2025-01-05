@@ -29,6 +29,7 @@
         return false;
     });
 
+
     // Header carousel
     $(document).ready(function() {
 
@@ -69,7 +70,7 @@
 
     // Reviews Index carousel
     $(".reviews_carousel").owlCarousel({
-        autoplay: false,
+        autoplay: true,
         smartSpeed: 1000,
         center: true,
         dots: false,
