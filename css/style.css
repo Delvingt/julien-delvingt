@@ -7,6 +7,7 @@ body {
   color: #000000;
   text-align: left;
   background-color: #ffffff;
+  overflow-x: hidden;
 }
 
 /** Color Palette **/
@@ -82,6 +83,38 @@ a:hover {
   border-radius: 20px;
   background: #000000;
   box-shadow:  -5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.services_section .dj_section .dark_box{
+  background: rgba( 0, 0, 0, 0.8 );
+  backdrop-filter: blur( 5px );
+  -webkit-backdrop-filter: blur( 5px );
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.services_section .dj_section .dark_box h1,
+.services_section .dj_section .dark_box h2,
+.services_section .dj_section .dark_box h3,
+.services_section .dj_section .dark_box p{
+  color: white;
+}
+
+.light_box{
+  background: rgba( 255, 255, 255, 0.6 );
+  backdrop-filter: blur( 5px );
+  -webkit-backdrop-filter: blur( 5px );
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.light_box h1,
+.light_box h2,
+.light_box h3,
+.light_box p{
+  color: black;
 }
 
 /*** Layout ***/
@@ -830,170 +863,37 @@ a:hover {
 /** Quotation Index Section End **/
 /*********************************/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/** Partners Section **/
-.partners_section {
-  background-image: url(../images/background_02.png);
-  background-size: cover;
-  background-attachment: fixed;
-  color: #ffffff;
-}
-
-.team-item{
-  background-color: #000000;
-}
-
-.team-item img {
-  position: relative;
-  top: 0;
-  transition: .5s;
-}
-
-.team-item:hover img {
-  top: -30px;
-}
-
-.team-item .team-text {
-  position: relative;
-  height: 100px;
-  transition: .5s;
-  background-color: #000000;
-}
-
-.team-item:hover .team-text {
-  margin-top: -60px;
-  height: 160px;
-}
-
-.team-item .team-text .team-social {
-  opacity: 0;
-  transition: .5s;
-}
-
-.team-item:hover .team-text .team-social {
-  opacity: 1;
-}
-
-.team-item .team-social .btn {
-  display: inline-flex;
-  color: #e0a800;
-  background: #FFFFFF;
-  border-radius: 40px;
-}
-
-.team-item .team-social .btn:hover {
-  color: #FFFFFF;
-  background: #e0a800;
-}
-
-/** End Partners Section **/
-
-/** Reviews Section  **/
-
-.reviews_section{
-  width: 100%;
-  height: 830px;
-  overflow: hidden;
-  background-color: #ffffff;
-}
-
-.reviews_section .iframe{
-  width: 100%;
-  height: 1100px;
-  position: relative;
-  left: 0;
-  top: -100px;
-}
-
-@media (max-width: 810px) {
-  .reviews_section{
-    height: 920px;
-  }
-  .reviews_section .iframe{
-    top: -130px;
-  }
-}
-
-@media (max-width: 700px) {
-  .reviews_section{
-    height: 320px;
-  }
-  .reviews_section .iframe{
-    top: -100px;
-  }
-}
-
-/** End Reviews Section  **/
-
+/***********************/
 /** Services Section  **/
-
+/***********************/
 .services_section{
   font-family: 'Avenir Next', serif;
   color: #000000;
 }
 
+.services_section .padding_top{
+  padding-top: 50px;
+}
+
+.services_section .padding_bottom{
+  padding-top: 50px;
+}
+
+.services_section .row .formule_box{
+  background: rgba( 255, 255, 255, 0.5 );
+  box-shadow: 0 8px 32px 0 #95999c;
+  backdrop-filter: blur( 5px );
+  -webkit-backdrop-filter: blur( 5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+}
+
 .services_section p{
   color:#000000;
-  text-align: justify;
   font-size: 1.2rem;
-}
-
-.services_section .wedding_section{
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  /** background-color: #ffffff; **/
-  background-image: url(../images_services/wedding_bg.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-}
-
-.services_section .dj_section{
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  /** background-color: #ffffff; **/
-  background-image: url(../images_services/dj_bg.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-}
-
-.services_section .musicians_section{
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  /** background-color: #ffffff; **/
-  background-image: url(../images_services/musicians_bg.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
 }
 
 .services_section .box {
@@ -1073,7 +973,53 @@ a:hover {
   text-align: justify;
 }
 
-/** Services Section End **/
+.services_section .wedding_section{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  /** background-color: #ffffff; **/
+  background-image: url(../images_services/wedding_bg.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.services_section .dj_section{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  /** background-color: #ffffff; **/
+  background-image: url(../images_services/dj_bg.png);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.services_section .musicians_section{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  /** background-color: #ffffff; **/
+  background-image: url(../images_services/musicians_bg.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+/***************************/
+/** Services Section  End **/
+/***************************/
 
 /*** Service ***/
 .service_header{
@@ -1588,6 +1534,35 @@ a:hover {
 /** End Gallery Section  **/
 
 /** Quotation Section  **/
+.quotation_section_home{
+  background-image: url(../images/home_header.png);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.quotation_section{
+  background-image: url(../images/home_header.png);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  height: 100vh;
+}
 
 .form_container{
   display: block;
@@ -1596,7 +1571,6 @@ a:hover {
   margin-top: 20px;
   width: 70%;
   height: 87%
-
 }
 
 @media (max-width: 992px) {
@@ -1614,6 +1588,18 @@ a:hover {
 }
 
 /** End Quotation Section  **/
+
+
+/** Terms and Conditions **/
+.terms_and_conditions_section h1,
+.terms_and_conditions_section h2,
+.terms_and_conditions_section h3,
+.terms_and_conditions_section h4,
+.terms_and_conditions_section h5,
+.terms_and_conditions_section p,
+.terms_and_conditions_section a{
+  color: black;
+}
 
 /** footer Section  **/
 
