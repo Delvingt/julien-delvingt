@@ -434,7 +434,7 @@ a:hover {
 /** Home Section  **/
 /*******************/
 .home_header {
-  background-image: url(../images/home_header.png);
+  background-image: url(../images/dj_bg.jpg);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -611,10 +611,18 @@ a:hover {
 }
 
 .gallery_index_section .owl-carousel .item{
-  margin: 3px;
+  position: relative;
   display: block;
-  width: 100%;
-  height: 250px;
+  width: auto;
+  height: 300px;
+  margin: 3px;
+  align-items: center;
+}
+
+@media (max-width: 766px) {
+  .gallery_index_section .owl-carousel .item{
+    height: 200px;
+  }
 }
 
 .gallery_index_section .owl-dot{
@@ -1015,7 +1023,7 @@ a:hover {
   -ms-flex-direction: column;
   flex-direction: column;
   /** background-color: #ffffff; **/
-  background-image: url(../images_services/wedding_bg.jpg);
+  background-image: url(../images/wedding_bg.jpg);
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -1030,7 +1038,7 @@ a:hover {
   -ms-flex-direction: column;
   flex-direction: column;
   /** background-color: #ffffff; **/
-  background-image: url(../images_services/dj_bg.png);
+  background-image: url(../images/dj_bg.jpg);
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -1045,7 +1053,7 @@ a:hover {
   -ms-flex-direction: column;
   flex-direction: column;
   /** background-color: #ffffff; **/
-  background-image: url(../images_services/musicians_bg.jpg);
+  background-image: url(../images/musicians_bg.jpg);
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -1093,7 +1101,7 @@ a:hover {
   box-shadow:  -5px 5px 10px 0px rgba(0, 0, 0, 0.6);
 }
 
-.service-item .btn {
+.service-item .btn{
   width: 40px;
   height: 40px;
   display: inline-flex;
@@ -1107,7 +1115,7 @@ a:hover {
 }
 
 .service-item:hover .btn {
-  width: 140px;
+  width: 170px;
 }
 
 /** Gallery Section  **/
@@ -1360,10 +1368,7 @@ a:hover {
 .gallery_1 .project.project1 {
   width: 39.8%;
   height: 66.67%;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
+  padding: 0;
 
 }
 
@@ -1373,10 +1378,7 @@ a:hover {
   right: auto;
   width: 59.75%;
   height: 32.6%;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
+  padding: 0;
 }
 
 .gallery_1 .project.project3 {
@@ -1385,10 +1387,7 @@ a:hover {
   bottom: auto;
   width: 19.4%;
   height: 32.98%;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
+  padding: 0;
 }
 
 .gallery_1 .project.project4 {
@@ -1396,22 +1395,16 @@ a:hover {
   top: 33.7%;
   width: 19.5%;
   height: 32.98%;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
+  padding: 0;
 }
 
 .gallery_1 .project.project5 {
-  right: 0px;
+  right: 0;
   left: auto;
   bottom: auto;
   width: 39.8%;
   height: 32.6%;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
+  padding: 0;
 }
 
 .gallery_1 .project.project6 {
@@ -1421,10 +1414,37 @@ a:hover {
   right: 0px;
   width: 39.8%;
   height: 66.67%;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
-  padding-left: 0px;
+  padding: 0;
+}
+
+.gallery_1 .project.project7 {
+  bottom: 0px;
+  top: auto;
+  left: auto;
+  right: 0px;
+  width: 33.3%;
+  height: 50.0%;
+  padding: 0;
+}
+
+.gallery_1 .project.project8 {
+  bottom: 0px;
+  top: auto;
+  left: auto;
+  right: 0px;
+  width: 33.3%;
+  height: 50.0%;
+  padding: 0;
+}
+
+.gallery_1 .project.project9 {
+  bottom: 0px;
+  top: auto;
+  left: auto;
+  right: 0px;
+  width: 33.3%;
+  height: 50.0%;
+  padding: 0;
 }
 
 @media (max-width: 1024px) {
@@ -1567,7 +1587,7 @@ a:hover {
 
 /** Quotation Section  **/
 .quotation_section_home{
-  background-image: url(../images/home_header.png);
+  background-image: url(../images/dj_bg.jpg);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1582,7 +1602,7 @@ a:hover {
 }
 
 .quotation_section{
-  background-image: url(../images/home_header.png);
+  background-image: url(../images/dj_bg.jpg);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
