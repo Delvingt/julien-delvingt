@@ -1002,6 +1002,14 @@ a:hover {
 
 }
 
+.services_section .frame {
+  object-fit: cover;
+  width: 100%;
+  height: 500px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border-radius: 15px;
+}
+
 .services_section .box h1 {
   margin: 25px 15px 25px 15px;
   font-size: 1.5em;

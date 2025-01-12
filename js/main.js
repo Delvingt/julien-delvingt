@@ -57,13 +57,14 @@
             nav : true,
             dots: true,
             loop: true,
-            itemsDesktop : [1199,3],
-            itemsDesktopSmall : [979,3],
+            itemsDesktop : [1199,4],
+            itemsDesktopSmall : [979,2],
+            itemsTablet: [700, 1],
+            itemsMobile: [500, 1],
             navText : [
                 '<i class="bi bi-arrow-left"></i>',
                 '<i class="bi bi-arrow-right"></i>'
             ]
-
         });
 
     });
