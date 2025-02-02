@@ -7,7 +7,7 @@ body {
   color: #000000;
   text-align: left;
   background-color: #ffffff;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /** Color Palette **/
