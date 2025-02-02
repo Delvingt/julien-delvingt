@@ -7,7 +7,7 @@ body {
   color: #000000;
   text-align: left;
   background-color: #ffffff;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /** Color Palette **/
@@ -710,14 +710,14 @@ a:hover {
   z-index: 1;
 }
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
   .reviews_carousel::before,
   .reviews_carousel::after {
     width: 300px;
   }
 }
 
-@media (min-width: 766px) {
+@media (max-width: 766px) {
   .reviews_carousel::before,
   .reviews_carousel::after {
     width: 200px;
@@ -776,6 +776,7 @@ a:hover {
 .reviews_carousel .owl-item.active.center .reviews_text {
   background: black;
   transform: scale(1);
+
 }
 .reviews_carousel .owl-item.active.center .reviews_text h5{
   background: white;

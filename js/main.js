@@ -53,14 +53,25 @@
 
         $("#gallery_index_carousel").owlCarousel({
             autoPlay: 3000, //Set AutoPlay to 3 seconds
-            items : 4,
             nav : true,
             dots: true,
             loop: true,
-            itemsDesktop : [1199,4],
-            itemsDesktopSmall : [979,2],
-            itemsTablet: [700, 1],
-            itemsMobile: [500, 1],
+            responsiveClass:true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true
+                },
+                700: {
+                    items: 2,
+                    nav: false
+                },
+                1200: {
+                    items: 4,
+                    nav: true,
+                    loop: false
+                }
+            },
             navText : [
                 '<i class="bi bi-arrow-left"></i>',
                 '<i class="bi bi-arrow-right"></i>'
