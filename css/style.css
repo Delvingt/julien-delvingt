@@ -85,7 +85,7 @@ a:hover {
   box-shadow:  -5px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-.services_section .dj_section .dark_box{
+.services_section .dark_box{
   background: rgba( 0, 0, 0, 0.8 );
   backdrop-filter: blur( 5px );
   -webkit-backdrop-filter: blur( 5px );
@@ -94,10 +94,10 @@ a:hover {
   text-align: center;
 }
 
-.services_section .dj_section .dark_box h1,
-.services_section .dj_section .dark_box h2,
-.services_section .dj_section .dark_box h3,
-.services_section .dj_section .dark_box p{
+.services_section .dark_box h1,
+.services_section .dark_box h2,
+.services_section .dark_box h3,
+.services_section .dark_box p{
   color: white;
 }
 
@@ -588,7 +588,7 @@ a:hover {
 
 @media (max-width: 766px) {
   .services_index_section{
-    height: 300vh;
+    height: 330vh;
   }
 }
 /********************************/
@@ -1062,6 +1062,21 @@ a:hover {
   flex-direction: column;
   /** background-color: #ffffff; **/
   background-image: url(../images/musicians_bg.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.services_section .photograph_section{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  /** background-color: #ffffff; **/
+  background-image: url(../images/wedding_bg.jpg);
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
