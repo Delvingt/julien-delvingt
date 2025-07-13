@@ -1,44 +1,280 @@
-// Fichier JavaScript complet avec toutes les modifications
+/**
+ * Portfolio/CV Website - Main JavaScript File
+ * 
+ * This file contains all the interactive features and animations for the portfolio website:
+ * - PDF download functionality with analytics
+ * - Text animations (typewriter effect)
+ * - Skill bars animations
+ * - Scroll-triggered animations
+ * - Digital background effects
+ * - Particle effects
+ * - Tech glitch effects
+ * 
+ * @author Julien Delvingt
+ */
 
+// ===================================
+// INITIALIZATION
+// ===================================
+
+/**
+ * Main initialization function
+ * Runs when the DOM is fully loaded
+ */
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation des barres de compétence
+    // Core functionality
+    initPDFDownloadButton();
     animateSkillBars();
     
-    // Effet de frappe amélioré pour le nom et le titre
+    // Text animations with delays
     enhancedTypeWriter('typing-name', 'Julien Delvingt', 100);
     setTimeout(() => {
-        enhancedTypeWriter('typing-title', 'Industrial Digitalization Engineer', 50);
+        enhancedTypeWriter('typing-title', 'Industrial Automaton Engineer', 50);
     }, 1000);
     
-    // Animation des sections au scroll
+    // Scroll animations
     animateSectionsOnScroll();
     
-    // Nouvelles fonctionnalités
+    // Visual effects
     initDigitalBackground();
-    addDataBursts();
     addTechGlitch();
-    addCardScanEffect();
     createParticles();
     
-    // Ajouter une classe pour les animations CSS
+    // Add theme class for CSS animations
     document.body.classList.add('digital-theme');
 });
 
-// Animation des barres de compétence
+// ===================================
+// ANALYTICS MODULE
+// ===================================
+
+/**
+ * Analytics tracking module
+ * Handles all Google Analytics event tracking
+ */
+const Analytics = {
+    /**
+     * Generic event tracking method
+     * @param {string} eventName - The name of the event
+     * @param {string} eventLabel - The label for the event
+     * @param {number|null} value - Optional numeric value for the event
+     */
+    trackEvent: function(eventName, eventLabel, value = null) {
+        if (typeof gtag !== 'undefined') {
+            const eventParams = {
+                'event_category': 'engagement',
+                'event_label': eventLabel
+            };
+            
+            if (value !== null) {
+                eventParams.value = value;
+            }
+            
+            gtag('event', eventName, eventParams);
+        }
+    },
+    
+    /**
+     * Track PDF download events
+     */
+    trackPDFDownload: function() {
+        this.trackEvent('download_cv', 'pdf_download', 1);
+    },
+    
+    /**
+     * Track contact link clicks
+     * @param {string} contactType - Type of contact (email, phone, linkedin, etc.)
+     */
+    trackContactClick: function(contactType) {
+        this.trackEvent('contact_click', contactType);
+    },
+    
+    /**
+     * Track section view events
+     * @param {string} sectionName - Name of the section being viewed
+     */
+    trackSectionView: function(sectionName) {
+        this.trackEvent('section_view', sectionName);
+    }
+};
+
+// ===================================
+// PDF DOWNLOAD FUNCTIONALITY
+// ===================================
+
+/**
+ * Initialize PDF download button with animations and tracking
+ * Handles download states, animations, and accessibility
+ */
+function initPDFDownloadButton() {
+    const pdfBtn = document.querySelector('.pdf-download-btn');
+    
+    if (!pdfBtn) {
+        console.warn('PDF download button not found');
+        return;
+    }
+    
+    // Configuration object
+    const config = {
+        downloadingText: 'Downloading...',
+        successText: 'Downloaded!',
+        errorText: 'Error!',
+        defaultText: 'Download CV',
+        animationDuration: 500,
+        resetDuration: 2000,
+        pdfPath: 'documents/Julien_Delvingt_CV.pdf'
+    };
+    
+    // Store original button content for reset
+    const originalHTML = pdfBtn.innerHTML;
+    
+    /**
+     * Updates button state with icon and text
+     * @param {string} iconClass - Font Awesome icon class
+     * @param {string} text - Button text
+     * @param {string|null} additionalClass - Optional CSS class to add
+     */
+    function updateButtonState(iconClass, text, additionalClass = null) {
+        const icon = pdfBtn.querySelector('i');
+        const textSpan = pdfBtn.querySelector('.btn-text');
+        
+        if (icon) icon.className = iconClass;
+        if (textSpan) textSpan.textContent = text;
+        
+        if (additionalClass) {
+            pdfBtn.classList.add(additionalClass);
+        }
+    }
+    
+    /**
+     * Resets button to original state
+     */
+    function resetButton() {
+        pdfBtn.innerHTML = originalHTML;
+        pdfBtn.classList.remove('download-success', 'download-error');
+        pdfBtn.style.pointerEvents = 'auto';
+    }
+    
+    /**
+     * Handles successful download
+     */
+    function handleDownloadSuccess() {
+        updateButtonState('fas fa-check', config.successText, 'download-success');
+        Analytics.trackPDFDownload();
+        
+        setTimeout(resetButton, config.resetDuration);
+    }
+    
+    /**
+     * Handles download error
+     */
+    function handleDownloadError() {
+        updateButtonState('fas fa-exclamation-triangle', config.errorText, 'download-error');
+        
+        setTimeout(resetButton, config.resetDuration + 1000);
+    }
+    
+    /**
+     * Main click handler
+     * @param {Event} e - Click event
+     */
+    function handleClick(e) {
+        // Prevent multiple clicks
+        pdfBtn.style.pointerEvents = 'none';
+        
+        // Show downloading state
+        updateButtonState('fas fa-spinner fa-spin', config.downloadingText);
+        
+        // Simulate download feedback after short delay
+        setTimeout(handleDownloadSuccess, config.animationDuration);
+    }
+    
+    /**
+     * Handles keyboard accessibility
+     * @param {KeyboardEvent} e - Keyboard event
+     */
+    function handleKeydown(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            pdfBtn.click();
+        }
+    }
+    
+    /**
+     * Tracks first hover interaction
+     */
+    let hoverTracked = false;
+    function handleFirstHover() {
+        if (!hoverTracked) {
+            Analytics.trackEvent('pdf_button_hover', 'first_hover');
+            hoverTracked = true;
+        }
+    }
+    
+    /**
+     * Mobile touch start handler
+     */
+    function handleTouchStart() {
+        pdfBtn.classList.add('touch-active');
+    }
+    
+    /**
+     * Mobile touch end handler
+     */
+    function handleTouchEnd() {
+        setTimeout(() => {
+            pdfBtn.classList.remove('touch-active');
+        }, 300);
+    }
+    
+    // Attach event listeners
+    pdfBtn.addEventListener('click', handleClick);
+    pdfBtn.addEventListener('keydown', handleKeydown);
+    pdfBtn.addEventListener('mouseenter', handleFirstHover);
+    
+    // Mobile-specific events
+    if ('ontouchstart' in window) {
+        pdfBtn.addEventListener('touchstart', handleTouchStart);
+        pdfBtn.addEventListener('touchend', handleTouchEnd);
+    }
+    
+    // Track initial button visibility
+    Analytics.trackEvent('page_view_with_pdf_button', 'pdf_button_visible');
+    
+    console.log('PDF download button initialized');
+}
+
+// ===================================
+// SKILL BARS ANIMATION
+// ===================================
+
+/**
+ * Animate skill progress bars on page load
+ * Uses data-progress attribute to set target width
+ */
 function animateSkillBars() {
     const skillBars = document.querySelectorAll('.skill-progress');
     
     skillBars.forEach(bar => {
         const targetWidth = bar.getAttribute('data-progress');
         
-        // Delay pour déclencher l'animation après le chargement initial
+        // Delay animation for better visual effect
         setTimeout(() => {
             bar.style.width = targetWidth;
         }, 500);
     });
 }
 
-// Effet de frappe amélioré pour le texte
+// ===================================
+// TEXT ANIMATIONS
+// ===================================
+
+/**
+ * Enhanced typewriter effect with colored characters and scan effect
+ * @param {string} elementId - ID of the target element
+ * @param {string} text - Text to type
+ * @param {number} speed - Typing speed in milliseconds
+ */
 function enhancedTypeWriter(elementId, text, speed) {
     const element = document.getElementById(elementId);
     if (!element) return;
@@ -50,29 +286,36 @@ function enhancedTypeWriter(elementId, text, speed) {
     cursor.className = 'cursor';
     element.appendChild(cursor);
     
-    // Couleurs pour l'effet de texte
+    // Color palette for random character highlighting
     const colors = ['#4e7ae2', '#4a90e2', '#18c89b'];
     let colorIndex = 0;
     
+    /**
+     * Types one character at a time
+     */
     function type() {
         if (i < text.length) {
             const charSpan = document.createElement('span');
-            // Changer la couleur occasionnellement pour certains caractères
+            
+            // Randomly color some characters (30% chance)
             if (text.charAt(i) !== ' ' && Math.random() > 0.7) {
                 charSpan.style.color = colors[colorIndex % colors.length];
                 colorIndex++;
             }
+            
             charSpan.textContent = text.charAt(i);
             element.insertBefore(charSpan, cursor);
             i++;
+            
             setTimeout(type, speed);
         } else {
-            // Effet de scan après la fin du typing
+            // Add scan effect after typing completes
             setTimeout(() => {
                 const scanOverlay = document.createElement('div');
                 scanOverlay.className = 'scan-effect';
                 element.appendChild(scanOverlay);
                 
+                // Remove scan effect and cursor after animation
                 setTimeout(() => {
                     scanOverlay.remove();
                     element.removeChild(cursor);
@@ -84,22 +327,37 @@ function enhancedTypeWriter(elementId, text, speed) {
     type();
 }
 
-// Animation des sections au scroll
+// ===================================
+// SCROLL ANIMATIONS
+// ===================================
+
+/**
+ * Animate sections and process steps when they come into viewport
+ */
 function animateSectionsOnScroll() {
     const sections = document.querySelectorAll('.section');
     const processSteps = document.querySelectorAll('.process-step');
     
-    // Fonction pour vérifier si un élément est visible dans le viewport
+    /**
+     * Check if element is visible in viewport
+     * @param {HTMLElement} el - Element to check
+     * @returns {boolean} True if element is visible
+     */
     function isElementInViewport(el) {
         const rect = el.getBoundingClientRect();
+        const threshold = 0.85; // Trigger when 85% visible
+        
         return (
-            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * threshold &&
             rect.bottom >= 0
         );
     }
     
-    // Fonction pour ajouter la classe d'animation
+    /**
+     * Check visibility and add animation classes
+     */
     function checkVisibility() {
+        // Animate sections
         sections.forEach(section => {
             if (isElementInViewport(section)) {
                 section.style.opacity = '1';
@@ -108,105 +366,105 @@ function animateSectionsOnScroll() {
             }
         });
         
-        // Animer les étapes du processus vertical séquentiellement
+        // Animate process steps with sequential delay
         processSteps.forEach((step, index) => {
             if (isElementInViewport(step)) {
                 setTimeout(() => {
                     step.classList.add('appear');
-                }, index * 300); // Délai séquentiel pour chaque étape
+                }, index * 300); // 300ms delay between each step
             }
         });
     }
     
-    // Initialisation des styles
+    // Initialize section styles
     sections.forEach(section => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(20px)';
         section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
     });
     
-    // Vérification initiale
+    // Initial check on load
     checkVisibility();
     
-    // Vérification au scroll
+    // Check on scroll
     window.addEventListener('scroll', checkVisibility);
 }
 
-// Animation des cartes au survol
-function animateCards() {
-    const cards = document.querySelectorAll('.experience-item, .project-card, .certification-item');
-    
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.boxShadow = '0 8px 20px rgba(78, 122, 226, 0.3)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
-        });
-    });
-}
+// ===================================
+// BACKGROUND EFFECTS
+// ===================================
 
-// Fonction d'initialisation du fond d'écran dynamique
+/**
+ * Initialize animated digital network background
+ * Creates a canvas with moving nodes and connections
+ */
 function initDigitalBackground() {
-    // Créer l'élément canvas pour le fond d'écran dynamique
+    // Create canvas element
     const canvas = document.createElement('canvas');
     canvas.id = 'background-canvas';
     
-    // Styles pour le canvas
-    canvas.style.position = 'fixed';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.zIndex = '-2';
-    canvas.style.opacity = '0.4';
+    // Position canvas as fixed background
+    Object.assign(canvas.style, {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        width: '100%',
+        height: '100%',
+        zIndex: '-2',
+        opacity: '0.4'
+    });
     
-    // Insérer le canvas au début du body pour qu'il soit en arrière-plan
+    // Insert canvas at the beginning of body
     document.body.insertBefore(canvas, document.body.firstChild);
     
-    // Ajouter les éléments de circuit diagonaux
+    // Add circuit diagonal decoration
     const circuitDiagonal = document.createElement('div');
     circuitDiagonal.className = 'circuit-diagonal';
     document.body.insertBefore(circuitDiagonal, document.body.firstChild);
     
     const ctx = canvas.getContext('2d');
     
-    // Redimensionner le canvas pour qu'il occupe toute la fenêtre
+    /**
+     * Resize canvas to match window dimensions
+     */
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
     
-    // Appeler resizeCanvas initialement et à chaque redimensionnement de la fenêtre
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    // Configuration des noeuds et des connexions
-    const nodes = [];
-    const nodeCount = Math.floor(window.innerWidth / 100); // Nombre de nœuds basé sur la largeur de l'écran
-    const connectionDistance = 150; // Distance maximale pour établir une connexion entre deux nœuds
-    const nodeSize = 2; // Taille des nœuds
-    const primaryColor = '#3a6ad4'; // Couleur principale (bleu)
-    const accentColor = '#0bb588'; // Couleur d'accent (vert-bleu)
+    // Configuration
+    const config = {
+        nodeCount: Math.floor(window.innerWidth / 100),
+        connectionDistance: 150,
+        nodeSize: 2,
+        primaryColor: '#3a6ad4',
+        accentColor: '#0bb588'
+    };
     
-    // Créer les nœuds initiaux
-    for (let i = 0; i < nodeCount; i++) {
+    // Initialize nodes
+    const nodes = [];
+    for (let i = 0; i < config.nodeCount; i++) {
         nodes.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.5, // Vitesse sur l'axe X
-            vy: (Math.random() - 0.5) * 0.5, // Vitesse sur l'axe Y
-            size: nodeSize + Math.random() * 1.5,
-            color: Math.random() > 0.8 ? accentColor : primaryColor,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            size: config.nodeSize + Math.random() * 1.5,
+            color: Math.random() > 0.8 ? config.accentColor : config.primaryColor,
             dataFlow: Math.random() > 0.7
         });
     }
     
-    // Particules de données (effet de flux)
+    // Data flow particles
     const dataParticles = [];
     
-    // Fonction pour trouver les connexions entre nœuds
+    /**
+     * Find connections between nearby nodes
+     * @returns {Array} Array of connection objects
+     */
     function findConnections() {
         const connections = [];
         
@@ -216,26 +474,25 @@ function initDigitalBackground() {
                 const dy = nodes[i].y - nodes[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
-                if (distance < connectionDistance) {
+                if (distance < config.connectionDistance) {
                     connections.push({
                         from: i,
                         to: j,
                         distance: distance,
-                        opacity: 1 - (distance / connectionDistance)
+                        opacity: 1 - (distance / config.connectionDistance)
                     });
                     
-                    // Ajouter des particules de données sur certaines connexions
+                    // Randomly create data particles on connections
                     if (nodes[i].dataFlow && Math.random() > 0.995) {
-                        const progress = Math.random();
                         dataParticles.push({
                             fromX: nodes[i].x,
                             fromY: nodes[i].y,
                             toX: nodes[j].x,
                             toY: nodes[j].y,
-                            progress: progress,
+                            progress: 0,
                             speed: 0.005 + Math.random() * 0.01,
                             size: 1 + Math.random() * 2,
-                            color: Math.random() > 0.3 ? primaryColor : accentColor
+                            color: Math.random() > 0.3 ? config.primaryColor : config.accentColor
                         });
                     }
                 }
@@ -245,26 +502,27 @@ function initDigitalBackground() {
         return connections;
     }
     
-    // Fonction d'animation principale
+    /**
+     * Main animation loop
+     */
     function animate() {
-        // Effacer le canvas
+        // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // Mettre à jour la position des nœuds
+        // Update node positions
         nodes.forEach(node => {
-            // Rebondir sur les bords
+            // Bounce off edges
             if (node.x <= 0 || node.x >= canvas.width) node.vx *= -1;
             if (node.y <= 0 || node.y >= canvas.height) node.vy *= -1;
             
-            // Mettre à jour la position
+            // Update position
             node.x += node.vx;
             node.y += node.vy;
         });
         
-        // Trouver les connexions actives
+        // Find and draw connections
         const connections = findConnections();
         
-        // Dessiner les connexions
         ctx.lineWidth = 0.5;
         connections.forEach(connection => {
             const fromNode = nodes[connection.from];
@@ -277,14 +535,15 @@ function initDigitalBackground() {
             ctx.stroke();
         });
         
-        // Dessiner les nœuds
+        // Draw nodes
         nodes.forEach(node => {
+            // Draw node
             ctx.beginPath();
             ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
             ctx.fillStyle = node.color;
             ctx.fill();
             
-            // Ajouter un léger halo pour certains nœuds
+            // Occasional halo effect
             if (Math.random() > 0.95) {
                 ctx.beginPath();
                 ctx.arc(node.x, node.y, node.size * 3, 0, Math.PI * 2);
@@ -293,31 +552,31 @@ function initDigitalBackground() {
             }
         });
         
-        // Mettre à jour et dessiner les particules de données
+        // Update and draw data particles
         for (let i = dataParticles.length - 1; i >= 0; i--) {
             const particle = dataParticles[i];
             
-            // Mettre à jour la progression
+            // Update progress
             particle.progress += particle.speed;
             
-            // Supprimer la particule si elle a atteint la fin
+            // Remove completed particles
             if (particle.progress >= 1) {
                 dataParticles.splice(i, 1);
                 continue;
             }
             
-            // Calculer la position actuelle
+            // Calculate current position
             const currentX = particle.fromX + (particle.toX - particle.fromX) * particle.progress;
             const currentY = particle.fromY + (particle.toY - particle.fromY) * particle.progress;
             
-            // Dessiner la particule
+            // Draw particle
             ctx.beginPath();
             ctx.arc(currentX, currentY, particle.size, 0, Math.PI * 2);
             ctx.fillStyle = particle.color;
             ctx.fill();
         }
         
-        // Ajouter occasionnellement de nouvelles particules pour les effets de "data burst"
+        // Occasionally create data bursts
         if (Math.random() > 0.98) {
             const sourceNode = nodes[Math.floor(Math.random() * nodes.length)];
             const burstCount = 3 + Math.floor(Math.random() * 5);
@@ -326,79 +585,46 @@ function initDigitalBackground() {
                 const angle = Math.random() * Math.PI * 2;
                 const distance = 50 + Math.random() * 100;
                 
-                const targetX = sourceNode.x + Math.cos(angle) * distance;
-                const targetY = sourceNode.y + Math.sin(angle) * distance;
-                
                 dataParticles.push({
                     fromX: sourceNode.x,
                     fromY: sourceNode.y,
-                    toX: targetX,
-                    toY: targetY,
+                    toX: sourceNode.x + Math.cos(angle) * distance,
+                    toY: sourceNode.y + Math.sin(angle) * distance,
                     progress: 0,
                     speed: 0.01 + Math.random() * 0.02,
                     size: 1 + Math.random() * 1.5,
-                    color: Math.random() > 0.3 ? primaryColor : accentColor
+                    color: Math.random() > 0.3 ? config.primaryColor : config.accentColor
                 });
             }
         }
         
-        // Continuer l'animation
+        // Continue animation
         requestAnimationFrame(animate);
     }
     
-    // Démarrer l'animation
+    // Start animation
     animate();
 }
 
-// Ajouter des "data bursts" aléatoires sur la page
-function addDataBursts() {
-    const burstContainer = document.createElement('div');
-    burstContainer.className = 'data-bursts';
-    document.body.appendChild(burstContainer);
-    
-    // Créer des bursts à intervalles aléatoires
-    setInterval(() => {
-        if (Math.random() > 0.7) {
-            const burst = document.createElement('div');
-            burst.className = 'data-burst';
-            
-            // Position aléatoire
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight;
-            
-            burst.style.left = `${x}px`;
-            burst.style.top = `${y}px`;
-            
-            // Couleur aléatoire
-            const colors = ['#4e7ae2', '#18c89b', '#4a90e2'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            burst.style.backgroundColor = color;
-            
-            // Taille aléatoire
-            const size = 20 + Math.random() * 40;
-            burst.style.width = `${size}px`;
-            burst.style.height = `${size}px`;
-            
-            burstContainer.appendChild(burst);
-            
-            // Supprimer après l'animation
-            setTimeout(() => {
-                burst.remove();
-            }, 1000);
-        }
-    }, 500);
-}
+// ===================================
+// VISUAL EFFECTS
+// ===================================
 
-// Effet de scintillement pour les compétences techniques
+/**
+ * Add glitch effect to technical skill elements
+ * Creates random flickering effect on tech-related elements
+ */
 function addTechGlitch() {
     const techElements = document.querySelectorAll('.process-skill, .tag');
     
     techElements.forEach(element => {
-        // Ajouter une chance aléatoire de scintillement
+        // Check for glitch effect periodically
         setInterval(() => {
+            // 5% chance of glitch
             if (Math.random() > 0.95) {
                 element.classList.add('tech-glitch');
                 
+                // Remove glitch after random duration
                 setTimeout(() => {
                     element.classList.remove('tech-glitch');
                 }, 200 + Math.random() * 300);
@@ -407,51 +633,39 @@ function addTechGlitch() {
     });
 }
 
-// Effet de "scan" sur les cartes au survol
-function addCardScanEffect() {
-    const cards = document.querySelectorAll('.experience-item, .project-card, .education-item');
-    
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            const scanLine = document.createElement('div');
-            scanLine.className = 'card-scan-line';
-            this.appendChild(scanLine);
-            
-            // Supprimer après l'animation
-            setTimeout(() => {
-                scanLine.remove();
-            }, 800);
-        });
-    });
-}
-
-// Création de particules flottantes
+/**
+ * Create floating particle effects
+ * Adds ambient floating particles throughout the page
+ */
 function createParticles() {
+    // Create container for particles
     const particlesContainer = document.createElement('div');
     particlesContainer.className = 'particles';
     document.body.appendChild(particlesContainer);
     
-    // Créer des particules
-    for (let i = 0; i < 30; i++) {
+    // Configuration
+    const particleCount = 30;
+    
+    // Create individual particles
+    for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         
-        // Position aléatoire
+        // Random position
         const x = Math.random() * window.innerWidth;
         const y = Math.random() * window.innerHeight;
-        
         particle.style.left = `${x}px`;
         particle.style.top = `${y}px`;
         
-        // Animation différée
+        // Random animation delay for variety
         particle.style.animationDelay = `${Math.random() * 20}s`;
         
-        // Taille aléatoire
+        // Random size (1-3px)
         const size = 1 + Math.random() * 2;
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
         
-        // Opacité aléatoire
+        // Random opacity
         particle.style.opacity = 0.2 + Math.random() * 0.5;
         
         particlesContainer.appendChild(particle);
