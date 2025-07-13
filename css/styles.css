@@ -1,50 +1,62 @@
-/* CSS complet avec toutes les modifications */
+/* ============================================================
+   DIGITAL PORTFOLIO CSS - COMPLETE STYLESHEET
+   ============================================================
+   Table of Contents:
+   1. CSS Variables & Root Configuration
+   2. Base Styles & Resets
+   3. Background Effects & Decorative Elements
+   4. Typography & Basic Elements
+   5. Layout & Container Styles
+   6. Header/Hero Section
+   7. PDF Download Button
+   8. Contact Information
+   9. Main Content Sections
+   10. Process/Skills Timeline
+   11. Languages Section
+   12. Experience Section
+   13. Education Section
+   14. Certifications Section
+   15. Footer
+   16. Animations & Keyframes
+   17. Utility Classes
+   18. Responsive Design
+   19. Print Styles
+   ============================================================ */
 
-/* Fond avec dégradé dynamique */
-body:before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: linear-gradient(45deg, rgba(240, 245, 255, 0.9), rgba(230, 240, 250, 0.92), rgba(235, 245, 255, 0.9));
-    background-size: 400% 400%;
-    animation: gradientBackground 15s ease infinite;
-}
-
-@keyframes gradientBackground {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Variables pour la cohérence du thème - modifiées pour le style digital */
+/* ============================================================
+   1. CSS VARIABLES & ROOT CONFIGURATION
+   ============================================================ */
 :root {
+    /* Primary Colors */
     --primary-color: rgba(250, 252, 255, 0.9);
     --secondary-color: rgba(240, 245, 255, 0.8);
+    
+    /* Accent Colors */
     --accent-color: #3a6ad4;
     --accent-light: rgba(58, 106, 212, 0.1);
     --accent-secondary: #0bb588;
+    
+    /* Text Colors */
     --text-primary: #333333;
     --text-secondary: #555555;
+    
+    /* UI Colors */
     --border-color: rgba(58, 106, 212, 0.2);
     --card-bg: rgba(250, 252, 255, 0.8);
     --shadow-color: rgba(0, 0, 0, 0.1);
     --progress-bg: rgba(0, 0, 0, 0.05);
-    --transition-time: 0.3s;
+    
+    /* Gradient Colors */
     --gradient-start: #3a6ad4;
     --gradient-end: #0bb588;
+    
+    /* Timing */
+    --transition-time: 0.3s;
 }
 
-/* Réinitialisation et styles de base */
+/* ============================================================
+   2. BASE STYLES & RESETS
+   ============================================================ */
 * {
     margin: 0;
     padding: 0;
@@ -60,23 +72,29 @@ body {
     position: relative;
 }
 
-a {
-    color: var(--accent-color);
-    text-decoration: none;
-    transition: color var(--transition-time);
+/* ============================================================
+   3. BACKGROUND EFFECTS & DECORATIVE ELEMENTS
+   ============================================================ */
+
+/* Animated gradient background */
+body:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(45deg, 
+        rgba(240, 245, 255, 0.9), 
+        rgba(230, 240, 250, 0.92), 
+        rgba(235, 245, 255, 0.9)
+    );
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
 }
 
-a:hover {
-    color: var(--gradient-end);
-}
-
-.container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Animation d'arrière-plan de circuit (subtile) */
+/* Circuit board pattern background */
 .circuit-background {
     position: fixed;
     top: 0;
@@ -91,7 +109,7 @@ a:hover {
     opacity: 0.05;
 }
 
-/* Lignes de circuit diagonales */
+/* Diagonal circuit lines */
 .circuit-diagonal {
     position: fixed;
     top: 0;
@@ -106,37 +124,209 @@ a:hover {
     background-size: 50px 50px;
 }
 
-/* ===================================
-   PDF DOWNLOAD BUTTON STYLES
-   =================================== */
+/* Floating particles effect */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
 
-/* Main button styling */
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    opacity: 0.5;
+    animation: particle-float 20s linear infinite;
+}
+
+/* ============================================================
+   4. TYPOGRAPHY & BASIC ELEMENTS
+   ============================================================ */
+
+/* Headings */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, var(--accent-color), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+
+h4 {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Links */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color var(--transition-time);
+}
+
+a:hover {
+    color: var(--gradient-end);
+}
+
+/* Text elements */
+.title {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 800px;
+}
+
+/* ============================================================
+   5. LAYOUT & CONTAINER STYLES
+   ============================================================ */
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============================================================
+   6. HEADER/HERO SECTION
+   ============================================================ */
+.hero {
+    padding: 7rem 0 4rem;
+    text-align: center;
+    background: transparent;
+    position: relative;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Profile image with glow effect */
+.profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    border: 4px solid var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(78, 122, 226, 0.3), 0 0 25px rgba(78, 122, 226, 0.5);
+    animation: profile-glow 3s infinite alternate;
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Animated circuit line under header */
+.circuit-line {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gradient-start), var(--gradient-end), transparent);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-size: 200% 100%;
+    animation: circuitLineAnimation 3s linear infinite;
+}
+
+/* Tech icons in header */
+.tech-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.tech-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(78, 122, 226, 0.1);
+    border: 1px solid rgba(78, 122, 226, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(78, 122, 226, 0.3);
+    animation: tech-icon-pulse 4s infinite alternate;
+}
+
+.tech-icon:nth-child(2n) { animation-delay: 1s; }
+.tech-icon:nth-child(3n) { animation-delay: 2s; }
+.tech-icon:nth-child(4n) { animation-delay: 3s; }
+
+/* ============================================================
+   7. PDF DOWNLOAD BUTTON
+   ============================================================ */
 a.pdf-download-btn {
+    /* Positioning */
     position: fixed !important;
     top: 30px;
     right: 30px;
     z-index: 1000;
+    
+    /* Styling */
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     color: white;
     border: none;
     border-radius: 50px;
-    padding: 12px 24px;
+    padding: 12px 12px;
+    
+    /* Typography */
     font-size: 14px;
     font-weight: 600;
-    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    
+    /* Layout */
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
+    
+    /* Effects */
     box-shadow: 0 4px 15px rgba(58, 106, 212, 0.3);
     transition: all 0.3s ease;
     overflow: hidden;
     position: relative;
-    text-decoration: none;
     animation: float 3s ease-in-out infinite;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Ensure link text color stays white */
+/* Ensure consistent text color */
 a.pdf-download-btn,
 a.pdf-download-btn:visited,
 a.pdf-download-btn:link {
@@ -144,28 +334,32 @@ a.pdf-download-btn:link {
     text-decoration: none;
 }
 
-/* Icon styling */
+/* PDF button icon */
 .pdf-download-btn i {
     font-size: 16px;
     transition: transform 0.3s ease;
     color: white;
+    position: relative;
+    z-index: 1;
 }
 
-/* Text that appears on hover */
+/* PDF button text */
 .pdf-download-btn .btn-text {
     max-width: 0;
     overflow: hidden;
     white-space: nowrap;
     transition: max-width 0.5s ease;
     display: inline-block;
+    position: relative;
+    z-index: 1;
 }
 
-/* Hover effects */
+/* PDF button hover state */
 .pdf-download-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(58, 106, 212, 0.4);
     padding-right: 30px;
-    animation: none;
+    animation: glow-pulse 2s ease-in-out infinite;
     background: linear-gradient(135deg, #4575de 0%, #0dc795 100%);
     color: white;
 }
@@ -178,19 +372,7 @@ a.pdf-download-btn:link {
     transform: translateY(-2px) scale(1.1);
 }
 
-/* Focus state for accessibility */
-.pdf-download-btn:focus {
-    outline: 3px solid rgba(58, 106, 212, 0.5);
-    outline-offset: 2px;
-}
-
-/* Click/Active effect */
-.pdf-download-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(58, 106, 212, 0.3);
-}
-
-/* Ripple effect background */
+/* PDF button ripple effect */
 .pdf-download-btn::before {
     content: '';
     position: absolute;
@@ -211,39 +393,18 @@ a.pdf-download-btn:link {
     height: 300px;
 }
 
-/* Ensure icon and text are above the ripple */
-.pdf-download-btn i,
-.pdf-download-btn .btn-text {
-    position: relative;
-    z-index: 1;
+/* PDF button states */
+.pdf-download-btn:focus {
+    outline: 3px solid rgba(58, 106, 212, 0.5);
+    outline-offset: 2px;
 }
 
-/* Floating animation */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
+.pdf-download-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(58, 106, 212, 0.3);
 }
 
-/* Glowing pulse effect on the shadow */
-@keyframes glow-pulse {
-    0%, 100% {
-        box-shadow: 0 4px 15px rgba(58, 106, 212, 0.3);
-    }
-    50% {
-        box-shadow: 0 4px 25px rgba(58, 106, 212, 0.5), 0 0 30px rgba(11, 181, 136, 0.3);
-    }
-}
-
-/* Apply glow animation on hover */
-.pdf-download-btn:hover {
-    animation: glow-pulse 2s ease-in-out infinite;
-}
-
-/* Download success state (when class is added via JS) */
+/* PDF button success state */
 .pdf-download-btn.download-success {
     background: linear-gradient(135deg, #0bb588 0%, #18c99b 100%);
 }
@@ -252,239 +413,9 @@ a.pdf-download-btn:link {
     content: "\f00c"; /* Font Awesome check icon */
 }
 
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-    .pdf-download-btn {
-        top: 20px;
-        right: 20px;
-        padding: 10px 20px;
-        font-size: 13px;
-    }
-    
-    .pdf-download-btn i {
-        font-size: 14px;
-    }
-    
-    /* Always show text on mobile for better UX */
-    .pdf-download-btn .btn-text {
-        max-width: 100px;
-    }
-    
-    .pdf-download-btn:hover {
-        padding-right: 20px;
-    }
-}
-
-/* Tablet adjustments */
-@media (max-width: 1024px) and (min-width: 769px) {
-    .pdf-download-btn {
-        top: 25px;
-        right: 25px;
-    }
-}
-
-/* Print styles - hide button when printing */
-@media print {
-    .pdf-download-btn {
-        display: none !important;
-    }
-}
-
-/* Alternative Style Variations (Uncomment to use) */
-
-/* Style 2: Glass Morphism Effect */
-/*
-.pdf-download-btn {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--accent-color);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-}
-
-.pdf-download-btn:hover {
-    background: rgba(58, 106, 212, 0.2);
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-}
-
-.pdf-download-btn i {
-    color: var(--accent-color);
-}
-*/
-
-/* Style 3: Minimalist Outline */
-/*
-.pdf-download-btn {
-    background: transparent;
-    border: 2px solid var(--accent-color);
-    color: var(--accent-color);
-    box-shadow: none;
-}
-
-.pdf-download-btn:hover {
-    background: var(--accent-color);
-    color: white;
-    box-shadow: 0 4px 15px rgba(58, 106, 212, 0.3);
-}
-
-.pdf-download-btn i {
-    color: var(--accent-color);
-}
-
-.pdf-download-btn:hover i {
-    color: white;
-}
-*/
-
-/* Style 4: Dark Mode Version */
-/*
-.pdf-download-btn {
-    background: rgba(30, 30, 30, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
-
-.pdf-download-btn:hover {
-    background: rgba(50, 50, 50, 0.95);
-    border-color: var(--accent-color);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--accent-color);
-}
-*/
-
-/* Style 5: Icon Only (Expands on Hover) */
-/*
-.pdf-download-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    padding: 0;
-    justify-content: center;
-}
-
-.pdf-download-btn .btn-text {
-    max-width: 0;
-    margin: 0;
-    opacity: 0;
-}
-
-.pdf-download-btn:hover {
-    width: auto;
-    padding: 12px 24px;
-    border-radius: 50px;
-}
-
-.pdf-download-btn:hover .btn-text {
-    max-width: 150px;
-    margin-left: 8px;
-    opacity: 1;
-    transition: opacity 0.3s ease 0.2s, max-width 0.5s ease;
-}
-*/
-
-/* En-tête / Hero section */
-.hero {
-    padding: 7rem 0 4rem;
-    text-align: center;
-    background: transparent;
-    position: relative;
-    margin-bottom: 3rem;
-    border-bottom: 1px solid var(--border-color);
-    overflow: hidden;
-}
-
-.hero-content {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.profile-img {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    margin: 0 auto 1.5rem;
-    overflow: hidden;
-    border: 4px solid var(--accent-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    box-shadow: 0 0 0 3px rgba(78, 122, 226, 0.3), 0 0 25px rgba(78, 122, 226, 0.5);
-    animation: profile-glow 3s infinite alternate;
-}
-
-@keyframes profile-glow {
-    0% {
-        box-shadow: 0 0 0 3px rgba(78, 122, 226, 0.3), 0 0 25px rgba(78, 122, 226, 0.5);
-    }
-    100% {
-        box-shadow: 0 0 0 3px rgba(78, 122, 226, 0.5), 0 0 35px rgba(78, 122, 226, 0.8);
-    }
-}
-
-.profile-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(to right, var(--accent-color), var(--accent-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: none;
-}
-
-.title {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
-    }
-    
-    70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
-    }
-    
-    100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
-    }
-}
-
-.circuit-line {
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--gradient-start), var(--gradient-end), transparent);
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-size: 200% 100%;
-    animation: circuitLineAnimation 3s linear infinite;
-}
-
-@keyframes circuitLineAnimation {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
-}
-
-/* Contact */
+/* ============================================================
+   8. CONTACT INFORMATION
+   ============================================================ */
 .contact-info {
     display: flex;
     justify-content: center;
@@ -520,6 +451,14 @@ h1 {
     align-items: center;
 }
 
+.contact-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    background-color: #0077b5;
+    border-color: #0077b5;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
+}
+
 .contact-btn:hover i,
 .contact-btn:hover span {
     color: white;
@@ -529,21 +468,15 @@ h1 {
     animation: pulse-icon 1s infinite alternate;
 }
 
-.contact-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    background-color: #0077b5;
-    border-color: #0077b5;
-    color: white;
-    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
-}
-
 .contact-item i {
     width: 25px;
     color: var(--accent-color);
     margin-right: 0.5rem;
 }
 
-/* Sections */
+/* ============================================================
+   9. MAIN CONTENT SECTIONS
+   ============================================================ */
 .section {
     margin-bottom: 4rem;
     padding-bottom: 1rem;
@@ -556,6 +489,7 @@ h1 {
     border-bottom: none;
 }
 
+/* Section animated border line */
 .section::before {
     content: '';
     position: absolute;
@@ -573,24 +507,7 @@ h1 {
     opacity: 1;
 }
 
-@keyframes section-line {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-@keyframes pulse-icon {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.2);
-    }
-}
-
+/* Section headers */
 .section-header {
     margin-bottom: 2rem;
     position: relative;
@@ -609,17 +526,7 @@ h1 {
     animation: header-line-glow 2s infinite alternate;
 }
 
-@keyframes header-line-glow {
-    0% {
-        box-shadow: 0 0 5px rgba(78, 122, 226, 0.5);
-    }
-    100% {
-        box-shadow: 0 0 15px rgba(78, 122, 226, 0.8);
-    }
-}
-
 .section-header h2 {
-    font-size: 1.8rem;
     background: linear-gradient(to right, var(--accent-color), var(--accent-secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -633,14 +540,16 @@ h1 {
     color: var(--accent-color);
 }
 
-.intro-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    max-width: 800px;
+/* Subsection titles */
+.subsection-title {
+    font-size: 1.3rem;
+    margin: 2rem 0 1.5rem;
+    color: var(--text-primary);
 }
 
-/* Processus vertical d'activités */
+/* ============================================================
+   10. PROCESS/SKILLS TIMELINE
+   ============================================================ */
 .process-container {
     position: relative;
     max-width: 900px;
@@ -648,6 +557,7 @@ h1 {
     padding: 20px 0;
 }
 
+/* Vertical timeline line */
 .process-line {
     position: absolute;
     top: 0;
@@ -661,22 +571,12 @@ h1 {
     animation: process-line-pulse 3s infinite alternate;
 }
 
-@keyframes process-line-pulse {
-    0% {
-        opacity: 0.7;
-        box-shadow: 0 0 10px rgba(78, 122, 226, 0.4);
-    }
-    100% {
-        opacity: 1;
-        box-shadow: 0 0 20px rgba(78, 122, 226, 0.7);
-    }
-}
-
 .process-steps {
     position: relative;
     z-index: 2;
 }
 
+/* Individual process steps */
 .process-step {
     display: flex;
     margin-bottom: 80px;
@@ -690,10 +590,12 @@ h1 {
     transform: translateY(0);
 }
 
+/* Alternate step alignment */
 .process-step:nth-child(odd) {
     flex-direction: row-reverse;
 }
 
+/* Process content cards */
 .process-content {
     flex: 0 0 45%;
     padding: 25px;
@@ -712,6 +614,7 @@ h1 {
     border-color: var(--accent-color);
 }
 
+/* Process content arrow indicators */
 .process-content::after {
     content: '';
     position: absolute;
@@ -736,6 +639,7 @@ h1 {
     border-bottom: none;
 }
 
+/* Process icon circles */
 .process-icon {
     position: absolute;
     left: 50%;
@@ -765,21 +669,11 @@ h1 {
     animation: pulse-light 3s infinite alternate;
 }
 
-@keyframes pulse-light {
-    0% {
-        text-shadow: 0 0 5px rgba(78, 122, 226, 0.5);
-        transform: scale(1);
-    }
-    100% {
-        text-shadow: 0 0 15px rgba(78, 122, 226, 0.8), 0 0 30px rgba(24, 200, 155, 0.5);
-        transform: scale(1.1);
-    }
-}
-
 .process-step:hover .process-icon i {
     color: var(--gradient-end);
 }
 
+/* Process content elements */
 .process-title {
     font-size: 1.3rem;
     margin-bottom: 10px;
@@ -792,7 +686,6 @@ h1 {
     margin-bottom: 15px;
 }
 
-
 .process-level {
     font-size: 0.85rem;
     display: inline-block;
@@ -804,6 +697,7 @@ h1 {
     margin-bottom: 10px;
 }
 
+/* Process skills tags */
 .process-skills {
     display: flex;
     flex-wrap: wrap;
@@ -828,68 +722,9 @@ h1 {
     border-color: var(--accent-color);
 }
 
-/* Effet de scintillement pour les éléments techniques */
-.tech-glitch {
-    animation: glitch 0.3s ease forwards;
-}
-
-@keyframes glitch {
-    0% {
-        transform: translate(0);
-        text-shadow: 0 0 0 transparent;
-    }
-    20% {
-        transform: translate(-3px, 3px);
-        text-shadow: -2px 2px 0 rgba(24, 200, 155, 0.5);
-    }
-    40% {
-        transform: translate(-3px, -3px);
-        text-shadow: 2px -2px 0 rgba(78, 122, 226, 0.5);
-    }
-    60% {
-        transform: translate(3px, 3px);
-        text-shadow: 2px 2px 0 rgba(24, 200, 155, 0.5);
-    }
-    80% {
-        transform: translate(3px, -3px);
-        text-shadow: -2px -2px 0 rgba(78, 122, 226, 0.5);
-    }
-    100% {
-        transform: translate(0);
-        text-shadow: 0 0 0 transparent;
-    }
-}
-
-@media (max-width: 768px) {
-    .process-step, 
-    .process-step:nth-child(odd) {
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 60px;
-    }
-    
-    .process-content {
-        width: 100%;
-        margin-top: 40px;
-    }
-    
-    .process-content::after {
-        display: none;
-    }
-    
-    .process-icon {
-        position: relative;
-        margin-bottom: -40px;
-    }
-}
-
-/* Langues */
-.subsection-title {
-    font-size: 1.3rem;
-    margin: 2rem 0 1.5rem;
-    color: var(--text-primary);
-}
-
+/* ============================================================
+   11. LANGUAGES SECTION
+   ============================================================ */
 .languages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -915,6 +750,7 @@ h1 {
     border-color: var(--accent-color);
 }
 
+/* Language proficiency indicators */
 .langue-niveau {
     display: flex;
     gap: 3px;
@@ -932,7 +768,9 @@ h1 {
     box-shadow: 0 0 8px var(--accent-color);
 }
 
-/* Expérience */
+/* ============================================================
+   12. EXPERIENCE SECTION
+   ============================================================ */
 .experience-grid {
     display: grid;
     gap: 2rem;
@@ -954,9 +792,38 @@ h1 {
     border-color: var(--accent-color);
 }
 
-/* Experience section bullet points */
+/* Experience header with date */
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.experience-title h3 {
+    margin-bottom: 0.3rem;
+    color: var(--accent-color);
+}
+
+.experience-title h4 {
+    color: var(--text-secondary);
+    font-weight: normal;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.experience-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    background-color: var(--accent-light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+/* Experience bullet points */
 .experience-item p {
-    margin: 0; /* Remove default paragraph margin */
+    margin: 0;
 }
 
 .experience-list {
@@ -973,6 +840,7 @@ h1 {
     color: var(--text-primary);
 }
 
+/* Animated bullet points */
 .experience-list li::before {
     content: '';
     position: absolute;
@@ -986,23 +854,12 @@ h1 {
     animation: bullet-glow 3s infinite alternate;
 }
 
-@keyframes bullet-glow {
-    0% {
-        box-shadow: 0 0 5px rgba(78, 122, 226, 0.5);
-        transform: scale(1);
-    }
-    100% {
-        box-shadow: 0 0 12px rgba(78, 122, 226, 0.8), 0 0 20px rgba(24, 200, 155, 0.3);
-        transform: scale(1.2);
-    }
-}
-
 .experience-list li:hover::before {
     background: linear-gradient(45deg, var(--accent-secondary), var(--accent-color));
     box-shadow: 0 0 15px rgba(24, 200, 155, 0.8);
 }
 
-/* Alternative style with tech-themed bullets */
+/* Alternative bullet styles */
 .experience-list.tech-bullets li::before {
     content: '▶';
     font-size: 8px;
@@ -1034,70 +891,7 @@ h1 {
     animation: circuit-pulse 2s infinite;
 }
 
-@keyframes circuit-pulse {
-    0%, 100% {
-        border-color: var(--accent-color);
-        box-shadow: inset 0 0 0 1px var(--accent-color), 0 0 5px rgba(78, 122, 226, 0.3);
-    }
-    50% {
-        border-color: var(--accent-secondary);
-        box-shadow: inset 0 0 0 1px var(--accent-secondary), 0 0 10px rgba(24, 200, 155, 0.5);
-    }
-}
-
-/* Responsive adjustments for bullet points */
-@media (max-width: 768px) {
-    .experience-list li {
-        padding-left: 1.2rem;
-        margin-bottom: 0.6rem;
-    }
-    
-    .experience-list li::before {
-        width: 5px;
-        height: 5px;
-        top: 0.5em;
-    }
-}
-
-@keyframes card-scan {
-    0% {
-        top: 0;
-        opacity: 0.5;
-    }
-    100% {
-        top: 100%;
-        opacity: 0.8;
-    }
-}
-
-.experience-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-}
-
-.experience-title h3 {
-    margin-bottom: 0.3rem;
-    color: var(--accent-color);
-}
-
-.experience-title h4 {
-    color: var(--text-secondary);
-    font-weight: normal;
-    font-style: italic;
-    font-size: 0.9rem;
-}
-
-.experience-date {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    background-color: var(--accent-light);
-    padding: 0.3rem 0.8rem;
-    border-radius: 50px;
-    font-weight: 500;
-}
-
+/* Experience tags */
 .tags {
     display: flex;
     flex-wrap: wrap;
@@ -1122,7 +916,9 @@ h1 {
     border-color: var(--accent-color);
 }
 
-/* Formation */
+/* ============================================================
+   13. EDUCATION SECTION
+   ============================================================ */
 .education-grid {
     display: grid;
     gap: 2rem;
@@ -1168,16 +964,9 @@ h1 {
     font-size: 0.9rem;
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+/* Project cards (similar to education) */
+.project-card {
+    animation: float 3s ease-in-out infinite;
 }
 
 .project-card:hover {
@@ -1214,7 +1003,9 @@ h1 {
     color: var(--text-primary);
 }
 
-/* Certifications Section Styles */
+/* ============================================================
+   14. CERTIFICATIONS SECTION
+   ============================================================ */
 .certifications-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1240,6 +1031,7 @@ h1 {
     border-color: var(--accent-color);
 }
 
+/* Certification scan line effect */
 .certification-item::before {
     content: '';
     position: absolute;
@@ -1257,15 +1049,7 @@ h1 {
     animation: cert-scan 0.8s ease;
 }
 
-@keyframes cert-scan {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
+/* Certification header */
 .certification-header {
     display: flex;
     align-items: flex-start;
@@ -1286,17 +1070,6 @@ h1 {
     color: var(--accent-color);
     box-shadow: 0 0 15px rgba(78, 122, 226, 0.4);
     animation: cert-icon-pulse 4s infinite alternate;
-}
-
-@keyframes cert-icon-pulse {
-    0% {
-        box-shadow: 0 0 10px rgba(78, 122, 226, 0.4);
-        transform: scale(1);
-    }
-    100% {
-        box-shadow: 0 0 20px rgba(78, 122, 226, 0.7), 0 0 30px rgba(24, 200, 155, 0.3);
-        transform: scale(1.05);
-    }
 }
 
 .certification-item:hover .certification-icon {
@@ -1340,6 +1113,7 @@ h1 {
     margin-bottom: 1rem;
 }
 
+/* Certification skills */
 .certification-skills {
     display: flex;
     flex-wrap: wrap;
@@ -1364,7 +1138,7 @@ h1 {
     transform: translateY(-1px);
 }
 
-/* Status indicators */
+/* Certification status badges */
 .certification-status {
     position: absolute;
     top: 1rem;
@@ -1398,7 +1172,7 @@ h1 {
     box-shadow: 0 0 10px rgba(78, 122, 226, 0.2);
 }
 
-/* Certificate link/badge */
+/* Certification link */
 .certification-link {
     display: inline-flex;
     align-items: center;
@@ -1425,31 +1199,257 @@ h1 {
     font-size: 0.8rem;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .certifications-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+/* ============================================================
+   15. FOOTER
+   ============================================================ */
+footer {
+    background: linear-gradient(180deg, transparent, rgba(240, 245, 255, 0.95));
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 4rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* ============================================================
+   16. ANIMATIONS & KEYFRAMES
+   ============================================================ */
+
+/* Background gradient animation */
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Profile image glow */
+@keyframes profile-glow {
+    0% {
+        box-shadow: 0 0 0 3px rgba(78, 122, 226, 0.3), 0 0 25px rgba(78, 122, 226, 0.5);
     }
-    
-    .certification-header {
-        gap: 0.8rem;
-    }
-    
-    .certification-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-    
-    .certification-status {
-        position: static;
-        margin-top: 0.5rem;
-        display: inline-block;
+    100% {
+        box-shadow: 0 0 0 3px rgba(78, 122, 226, 0.5), 0 0 35px rgba(78, 122, 226, 0.8);
     }
 }
 
-/* Effet de scan du texte après le typing */
+/* Circuit line animation */
+@keyframes circuitLineAnimation {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Section line slide */
+@keyframes section-line {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}
+
+/* Header line glow */
+@keyframes header-line-glow {
+    0% { box-shadow: 0 0 5px rgba(78, 122, 226, 0.5); }
+    100% { box-shadow: 0 0 15px rgba(78, 122, 226, 0.8); }
+}
+
+/* Process line pulse */
+@keyframes process-line-pulse {
+    0% {
+        opacity: 0.7;
+        box-shadow: 0 0 10px rgba(78, 122, 226, 0.4);
+    }
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 20px rgba(78, 122, 226, 0.7);
+    }
+}
+
+/* Icon pulse light */
+@keyframes pulse-light {
+    0% {
+        text-shadow: 0 0 5px rgba(78, 122, 226, 0.5);
+        transform: scale(1);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(78, 122, 226, 0.8), 0 0 30px rgba(24, 200, 155, 0.5);
+        transform: scale(1.1);
+    }
+}
+
+/* Tech icon pulse */
+@keyframes tech-icon-pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(78, 122, 226, 0.3);
+    }
+    100% {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(78, 122, 226, 0.7), 0 0 30px rgba(24, 200, 155, 0.3);
+    }
+}
+
+/* Particle float */
+@keyframes particle-float {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
+    100% {
+        transform: translateY(-100vh) translateX(20px);
+        opacity: 0;
+    }
+}
+
+/* Float animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Glow pulse */
+@keyframes glow-pulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(58, 106, 212, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(58, 106, 212, 0.5), 0 0 30px rgba(11, 181, 136, 0.3);
+    }
+}
+
+/* Pulse icon */
+@keyframes pulse-icon {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+}
+
+/* Bullet glow */
+@keyframes bullet-glow {
+    0% {
+        box-shadow: 0 0 5px rgba(78, 122, 226, 0.5);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 12px rgba(78, 122, 226, 0.8), 0 0 20px rgba(24, 200, 155, 0.3);
+        transform: scale(1.2);
+    }
+}
+
+/* Circuit pulse */
+@keyframes circuit-pulse {
+    0%, 100% {
+        border-color: var(--accent-color);
+        box-shadow: inset 0 0 0 1px var(--accent-color), 0 0 5px rgba(78, 122, 226, 0.3);
+    }
+    50% {
+        border-color: var(--accent-secondary);
+        box-shadow: inset 0 0 0 1px var(--accent-secondary), 0 0 10px rgba(24, 200, 155, 0.5);
+    }
+}
+
+/* Card scan effect */
+@keyframes card-scan {
+    0% {
+        top: 0;
+        opacity: 0.5;
+    }
+    100% {
+        top: 100%;
+        opacity: 0.8;
+    }
+}
+
+/* Certification scan */
+@keyframes cert-scan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}
+
+/* Certification icon pulse */
+@keyframes cert-icon-pulse {
+    0% {
+        box-shadow: 0 0 10px rgba(78, 122, 226, 0.4);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(78, 122, 226, 0.7), 0 0 30px rgba(24, 200, 155, 0.3);
+        transform: scale(1.05);
+    }
+}
+
+/* Text scan effect */
+@keyframes text-scan {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+/* Cursor blink */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Glitch effect */
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+        text-shadow: 0 0 0 transparent;
+    }
+    20% {
+        transform: translate(-3px, 3px);
+        text-shadow: -2px 2px 0 rgba(24, 200, 155, 0.5);
+    }
+    40% {
+        transform: translate(-3px, -3px);
+        text-shadow: 2px -2px 0 rgba(78, 122, 226, 0.5);
+    }
+    60% {
+        transform: translate(3px, 3px);
+        text-shadow: 2px 2px 0 rgba(24, 200, 155, 0.5);
+    }
+    80% {
+        transform: translate(3px, -3px);
+        text-shadow: -2px -2px 0 rgba(78, 122, 226, 0.5);
+    }
+    100% {
+        transform: translate(0);
+        text-shadow: 0 0 0 transparent;
+    }
+}
+
+/* Pulse animation (general) */
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+/* ============================================================
+   17. UTILITY CLASSES
+   ============================================================ */
+
+/* Typing cursor */
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background-color: var(--accent-secondary);
+    margin-left: 2px;
+    animation: blink 1s infinite;
+    vertical-align: middle;
+    box-shadow: 0 0 8px var(--accent-secondary);
+}
+
+/* Scan effect overlay */
 .scan-effect {
     position: absolute;
     top: 0;
@@ -1465,140 +1465,61 @@ h1 {
     animation: text-scan 1.5s linear;
 }
 
-@keyframes text-scan {
-    0% {
-        top: -100%;
-    }
-    100% {
-        top: 100%;
-    }
+/* Tech glitch effect */
+.tech-glitch {
+    animation: glitch 0.3s ease forwards;
 }
 
-/* Petites particules supplémentaires */
-.particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-}
+/* ============================================================
+   18. RESPONSIVE DESIGN
+   ============================================================ */
 
-.particle {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    border-radius: 50%;
-    background-color: var(--accent-color);
-    opacity: 0.5;
-    animation: particle-float 20s linear infinite;
-}
-
-@keyframes particle-float {
-    0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.5;
-    }
-    90% {
-        opacity: 0.5;
-    }
-    100% {
-        transform: translateY(-100vh) translateX(20px);
-        opacity: 0;
+/* Tablet devices */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .pdf-download-btn {
+        top: 25px;
+        right: 25px;
     }
 }
 
-/* Footer */
-footer {
-    background: linear-gradient(180deg, transparent, rgba(240, 245, 255, 0.95));
-    padding: 2rem 0;
-    text-align: center;
-    margin-top: 4rem;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    border-top: 1px solid var(--border-color);
-}
-
-/* Animation du curseur pour l'effet de frappe */
-.cursor {
-    display: inline-block;
-    width: 2px;
-    height: 1em;
-    background-color: var(--accent-secondary);
-    margin-left: 2px;
-    animation: blink 1s infinite;
-    vertical-align: middle;
-    box-shadow: 0 0 8px var(--accent-secondary);
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* Icônes technologiques pour le header */
-.tech-icons {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.tech-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(78, 122, 226, 0.1);
-    border: 1px solid rgba(78, 122, 226, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: var(--accent-color);
-    box-shadow: 0 0 10px rgba(78, 122, 226, 0.3);
-    animation: tech-icon-pulse 4s infinite alternate;
-}
-
-.tech-icon:nth-child(2n) {
-    animation-delay: 1s;
-}
-
-.tech-icon:nth-child(3n) {
-    animation-delay: 2s;
-}
-
-.tech-icon:nth-child(4n) {
-    animation-delay: 3s;
-}
-
-@keyframes tech-icon-pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 10px rgba(78, 122, 226, 0.3);
+/* Mobile devices */
+@media (max-width: 768px) {   
+    /* PDF button mobile adjustments - absolute within hero */
+    .pdf-download-btn {
+        top: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        font-size: 13px;
+        display: inline-flex;
     }
-    100% {
-        transform: scale(1.1);
-        box-shadow: 0 0 20px rgba(78, 122, 226, 0.7), 0 0 30px rgba(24, 200, 155, 0.3);
+    
+    .pdf-download-btn i {
+        font-size: 14px;
     }
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
+    
+    .pdf-download-btn:hover {
+        padding-right: 20px;
+    }
+    
+    /* Contact info mobile layout */
     .contact-info {
         flex-direction: column;
         align-items: center;
         gap: 0.8rem;
     }
     
+    /* Grid layouts for mobile */
     .skills-grid,
-    .languages-grid{
+    .languages-grid {
         grid-template-columns: 1fr;
     }
     
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    /* Education mobile layout */
     .education-item {
         flex-direction: column;
     }
@@ -1607,6 +1528,7 @@ footer {
         margin-bottom: 0.5rem;
     }
     
+    /* Experience mobile layout */
     .experience-header {
         flex-direction: column;
     }
@@ -1615,24 +1537,74 @@ footer {
         margin-top: 0.5rem;
     }
     
+    /* Process timeline mobile layout */
+    .process-step, 
+    .process-step:nth-child(odd) {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 60px;
+    }
+    
+    .process-content {
+        width: 100%;
+        margin-top: 40px;
+    }
+    
+    .process-content::after {
+        display: none;
+    }
+    
+    .process-icon {
+        position: relative;
+        margin-bottom: -40px;
+    }
+    
+    /* Certification mobile adjustments */
+    .certification-header {
+        gap: 0.8rem;
+    }
+    
+    .certification-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .certification-status {
+        position: static;
+        margin-top: 0.5rem;
+        display: inline-block;
+    }
+    
+    /* Experience list mobile */
+    .experience-list li {
+        padding-left: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .experience-list li::before {
+        width: 5px;
+        height: 5px;
+        top: 0.5em;
+    }
+    
+    /* Tech icons mobile */
     .tech-icons {
         gap: 1rem;
     }
 }
 
-/* PRINT CSS CODE */
-/******************/
-
-/* Enhanced Print CSS - Add this to the end of your styles.css file */
-
+/* ============================================================
+   19. PRINT STYLES
+   ============================================================ */
 @media print {
-    /* Reset page margins and setup */
+    /* Page setup */
     @page {
         margin: 0.75in 0.5in;
         size: A4;
     }
     
-    /* Remove background colors and animations for print */
+    /* Remove all decorative elements and colors */
     *,
     *::before,
     *::after {
@@ -1646,17 +1618,18 @@ footer {
         print-color-adjust: exact;
     }
     
-    /* Hide decorative elements that shouldn't appear in print */
+    /* Hide non-essential elements */
     .circuit-background,
     .circuit-diagonal,
     .particles,
     .cursor,
     .circuit-line,
-    .tech-icons {
+    .tech-icons,
+    .pdf-download-btn {
         display: none !important;
     }
     
-    /* Body and container setup */
+    /* Basic layout for print */
     body {
         background: white !important;
         color: #333 !important;
@@ -1673,7 +1646,7 @@ footer {
         width: 100% !important;
     }
     
-    /* Headers and titles */
+    /* Typography for print */
     h1 {
         color: #2c5aa0 !important;
         -webkit-text-fill-color: #2c5aa0 !important;
@@ -1711,7 +1684,7 @@ footer {
         margin: 3pt 0 !important;
     }
     
-    /* Profile section adjustments */
+    /* Hero/Profile section for print */
     .hero {
         padding: 20pt 0 16pt !important;
         page-break-inside: avoid !important;
@@ -1740,7 +1713,7 @@ footer {
         margin-bottom: 12pt !important;
     }
     
-    /* Contact info formatting */
+    /* Contact info for print */
     .contact-info {
         display: flex !important;
         flex-wrap: wrap !important;
@@ -1766,7 +1739,7 @@ footer {
         margin-right: 3pt !important;
     }
     
-    /* Section formatting */
+    /* Sections for print */
     .section {
         margin-bottom: 20pt !important;
         padding-bottom: 8pt !important;
@@ -1792,7 +1765,7 @@ footer {
         margin-right: 6pt !important;
     }
     
-    /* Introduction text */
+    /* Introduction text for print */
     .intro-text {
         font-size: 10pt !important;
         line-height: 1.5 !important;
@@ -1801,7 +1774,7 @@ footer {
         text-align: justify !important;
     }
     
-    /* Languages section - Fixed */
+    /* Languages for print */
     .subsection-title {
         font-size: 12pt !important;
         margin: 16pt 0 8pt !important;
@@ -1844,7 +1817,7 @@ footer {
         border-color: #2c5aa0 !important;
     }
     
-    /* Process/Skills section - convert to simple format */
+    /* Process/Skills for print */
     .process-container {
         display: block !important;
         margin: 0 !important;
@@ -1925,7 +1898,7 @@ footer {
         border-radius: 6pt !important;
     }
     
-    /* Experience section */
+    /* Experience, Education, Certifications for print */
     .experience-grid,
     .education-grid,
     .certifications-grid {
@@ -1973,7 +1946,7 @@ footer {
         white-space: nowrap !important;
     }
     
-    /* Lists formatting */
+    /* Lists for print */
     .experience-list {
         margin: 6pt 0 !important;
         padding: 0 !important;
@@ -2002,7 +1975,7 @@ footer {
         font-size: 9pt !important;
     }
     
-    /* Tags and skills */
+    /* Tags and skills for print */
     .tags,
     .certification-skills {
         display: flex !important;
@@ -2021,7 +1994,7 @@ footer {
         border-radius: 6pt !important;
     }
     
-    /* Education section - Fixed */
+    /* Education specific for print */
     .education-item {
         display: flex !important;
         gap: 12pt !important;
@@ -2063,7 +2036,7 @@ footer {
         margin: 0 !important;
     }
     
-    /* Certifications specific */
+    /* Certification specific for print */
     .certification-status {
         position: absolute !important;
         top: 8pt !important;
@@ -2096,7 +2069,7 @@ footer {
     .certification-header {
         display: block !important;
         margin-bottom: 8pt !important;
-        padding-right: 60pt !important; /* Space for status badge */
+        padding-right: 60pt !important;
     }
     
     .certification-icon {
@@ -2128,7 +2101,7 @@ footer {
         display: none !important;
     }
     
-    /* Footer */
+    /* Footer for print */
     footer {
         background: none !important;
         border-top: 1pt solid #ccc !important;
@@ -2139,7 +2112,7 @@ footer {
         page-break-inside: avoid !important;
     }
     
-    /* Page breaks control */
+    /* Page break control */
     .section#profil {
         page-break-inside: avoid !important;
         page-break-after: always !important;
@@ -2162,40 +2135,40 @@ footer {
         page-break-before: auto !important;
     }
     
-    /* Ensure content flows properly */
+    /* Ensure proper content flow */
     .experience-item:nth-child(-n+2) {
         page-break-after: avoid !important;
     }
     
-    /* Remove any absolute positioning that might cause issues */
+    /* Remove absolute positioning except where needed */
     * {
         position: static !important;
     }
     
     .certification-status {
-        position: absolute !important; /* Exception for status badges */
+        position: absolute !important;
     }
     
-    /* Improve text rendering */
+    /* Text rendering optimization */
     body, p, li, span {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
         text-rendering: optimizeLegibility !important;
     }
     
-    /* Ensure proper spacing */
+    /* Languages section specific */
     .languages {
         margin-top: 16pt !important;
         page-break-inside: avoid !important;
     }
     
-    /* Fix any remaining layout issues */
+    /* Fix layout issues */
     .hero-content {
         margin: 0 !important;
         padding: 0 !important;
     }
     
-    /* Responsive adjustments for small content */
+    /* Responsive print adjustments */
     @media print and (max-width: 210mm) {
         .contact-info {
             flex-direction: column !important;
@@ -2215,3 +2188,7 @@ footer {
         }
     }
 }
+
+/* ============================================================
+   END OF STYLESHEET
+   ============================================================ */
