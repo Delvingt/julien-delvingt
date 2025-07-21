@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Control Loop Editor</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/drawflow/dist/drawflow.min.css">
+
+  <!-- Internal CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/processModel.css" />
+  <link rel="stylesheet" href="css/processResponse.css" />
+</head>
+<body>
+  <h1>Control Loop Editor</h1>
+
+  <!------------------>
+  <!-- Process Model-->
+  <!------------------>
+  <div class="wrapper">
+    <!-- Toolbox-->
+    <div class="toolbox">
+      <div class="menu-bar">
+        <h3>Toolbox</h3>
+      </div>
+      <div class="toolbox-content">
+        <div class="drag-item" draggable="true" data-node="constant">Constant</div>
+        <div class="drag-item" draggable="true" data-node="gain">Gain</div>
+        <div class="drag-item" draggable="true" data-node="integrator">Integrator</div>
+        <div class="drag-item" draggable="true" data-node="derivative">Derivative</div>
+        <div class="drag-item" draggable="true" data-node="sub">Substract</div>
+        <div class="drag-item" draggable="true" data-node="add">Add</div>
+        <div class="drag-item" draggable="true" data-node="transfer_function">Transfer Function</div>
+      </div>
+    </div>
+    <!-- Drawflow Container-->
+    <div class="drawflow-wrapper">
+      <div class="menu-bar">
+        <div class="menu-tabs">
+          <div class="menu-tab active">Flow 1</div>
+        </div>
+        <div class="menu-btns">
+          <button class="menu-btn" onclick="model.resetNodeScheme()">
+            <i class="fas fa-rotate-right"></i>
+            Reset Model
+          </button>
+          <button class="menu-btn" onclick="model.exportNodeScheme()">
+            <i class="fas fa-file-export"></i>
+            Export Model
+          </button>
+          <button class="menu-btn" onclick="model.importNodeScheme()">
+            <i class="fas fa-file-import"></i>
+            Import Model
+          </button>
+        </div>
+      </div>
+      <div id="drawflow" class="drawflow"></div>
+    </div>
+  </div>
+
+  <!---------------------->
+  <!-- Process Response -->
+  <!---------------------->
+  <div class="processResponse-section">
+    <!-- Menu Bar -->
+    <div class="processResponse-menubar">
+      <h3>Process Response</h3>
+      <div class="processResponse-buttons">
+        <button class="response-btn primary" onclick="results.simulateModel()">
+          <i class="fas fa-play"></i>
+          Simulate
+        </button>
+        <button class="response-btn" onclick="results.exportData()">
+          <i class="fas fa-download"></i>
+          Export Data
+        </button>
+      </div>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="processResponse-content">
+      <!-- Charts Column -->
+      <div class="charts-column">
+        <div class="chart-container">
+          <canvas id="processOutputChart" width="600" height="300"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="processInputChart" width="600" height="300"></canvas>
+        </div>
+
+      </div>
+
+      <!-- Results Column -->
+      <div class="results-column">
+        <div class="results-box">
+          <h3>Simulation Results</h3>
+          <div class="result-item">
+            <div class="result-label">
+              <i class="fas fa-clock"></i>
+              Response Time
+            </div>
+            <div class="result-value" id="responseTime">--</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">
+              <i class="fas fa-chart-line"></i>
+              Overshoot
+            </div>
+            <div class="result-value" id="overshoot">--</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">
+              <i class="fas fa-bolt-lightning"></i>
+              Needed Power
+            </div>
+            <div class="result-value" id="maxPower">--</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">
+              <i class="fas fa-bolt"></i>
+              Input Energy to Steady State
+            </div>
+            <div class="result-value" id="inputEnergyToSettle">--</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- External JS Libraries-->
+  <script src="https://cdn.jsdelivr.net/npm/drawflow/dist/drawflow.min.js"></script>
+  <script src="js/drawflowOveride.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Internal JS -->
+  <script src="js/script.js"></script>
+  <script src="js/processModel.js"></script>
+  <script src="js/processResults.js"></script>
+  <script src="js/laplaceParser.js"></script>
+</body>
+</html>
