@@ -394,6 +394,12 @@ class processResults {
 
     // Update simulation results with proper data
     this.updateSimulationResults(timeData, setpointData[0], outputData, inputData);
+
+    // Analytics
+      Analytics.trackEvent('simulation', { 
+        category: 'The Convergence Chronicles',
+        label: 'Simulator Run'
+    });
   }
 
   // Helper function to get the current value from a node's input field
@@ -618,6 +624,14 @@ class processResults {
     
     // Optional: Show success message
     console.log(`Exported ${dataLength} data points to ${fileName}`);
+
+    // Analytics
+    Analytics.trackEvent('download', { 
+      category: 'The Convergence Chronicles',
+      label: "Process Results Export",
+      file_type: 'json',
+      value: dataLength
+    });
   }
 
 }

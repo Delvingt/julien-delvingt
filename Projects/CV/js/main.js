@@ -45,60 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===================================
-// ANALYTICS MODULE
-// ===================================
-
-/**
- * Analytics tracking module
- * Handles all Google Analytics event tracking
- */
-const Analytics = {
-    /**
-     * Generic event tracking method
-     * @param {string} eventName - The name of the event
-     * @param {string} eventLabel - The label for the event
-     * @param {number|null} value - Optional numeric value for the event
-     */
-    trackEvent: function(eventName, eventLabel, value = null) {
-        if (typeof gtag !== 'undefined') {
-            const eventParams = {
-                'event_category': 'engagement',
-                'event_label': eventLabel
-            };
-            
-            if (value !== null) {
-                eventParams.value = value;
-            }
-            
-            gtag('event', eventName, eventParams);
-        }
-    },
-    
-    /**
-     * Track PDF download events
-     */
-    trackPDFDownload: function() {
-        this.trackEvent('download_cv', 'pdf_download', 1);
-    },
-    
-    /**
-     * Track contact link clicks
-     * @param {string} contactType - Type of contact (email, phone, linkedin, etc.)
-     */
-    trackContactClick: function(contactType) {
-        this.trackEvent('contact_click', contactType);
-    },
-    
-    /**
-     * Track section view events
-     * @param {string} sectionName - Name of the section being viewed
-     */
-    trackSectionView: function(sectionName) {
-        this.trackEvent('section_view', sectionName);
-    }
-};
-
-// ===================================
 // PDF DOWNLOAD FUNCTIONALITY
 // ===================================
 
@@ -160,7 +106,12 @@ function initPDFDownloadButton() {
      */
     function handleDownloadSuccess() {
         updateButtonState('fas fa-check', config.successText, 'download-success');
-        Analytics.trackPDFDownload();
+        Analytics.trackEvent('download', { 
+            category: 'CV',
+            label: 'cv-download',
+            file_type: 'pdf',
+            file_name: 'Julien-Delvingt-CV.pdf'
+        });
         
         setTimeout(resetButton, config.resetDuration);
     }
@@ -201,17 +152,6 @@ function initPDFDownloadButton() {
     }
     
     /**
-     * Tracks first hover interaction
-     */
-    let hoverTracked = false;
-    function handleFirstHover() {
-        if (!hoverTracked) {
-            Analytics.trackEvent('pdf_button_hover', 'first_hover');
-            hoverTracked = true;
-        }
-    }
-    
-    /**
      * Mobile touch start handler
      */
     function handleTouchStart() {
@@ -230,18 +170,12 @@ function initPDFDownloadButton() {
     // Attach event listeners
     pdfBtn.addEventListener('click', handleClick);
     pdfBtn.addEventListener('keydown', handleKeydown);
-    pdfBtn.addEventListener('mouseenter', handleFirstHover);
     
     // Mobile-specific events
     if ('ontouchstart' in window) {
         pdfBtn.addEventListener('touchstart', handleTouchStart);
         pdfBtn.addEventListener('touchend', handleTouchEnd);
     }
-    
-    // Track initial button visibility
-    Analytics.trackEvent('page_view_with_pdf_button', 'pdf_button_visible');
-    
-    console.log('PDF download button initialized');
 }
 
 // ===================================

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag -->
+    <script src="../../Library/js/Analytics/Analytics.js"></script>
+    <script >
+        Analytics.loadGoogleAnalytics('G-R8WH8Z7KHL', { debug: false, config: { page_title: 'sprayBootSimulator',}});
+        Analytics.trackPageView('/Spray-Boot-Simulator', 'sprayBootSimulator');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint Sprayer Simulation</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+        <div class="container">
+        <!-- Intro Section -->
+        <section class="intro-section">
+            <h1>Paint Sprayer Simulation</h1>
+            <h2>This program simulates paint patterns on products passing through a spray booth system. It calculates optimal sprayer timing and positioning to ensure uniform paint coverage across the product surface.</h2>
+            <h2>The simulation models a conveyor belt system where products move past multiple spray nozzles. Each sprayer oscillates back and forth across the product width, and the timing (phase shifts) between sprayers is critical for achieving uniform coverage without gaps or excessive overlap.</h2>
+        </section>
+
+        <!-- Main Content Grid -->
+        <div class="main-content">
+            <!-- Simulation Form Section -->
+            <section class="simulation-section">
+                <form id="simulationForm">
+                    <div class="form-group">
+                        <label for="Ls">🎯 Sprayer Stroke Distance (Ls)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="Ls" name="Ls" step="0.1" required>
+                            <span class="unit">m</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ds">📏 Nozzle Spacing (ds)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="ds" name="ds" step="0.1" required>
+                            <span class="unit">cm</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Vs">🚀 Belt Speed (Vs)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="Vs" name="Vs" step="0.1" required>
+                            <span class="unit">
+                                <span class="fraction">
+                                    <span class="top">m</span>
+                                    <span class="bottom">min</span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="N">🔧 Number of Sprayers (N)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="N" name="N" min="2" step="1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="x">🔄 Oscillation Factor (x)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="x" name="x" step="1" min="0" max="10" required>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="optimal_calc" name="optimal_calc">
+                        <label for="optimal_calc">Use Custom Strokes per Minute</label>
+                    </div>
+
+                    <div class="optional-form" id="optionalForm">
+                        <div class="form-group">
+                            <label for="spm">⚡ Strokes per Minute</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="spm" name="spm" step="1">
+                                <span class="unit">
+                                    <span class="fraction">
+                                        <span class="top">1</span>
+                                        <span class="bottom">min</span>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitForm">Calculate Spray Pattern</button>
+                </form>
+
+                <!-- Spray Configuration Section -->
+                <div class="spray-config-section">
+                    <h3>🎨 Spray Gun Settings</h3>
+                    
+                    <div class="config-grid">
+                        <div class="form-group">
+                            <label for="sprayWidth">🎯 Spray Cone Width</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="sprayWidth" value="10" min="0.1" max="100" step="1">
+                                <span class="unit">cm</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sprayOpacity">💧 Paint Opacity</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="sprayOpacity" value="0.8" min="0" max="1" step="0.05">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gradientSlope">📉 coverage </label>
+                            <div class="input-wrapper">
+                                <input type="number" id="sprayCoverage" value="50" min="5" max="100" step="5">
+                                <span class="unit">%</span>
+                            </div>
+                            <div class="pattern-description" id="patternDescription">
+                                Balanced spray - Even distribution with soft edges
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-config">
+                        <div class="form-group">
+                            <label for="sprayColorPicker">🎨 Spray Color</label>
+                            <div class="color-input-wrapper">
+                                <div class="rgb-inputs">
+                                    <input type="number" id="sprayColorR" value="100" min="0" max="255" placeholder="R">
+                                    <input type="number" id="sprayColorG" value="150" min="0" max="255" placeholder="G">
+                                    <input type="number" id="sprayColorB" value="200" min="0" max="255" placeholder="B">
+                                </div>
+                                <input type="color" id="sprayColorPicker" value="#6496C8">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="reset" id="resetSprayConfig">Reset Settings</button>
+                    <button type="update" id="updateSprayConfig">Update Pattern</button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section">
+                <div class="results-header">
+                    <h3>Simulation Results</h3>
+                </div>
+                
+                <div class="results-stats" id="resultsStats" style="display: none;">
+                    <div class="stat-card">
+                        <div class="label">Optimal SPM</div>
+                        <div class="value" id="optimalSPM">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Wavelength</div>
+                        <div class="value" id="wavelength">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Phase Shift</div>
+                        <div class="value" id="phaseShift">-</div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="simGraphTravels"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="simGraphPattern"></canvas>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/simulator.js"></script>
+</body>
+</html>

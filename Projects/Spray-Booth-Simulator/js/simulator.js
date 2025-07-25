@@ -244,6 +244,11 @@ class Simulator {
         this.updateSprayerTravelChart();
         this.updatePaintPatternChart();
         this.updateResultsDisplay();
+
+        Analytics.trackEvent('simulation', { 
+            category: 'sprayBoothSimulator',
+            label: 'Simulator Run'
+        });
     }
 
     getFormInputs() {

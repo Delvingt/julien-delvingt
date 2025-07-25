@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag -->
+    <script src="Library/js/Analytics/Analytics.js"></script>
+    <script >
+        Analytics.loadGoogleAnalytics('G-R8WH8Z7KHL', { debug: false, config: { page_title: 'Index Page',}});
+        Analytics.trackPageView('/julien-delvingt.be', 'Index');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Process Control & Model Simulations</title>
@@ -430,7 +436,7 @@
                     </div>
                 </div>
 
-                <div class="glass-card project-card" data-project="2" onclick="window.open('./Projects/Spray-Booth-Simulator/index.html', '_blank')">
+                <div class="glass-card project-card" data-project="2" onclick="window.open('./Projects/Spray-Booth-Simulator/sprayBoothSimulator.html', '_blank')">
                     <div class="project-icon">⚙️🎨</div>
                     <h3>Spray Booth Optimizer</h3>
                     <p class="glass-text-muted">Dynamic simulation and optimization of Industrial Spray booths</p>
@@ -458,7 +464,7 @@
             <div class="cv-content glass-box">
                 <h2>Want to know more?</h2>
                 <p class="glass-text-muted">Check out my complete curriculum vitae for detailed information about my experience, education, and skills in process control and simulation.</p>
-                <a href="Projects/CV/index.html" class="glass-button button" target="_blank">
+                <a href="Projects/CV/cv.html" class="glass-button button" target="_blank">
                     <span>View My CV</span>
                     <svg class="button-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M7 17L17 7M17 7H7M17 7V17"/>
