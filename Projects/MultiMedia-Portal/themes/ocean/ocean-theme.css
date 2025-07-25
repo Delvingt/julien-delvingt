@@ -1,0 +1,465 @@
+/* Thème Océan avec vagues multiples et plage dynamique */
+
+/* Animations */
+@keyframes oceanWave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes wave1 {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-25%); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes wave2 {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-30%); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes wave3 {
+    0% { transform: translateX(0) scaleY(1); }
+    50% { transform: translateX(-25%) scaleY(0.8); }
+    100% { transform: translateX(-50%) scaleY(1); }
+}
+
+@keyframes waveFront {
+    0% { transform: translateX(0) skewX(0); }
+    30% { transform: translateX(-30%) skewX(-5deg); }
+    70% { transform: translateX(-70%) skewX(5deg); }
+    100% { transform: translateX(-100%) skewX(0); }
+}
+
+@keyframes tideMove {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes bubbleRise {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 0.7; }
+    80% { opacity: 0.7; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+@keyframes sandShimmer {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 0; }
+}
+
+@keyframes foamFlow {
+    0% { transform: translateX(0) scale(1); opacity: 0.9; }
+    100% { transform: translateX(-100%) scale(1.5); opacity: 0; }
+}
+
+@keyframes shellFloat {
+    0% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(3px) rotate(2deg); }
+    75% { transform: translateX(-3px) rotate(-2deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(77, 208, 225, 0.6); }
+    50% { box-shadow: 0 0 15px rgba(77, 208, 225, 0.8); }
+}
+
+/* Couleurs et variables */
+:root {
+    --primary-color: #1a76c6;    /* Bleu océan */
+    --secondary-color: #21b7ca;  /* Turquoise */
+    --accent-color: #4fd4e9;     /* Bleu clair */
+    --highlight-color: #ffb347;  /* Orange/Sable */
+    --light-color: #f0f8ff;      /* Bleu très clair */
+    --dark-color: #1a3a5a;       /* Bleu foncé */
+    --sand-color: #f9e3b0;       /* Couleur sable */
+    --dark-sand: #f3d38b;        /* Sable plus foncé */
+    --foam-color: rgba(255, 255, 255, 0.9); /* Mousse des vagues */
+    --wave-color-1: rgba(77, 208, 225, 0.7);
+    --wave-color-2: rgba(33, 183, 202, 0.5);
+    --wave-color-3: rgba(26, 118, 198, 0.4);
+    --wave-color-4: rgba(77, 208, 225, 0.3);
+}
+
+/* Fond de page avec animation d'océan */
+body {
+    background: linear-gradient(-45deg, #b2ebf2, #80deea, #4dd0e1, #26c6da);
+    background-size: 400% 400%;
+    animation: oceanWave 15s ease infinite;
+    color: var(--dark-color);
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Classe pour le conteneur des vagues et de la plage (ajouté par JS) */
+.ocean-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Vague principale - la plus haute */
+.wave-1 {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 200%;
+    height: 130px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 134' preserveAspectRatio='none'%3E%3Cpath fill='%234fd4e9' opacity='0.7' d='M0,25.3C152.4,91,315.1,0,470.3,0c155.2,0,185.7,89.9,346.4,89.9S1037,35.9,1200,98v36H0V25.3z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 1200px 100%;
+    animation: wave1 20s linear infinite;
+}
+
+/* Deuxième vague - moyenne */
+.wave-2 {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 200%;
+    height: 110px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 134' preserveAspectRatio='none'%3E%3Cpath fill='%2321b7ca' opacity='0.5' d='M0,90.3c152.4-65.7,295.1-8.9,450.3-8.9s295.7-66.9,456.4-66.9S1037,81,1200,18.9v115.1H0V90.3z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 1200px 100%;
+    animation: wave2 15s linear infinite;
+}
+
+/* Troisième vague - plus loin */
+.wave-3 {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 200%;
+    height: 100px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 134' preserveAspectRatio='none'%3E%3Cpath fill='%231a76c6' opacity='0.4' d='M0,30C250,100,350,10,550,35c200,25,250,130,650,95v4H0V30z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 1200px 100%;
+    animation: wave3 25s linear infinite;
+}
+
+/* Vagues d'avant-plan - rapides et petites */
+.wave-front {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 400%;
+    height: 15px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 20' preserveAspectRatio='none'%3E%3Cpath fill='%23FFFFFF' opacity='0.5' d='M0,0c25,0,25,20,50,20s25-20,50-20s25,20,50,20s25-20,50-20s25,20,50,20s25-20,50-20v20H0V0z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 300px 100%;
+    animation: waveFront 7s linear infinite;
+}
+
+/* Plage avec texture animée */
+.beach {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--sand-color), var(--dark-sand));
+}
+
+/* Texture du sable */
+.beach::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23f3d38b' fill-opacity='0.3'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: sandShimmer 30s linear infinite;
+}
+
+/* Mousse des vagues */
+.foam-container {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    overflow: hidden;
+}
+
+.foam {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 10px;
+    background: var(--foam-color);
+    border-radius: 50%;
+    opacity: 0.7;
+    filter: blur(3px);
+    animation: foamFlow 7s linear infinite;
+}
+
+.foam-2 {
+    left: 30%;
+    animation-delay: 2s;
+    height: 8px;
+}
+
+.foam-3 {
+    left: 60%;
+    animation-delay: 4s;
+    height: 12px;
+}
+
+/* Éléments décoratifs de plage */
+.beach-decoration {
+    position: absolute;
+    bottom: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--dark-sand);
+    border-radius: 50%;
+    animation: shellFloat 10s ease-in-out infinite;
+}
+
+.shell-1 {
+    left: 5%;
+    width: 15px;
+    height: 8px;
+    border-radius: 50% 50% 50% 50%;
+    transform: rotate(45deg);
+    background: linear-gradient(45deg, #f9e3b0, #ffd89b);
+}
+
+.shell-2 {
+    left: 25%;
+    width: 12px;
+    height: 12px;
+    border-radius: 0 50% 50% 50%;
+    transform: rotate(45deg);
+    background: linear-gradient(45deg, #f9e3b0, #ffd89b);
+    animation-delay: 2s;
+}
+
+.shell-3 {
+    left: 62%;
+    width: 16px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ffd89b, #f9e3b0);
+    animation-delay: 3s;
+}
+
+.star {
+    left: 80%;
+    width: 15px;
+    height: 15px;
+    background: #ffd89b;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation-duration: 15s;
+}
+
+/* Effet de marée */
+.tide {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15px;
+    animation: tideMove 20s ease-in-out infinite;
+}
+
+/* Navbar améliorée */
+.navbar {
+    background-color: rgba(240, 248, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(77, 208, 225, 0.4);
+    box-shadow: 0 5px 15px rgba(26, 118, 198, 0.3);
+    transition: all 0.4s ease;
+}
+
+.navbar-brand {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(26, 118, 198, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Boutons avec effet aquatique */
+.navbar-config-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 3px 8px rgba(26, 118, 198, 0.4);
+    transition: all 0.3s ease;
+}
+
+.navbar-config-btn:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    box-shadow: 0 5px 12px rgba(26, 118, 198, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Sections avec effet de vague */
+.section-title {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(26, 118, 198, 0.3);
+    transition: all 0.3s ease;
+}
+
+.section-header {
+    border-bottom: 2px solid var(--accent-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    width: 50%;
+    background: var(--secondary-color);
+    animation: oceanWave 3s ease-in-out infinite;
+}
+
+/* Boutons de visualisation */
+.view-btn {
+    background-color: rgba(240, 248, 255, 0.6);
+    border: 1px solid rgba(77, 208, 225, 0.3);
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+    background-color: rgba(79, 212, 233, 0.2);
+}
+
+.view-btn.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 0 10px rgba(26, 118, 198, 0.4);
+}
+
+/* Cartes de service avec effets océaniques */
+.service-card {
+    background-color: rgba(240, 248, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(77, 208, 225, 0.4);
+    box-shadow: 0 8px 20px rgba(26, 118, 198, 0.25);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(26, 118, 198, 0.4);
+}
+
+.card-image {
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.card-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(26, 118, 198, 0.3) 100%);
+}
+
+.card-title {
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.card-description {
+    transition: all 0.3s ease;
+}
+
+.card-link {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 3px 10px rgba(26, 118, 198, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.5s ease;
+}
+
+.card-link:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    box-shadow: 0 5px 15px rgba(26, 118, 198, 0.5);
+    transform: translateY(-3px);
+}
+
+.card-link:hover::before {
+    left: 100%;
+}
+
+/* ================================================
+   NOTIFICATIONS TOAST
+   ================================================ */
+.toast {
+    background-color: rgba(240, 248, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(77, 208, 225, 0.5);
+    box-shadow: 0 8px 20px rgba(26, 118, 198, 0.35);
+}
+
+.toast-icon {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Loader avec animation aquatique */
+.loader-container {
+    background: linear-gradient(-45deg, 
+        rgba(26, 118, 198, 0.95), 
+        rgba(33, 183, 202, 0.95));
+    background-size: 400% 400%;
+    animation: oceanWave 15s ease infinite;
+}
+
+.loader {
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    border-top: 5px solid var(--accent-color);
+    border-left: 5px solid var(--primary-color);
+    border-right: 5px solid var(--secondary-color);
+    box-shadow: 0 0 20px rgba(79, 212, 233, 0.6);
+}
+
+/* Footer avec effet d'eau */
+footer {
+    background-color: rgba(240, 248, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(77, 208, 225, 0.4);
+    box-shadow: 0 -5px 15px rgba(26, 118, 198, 0.15);
+    transition: all 0.3s ease;
+    z-index: 5;
+    position: relative;
+}
+
+/* Bulles d'eau */
+.bubble {
+    position: fixed;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(1px);
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    z-index: -1;
+    animation: bubbleRise var(--bubble-duration, 15s) ease-in forwards;
+    opacity: 0;
+}

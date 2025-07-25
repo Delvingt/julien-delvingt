@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Control Loop Editor</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/drawflow/dist/drawflow.min.css">
+
+  <!-- General CSS -->
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/menubar.css" />
+  <link rel="stylesheet" href="../../css/levelDescription.css" />
+  <link rel="stylesheet" href="../../css/processModel.css" />
+  <link rel="stylesheet" href="../../css/processResponse.css" />
+
+  <!-- Level CSS -->
+  <link rel="stylesheet" href="ch1l1.css" />
+  <link rel="stylesheet" href="../../css/tutorialBoxes.css" />
+
+</head>
+<body>
+    <script src="../../js/UiComponents.js"></script>
+
+    <!---------------->
+    <!-- Background -->
+    <!---------------->
+    <div class="background-animation" id="background-animation"></div>
+    <script>
+        const orbsHTML = renderOrbs();
+        document.getElementById('background-animation').innerHTML = orbsHTML;
+    </script>
+
+    <!------------>
+    <!-- Menubar-->
+    <!------------>
+    <nav class="menubar" id="Menubar"></nav>
+    <script>
+        const menuHTML = renderMenuBar({
+            title: 'The Convergence Chronicles',
+            exitText: 'Back to Campain',
+            exitLink: '../Campaign/campaign.html',
+            backText: '',
+            backLink: '',
+            nextText: 'Next Level',
+            nextLink: '../Ch1L2/ch1l2.html'
+        });
+        document.getElementById('Menubar').innerHTML = menuHTML;
+    </script>
+
+
+  <main>
+    <!----------------------->
+    <!-- Level Description -->
+    <!----------------------->
+    <section class="levelDescription-section">
+      <div class="level-header">
+        <h1>Chapter 1: The First Connection</h1>
+        <div class="level-subtitle">Learning the Fundamentals</div>
+      </div>
+      
+      <div class="story-container">
+        <div class="story-intro">
+          <h2>Welcome to The Convergence Chronicles</h2>
+          <p>You're about to learn the fundamentals of process control engineering through interactive simulations. In this world, you'll design control systems that bring stability to chaotic processes.</p>
+        </div>
+        
+        <div class="story-text">
+          <p>Welcome, Engineer, to the Convergence Institute.</p>
+          <p>In a world where chaos threatens to overwhelm our systems, you've been chosen to master the ancient art of Process Control. Your journey begins here, in the training grounds, where you'll learn to bring order to disorder.</p>
+          <p>Your first task is simple yet fundamental: <strong>establish a connection between intention and action</strong>. Connect the Set Point—your desired goal—to the Process that will achieve it.</p>
+          <p>Master this, and you'll take your first step toward becoming a true Control Engineer.</p>
+        </div>
+        
+        <div class="objective-box">
+          <h3><i class="fas fa-bullseye"></i> Objective</h3>
+          <p>Connect the <strong>Set Point</strong> node to the  <strong>Process</strong> node to complete the control challenge.</p>
+        </div>
+        
+        <div class="tutorial-start">
+
+      </div>
+    </section>
+    
+    <!-- Tutorial Step 1: Interface Overview -->
+    <div 
+      class="tutorial-box arrow-left" id="tutorialBox1"
+      data-position="relative" 
+      data-position-target=".toolbox" 
+      data-position-side="right" 
+      data-position-offset-x="-150"
+      data-position-offset-y="-100">
+      <div class="tutorial-header">
+        <h3>Your Control Engineering Workspace</h3>
+        <span class="tutorial-step-indicator">1 / 4</span>
+      </div>
+      <div class="tutorial-content">
+        <p>Your workspace consists of three main areas:</p>
+        <ul>
+          <li><strong>Toolbox (Left):</strong> Contains control components you can add to your design</li>
+          <li><strong>Flow Editor (Center):</strong> Where you'll build and connect your control systems</li>
+          <li><strong>Process Response (Right):</strong> Shows simulation results and system performance</li>
+        </ul>
+      </div>
+      <div class="tutorial-footer">
+        <button class="tutorial-btn primary" onclick="closeTutorialBox('tutorialBox1')">Got it<i class="fas fa-check"></i></button>
+      </div>
+    </div>
+    
+    <!-- Tutorial Step 2: Nodes Introduction -->
+    <div
+      class="tutorial-box" id="tutorialBox2"
+      data-position="relative" 
+      data-position-target=".toolbox" 
+      data-position-side="right" 
+      data-position-offset-x="300px"
+      data-position-offset-y="-50">
+      <div class="tutorial-header">
+        <h3>Understanding Nodes</h3>
+        <span class="tutorial-step-indicator">2 / 4</span>
+      </div>
+      <div class="tutorial-content">
+        <p>In the Flow Editor, you'll see two nodes already placed:</p>
+        <div class="node-examples">
+          <div class="node-example">
+            <div class="mini-node setpoint">SP</div>
+            <span><strong>Set Point:</strong> Your target value</span>
+          </div>
+          <div class="node-example">
+            <div class="mini-node process">P</div>
+            <span><strong>Process:</strong> The system to control</span>
+          </div>
+        </div>
+        <p>Each node has connection points (ports) on its sides for creating links.</p>
+      </div>
+      <div class="tutorial-footer">
+        <button class="tutorial-btn primary" onclick="closeTutorialBox('tutorialBox2')">Got it <i class="fas fa-check"></i></button>
+      </div>
+    </div>
+    
+    <!-- Tutorial Step 3: Making Connections -->
+    <div 
+      class="tutorial-box highlighted" id="tutorialBox3"
+      data-position="relative" 
+      data-position-target=".processModel-section" 
+      data-position-side="right" 
+      data-position-offset-x="-400"
+      data-position-offset-y="-100">
+      <div class="tutorial-header">
+        <h3>Creating Your First Connection</h3>
+        <span class="tutorial-step-indicator">3 / 4</span>
+      </div>
+      <div class="tutorial-content">
+        <p><strong>To connect nodes:</strong></p>
+        <ol>
+          <li>Click and hold on the <strong>output port</strong> (right side) of the Set Point node</li>
+          <li>Drag the connection line to the <strong>input port</strong> (left side) of the Process node</li>
+          <li>Release to create the connection</li>
+        </ol>
+        <div class="tutorial-animation">
+          <img src="data:image/svg+xml,%3Csvg width='300' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='20' y='30' width='60' height='40' fill='%234CAF50' rx='5'/%3E%3Ctext x='50' y='55' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3ESP%3C/text%3E%3Ccircle cx='80' cy='50' r='4' fill='%23333'/%3E%3Crect x='220' y='30' width='60' height='40' fill='%232196F3' rx='5'/%3E%3Ctext x='250' y='55' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EP%3C/text%3E%3Ccircle cx='220' cy='50' r='4' fill='%23333'/%3E%3Cpath d='M 80 50 Q 150 50 220 50' stroke='%23FF5722' stroke-width='2' fill='none' stroke-dasharray='5,5'%3E%3Canimate attributeName='stroke-dashoffset' from='10' to='0' dur='1s' repeatCount='indefinite'/%3E%3C/path%3E%3C/svg%3E" alt="Connection Animation"/>
+        </div>
+        <p class="tutorial-tip"><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> The connection line will snap to ports when you get close!</p>
+      </div>
+      <div class="tutorial-footer">
+        <button class="tutorial-btn primary" onclick="closeTutorialBox('tutorialBox3')">Got it! <i class="fas fa-check"></i></button>
+      </div>
+    </div>
+
+    <!------------------>
+    <!-- Process Model-->
+    <!------------------>
+    <section class="processModel-section">
+      <!-- Toolbox-->
+      <div class="toolbox">
+        <div class="menu-bar">
+          <h3>Toolbox</h3>
+        </div>
+        <div class="toolbox-content">
+        </div>
+      </div>
+      <!-- Drawflow Container-->
+      <div class="drawflow-wrapper">
+        <div class="menu-bar">
+          <div class="menu-tabs">
+            <div class="menu-tab active">Flow 1</div>
+          </div>
+          <div class="menu-btns">
+            <button class="menu-btn" onclick="model.resetNodeScheme()">
+              <i class="fas fa-rotate-right"></i>
+              Reset Model
+            </button>
+            <button class="menu-btn" onclick="model.exportNodeScheme()">
+              <i class="fas fa-file-export"></i>
+              Export Model
+            </button>
+            <button class="menu-btn" onclick="model.importNodeScheme()">
+              <i class="fas fa-file-import"></i>
+              Import Model
+            </button>
+          </div>
+        </div>
+        <div id="drawflow" class="drawflow"></div>
+      </div>
+    </section>
+
+    <!---------------------->
+    <!-- Process Response -->
+    <!---------------------->
+    <section class="processResponse-section">
+      <!-- Menu Bar -->
+      <div class="processResponse-menubar">
+        <h3>Process Response</h3>
+        <div class="processResponse-buttons">
+          <button class="response-btn primary" onclick="results.simulateModel()">
+            <i class="fas fa-play"></i>
+            Simulate
+          </button>
+          <button class="response-btn" onclick="results.exportData()">
+            <i class="fas fa-download"></i>
+            Export Data
+          </button>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="processResponse-content">
+        <!-- Charts Column -->
+        <div class="charts-column">
+          <div class="chart-container">
+            <canvas id="processOutputChart" width="600" height="300"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="processInputChart" width="600" height="300"></canvas>
+          </div>
+
+        </div>
+
+        <!-- Results Column -->
+        <div class="results-column">
+          <div class="results-box">
+            <h3>Simulation Results</h3>
+            <div class="result-item">
+              <div class="result-label">
+                <i class="fas fa-clock"></i>
+                Response Time
+              </div>
+              <div class="result-value" id="responseTime">--</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">
+                <i class="fas fa-chart-line"></i>
+                Overshoot
+              </div>
+              <div class="result-value" id="overshoot">--</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">
+                <i class="fas fa-bolt-lightning"></i>
+                Needed Power
+              </div>
+              <div class="result-value" id="maxPower">--</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">
+                <i class="fas fa-bolt"></i>
+                Input Energy to Steady State
+              </div>
+              <div class="result-value" id="inputEnergyToSettle">--</div>
+            </div>
+            <div class="submit-section">
+              <button class="submit-btn" id="submitChallenge" onclick="checkLevelChallenge()">
+                <i class="fas fa-check-circle"></i>
+                Submit
+              </button>
+              <div class="challenge-status" id="challengeStatus"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- External JS Libraries-->
+  <script src="https://cdn.jsdelivr.net/npm/drawflow/dist/drawflow.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- External JS Libraries Override-->
+   <script src="../../js/drawflowOveride.js"></script>
+
+  <!-- Main JS -->
+  <script src="../../js/UiComponents.js"></script>
+
+  <!-- SImulation JS -->
+  <script src="../../js/initSimulator.js"></script>
+  <script src="../../js/processModel.js"></script>
+  <script src="../../js/processResults.js"></script>
+  <script src="../../js/laplaceParser.js"></script>
+  <script src="../../js/cacheManager.js"></script>
+
+  <!-- Level JS -->
+  <script src="../../js/tutorailBoxes.js"></script>
+  <script src="ch1l1.js"></script>
+
+</body>
+</html>

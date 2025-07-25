@@ -1,0 +1,96 @@
+/* Game Menubar - Discrete Glassmorphic Design */
+
+.menubar {
+  position: fixed;
+  height: 100px;
+  z-index: 1000;
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.menubar-container {
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+/* Back Button */
+.menu-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 30px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-soft);
+}
+
+.menu-button:hover {
+  transform: scale(1.05);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.menu-button i {
+  font-size: 1.1rem;
+}
+
+/* Game Title */
+.menu-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  transition: all 0.3s ease;
+  cursor: default;
+  user-select: none;
+  position: relative;
+  filter: drop-shadow(0 2px 4px rgba(102, 126, 234, 0.2));
+}
+
+/* Nav Buttons */
+
+.nav-buttons{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .menubar {
+    height: 50px;
+  }
+  
+  .menubar-container {
+    padding: 0 20px;
+  }
+  
+  .menu-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Ultra-wide screen support */
+@media (min-width: 1920px) {
+  .menubar-container {
+    max-width: 1800px;
+  }
+}

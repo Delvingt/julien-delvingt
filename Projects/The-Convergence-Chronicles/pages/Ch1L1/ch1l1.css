@@ -1,0 +1,295 @@
+/* Enhanced Level Description - Glass Style */
+
+.levelDescription-section {
+  position: relative;
+  z-index: 2;
+  padding: 120px 20px 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Level Header with enhanced typography */
+.level-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  backdrop-filter: blur(20px);
+  background: var(--glass-bg-light);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  box-shadow: var(--glass-shadow-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.level-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-gradient);
+  border-radius: 20px 20px 0 0;
+}
+
+.level-header h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.level-subtitle {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.level-subtitle::before {
+  content: '\f0eb';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  color: var(--accent-primary);
+  font-size: 1.2rem;
+}
+
+/* Story Container with better spacing */
+.story-container {
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Story Introduction - Hero Style */
+.story-intro {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: var(--glass-shadow-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.story-intro::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--accent-gradient-full);
+  opacity: 0.03;
+  border-radius: 20px;
+}
+
+.story-intro h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.story-intro h2::before {
+  content: '\f135';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 2rem;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.story-intro p {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+}
+
+/* Main Story Text with narrative flow */
+.story-text {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: var(--glass-shadow-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.story-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--accent-gradient);
+  border-radius: 0 20px 20px 0;
+}
+
+.story-text p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+.story-text p:first-child {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.story-text p:first-child::before {
+  content: '\f19d';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: var(--accent-secondary);
+}
+
+.story-text p:last-child {
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 1.5rem;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 12px;
+  border-left: 4px solid var(--accent-primary);
+}
+
+/* Objective Box - Mission Critical Style */
+.objective-box {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(20px);
+  border: 2px solid var(--accent-tertiary);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: var(--glass-shadow-green);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.objective-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(67, 233, 123, 0.1) 0%, rgba(79, 172, 254, 0.05) 100%);
+  border-radius: 18px;
+}
+
+.objective-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(67, 233, 123, 0.2);
+}
+
+.objective-box h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-tertiary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.objective-box h3 i {
+  font-size: 1.6rem;
+  padding: 0.5rem;
+  background: var(--accent-tertiary);
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(67, 233, 123, 0.3);
+}
+
+.objective-box p {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+.objective-box strong {
+  color: var(--accent-primary);
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .levelDescription-section {
+    padding: 100px 15px 40px;
+  }
+
+  .level-header {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .level-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .level-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .story-intro,
+  .story-text,
+  .objective-box {
+    padding: 2rem;
+  }
+
+  .story-intro h2 {
+    font-size: 1.8rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .story-intro p {
+    font-size: 1.1rem;
+  }
+}

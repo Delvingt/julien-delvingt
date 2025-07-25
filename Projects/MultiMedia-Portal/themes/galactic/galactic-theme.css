@@ -1,0 +1,296 @@
+/* ================================================
+   THÈME GALACTIQUE - VARIABLES ET FONDATIONS
+   ================================================ */
+:root {
+    --primary-color: #8a2be2;       /* Violet bleuâtre profond */
+    --secondary-color: #4b0082;     /* Indigo */
+    --accent-color: #00c9ff;        /* Bleu ciel cosmique */
+    --highlight-color: #e052a0;     /* Rose nébuleuse */
+    --success-color: #43ff9b;       /* Vert extraterrestre */
+    --light-color: #e0e8ff;         /* Blanc bleuté */ 
+    --dark-color: #0f0b20;          /* Bleu très foncé presque noir */
+    --card-light: rgba(32, 20, 65, 0.7);
+    --card-dark: rgba(14, 10, 26, 0.85);
+    --text-light: #e0e8ff;
+    --text-dark: #0f0b20;
+    --transition: all 0.3s ease;
+    --space-gradient: linear-gradient(135deg, #0f0b20 0%, #1b1035 50%, #221540 100%);
+    --nebula-gradient: linear-gradient(45deg, #8a2be2, #4b0082, #e052a0, #00c9ff);
+    --stars-small: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle r='0.8' cx='42' cy='53'/%3E%3Ccircle r='0.5' cx='127' cy='31'/%3E%3Ccircle r='0.6' cx='219' cy='85'/%3E%3Ccircle r='0.7' cx='94' cy='198'/%3E%3Ccircle r='0.8' cx='250' cy='243'/%3E%3Ccircle r='0.5' cx='19' cy='267'/%3E%3Ccircle r='0.7' cx='173' cy='154'/%3E%3Ccircle r='0.6' cx='210' cy='8'/%3E%3Ccircle r='0.8' cx='27' cy='142'/%3E%3Ccircle r='0.5' cx='281' cy='174'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ================================================
+   STYLE DE BASE POUR LE THÈME GALACTIQUE
+   ================================================ */
+
+body {
+    background: var(--space-gradient);
+    background-size: 300% 300%;
+    animation: nebulaPulse 15s ease infinite;
+    color: var(--text-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Étoiles en arrière-plan */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--stars-small);
+    opacity: 0.7;
+    z-index: -1;
+    animation: starTwinkle 3s infinite alternate;
+}
+
+/* ================================================
+   NAVBAR ET CONTRÔLES - THÈME GALACTIQUE
+   ================================================ */
+
+.navbar {
+    background-color: var(--card-dark);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4), 0 0 20px var(--primary-color);
+    border: 1px solid rgba(138, 43, 226, 0.3);
+}
+
+.navbar-brand {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+.navbar-brand i {
+    animation: orbitAround 10s linear infinite;
+}
+
+.navbar-config-btn {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.navbar-config-btn:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.navbar-config-btn.authenticated {
+    background-color: var(--success-color);
+}
+
+/* ================================================
+   SECTIONS ET TITRES - THÈME GALACTIQUE
+   ================================================ */
+
+.section-header {
+    border-bottom: 2px solid var(--accent-color);
+    position: relative;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 30%;
+    height: 2px;
+    background: var(--highlight-color);
+    box-shadow: 0 0 10px var(--highlight-color);
+    animation: constellationConnect 3s ease infinite alternate;
+}
+
+.section-title {
+    color: var(--accent-color);
+    text-shadow: 0 0 15px var(--accent-color);
+}
+
+.view-btn {
+    background-color: rgba(75, 0, 130, 0.5);
+    color: var(--light-color);
+}
+
+.view-btn.active {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+/* ================================================
+   CARTES DE SERVICES - THÈME GALACTIQUE
+   ================================================ */
+
+.service-card {
+    background-color: var(--card-dark);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(138, 43, 226, 0.3);
+    border: 1px solid rgba(138, 43, 226, 0.4);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+}
+
+/* Effet de constellation autour des cartes au survol */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 17px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+    animation: nebulaPulse 3s infinite;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-color);
+}
+
+.card-image::after {
+    background: linear-gradient(to bottom, transparent 50%, var(--secondary-color) 100%);
+}
+
+.card-title {
+    color: var(--accent-color);
+    text-shadow: 0 0 5px var(--accent-color);
+}
+
+.card-description {
+    color: var(--light-color);
+    opacity: 0.9;
+}
+
+.card-link {
+    background: var(--nebula-gradient);
+    background-size: 300% 300%;
+    animation: nebulaPulse 5s ease infinite;
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.5);
+}
+
+.card-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(138, 43, 226, 0.7), 0 0 15px var(--accent-color);
+}
+
+/* ================================================
+   NOTIFICATIONS TOAST - THÈME GALACTIQUE
+   ================================================ */
+
+.toast {
+    background-color: var(--card-dark);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 10px var(--primary-color);
+}
+
+.toast-icon {
+    background-color: var(--primary-color);
+}
+
+.toast-title {
+    color: var(--accent-color);
+}
+
+.toast-message {
+    color: var(--light-color);
+    opacity: 0.8;
+}
+
+/* ================================================
+   LOADER - THÈME GALACTIQUE
+   ================================================ */
+
+.loader-container {
+    background: var(--space-gradient);
+}
+
+.loader {
+    border: 5px solid rgba(138, 43, 226, 0.3);
+    border-top: 5px solid var(--accent-color);
+    border-left: 5px solid var(--primary-color);
+    border-right: 5px solid var(--highlight-color);
+}
+
+
+
+/* ================================================
+   FOOTER - THÈME GALACTIQUE
+   ================================================ */
+
+footer {
+    background-color: var(--card-dark);
+    color: var(--light-color);
+    opacity: 0.9;
+    border-top: 1px solid var(--primary-color);
+}
+
+/* ================================================
+   EFFET DE CONSTELLATION - THÈME GALACTIQUE
+   ================================================ */
+
+.constellation-dot {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px white, 0 0 20px var(--accent-color);
+    animation: starTwinkle 3s infinite alternate;
+}
+
+.constellation-line {
+    position: absolute;
+    height: 2px;
+    background: rgba(138, 43, 226, 0.5);
+    transform-origin: left center;
+    box-shadow: 0 0 5px var(--primary-color);
+    animation: constellationConnect 1.5s ease-out forwards;
+}
+
+/* ================================================
+   SHOOTING STARS - THÈME GALACTIQUE
+   ================================================ */
+
+.shooting-star {
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, white, transparent);
+    box-shadow: 0 0 10px white;
+    opacity: 0;
+    animation: shootingStar 2s linear forwards;
+}
+
+/* ================================================
+   MEDIA QUERIES - RESPONSIVE DESIGN
+   ================================================ */
+
+@media (max-width: 768px) {
+    .service-card {
+        background-color: var(--card-dark);
+        grid-template-columns: 110px 1fr;
+    }
+    
+    .service-card::before {
+        border-radius: 12px;
+    }
+    
+    .card-link {
+        box-shadow: 0 3px 10px rgba(138, 43, 226, 0.5);
+    }
+}

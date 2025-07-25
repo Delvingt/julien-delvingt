@@ -1,0 +1,295 @@
+/* ================================================
+   THEME JUNGLE - VARIABLES ET FONDATIONS
+   ================================================ */
+
+/* Variables CSS - Palette de couleurs jungle */
+:root {
+    /* Couleurs principales */
+    --primary-color: #2d7e36;       /* Vert feuillage foncé */
+    --primary-hover: #1d5724;      /* Vert feuillage plus foncé */
+    --secondary-color: #f2e8c4;    /* Beige sable clair */
+    --success-color: #6eb257;      /* Vert clair */
+    --success-hover: #538c41;      /* Vert clair foncé */
+    --accent-color: #725b34;       /* Brun écorce */
+    --highlight-color: #e67e22;    /* Orange fruit exotique */
+    --light-color: #f8f5e9;        /* Beige très clair */
+    --dark-color: #2a3018;         /* Vert très foncé presque noir */
+    --card: #f8f5e9;               /* Fond des cartes */
+    --text: #2a3018;               /* Couleur de texte */
+    --border-color: #b7a76a;       /* Bordures couleur lianes */
+    --transition: all 0.3s ease;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Modifications globales pour le thème jungle */
+body {
+    background-color: #dfca9c;  /* Fond sable/terre */
+    background-image: 
+        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23337540' fill-opacity='0.11' fill-rule='evenodd'/%3E%3C/svg%3E"),
+        linear-gradient(to bottom, rgba(45, 126, 54, 0.05), rgba(45, 126, 54, 0.1));
+    color: var(--text);
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Navbar avec style jungle */
+.navbar {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(to right, rgba(45, 126, 54, 0.9), rgba(45, 126, 54, 0.8)), 
+                      url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264.888-.14 1.55-1.106 2.41-2.28 2.41-4.456 0-2.312-1.162-3.486-2.41-4.456-.168-.123-.53-.257-.887-.387 1.553-1.106 2.41-2.28 2.41-4.456 0-2.312-1.162-3.486-2.41-4.456-.167-.123-.53-.257-.887-.387 1.553-1.106 2.41-2.28 2.41-4.456 0-2.312-1.162-3.486-2.41-4.456-.167-.123-.53-.257-.888-.387L0 20h21.184z' fill='%231d5724' fill-opacity='0.4'/%3E%3C/svg%3E");
+    margin-bottom: 2rem;
+    border: none;
+    position: relative;
+    z-index: 50;
+}
+
+.navbar-brand {
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+}
+
+.navbar-brand i {
+    color: #f2e8c4;
+}
+
+/* Effet de liane sur les bordures */
+.section-header {
+    border-bottom: 2px solid var(--border-color);
+    position: relative;
+}
+
+.section-header:after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--border-color) 0%, var(--border-color) 50%, transparent 50%, transparent 100%);
+    background-size: 20px 2px;
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Modifications des cartes de service */
+.service-card {
+    background-color: var(--card);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    opacity: 1;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: var(--card) !important;
+    opacity: 1 !important;
+}
+
+/* Effet de feuillage sur les cartes */
+.service-card:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 80px;
+    height: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M12.971 4.254c5.562 5.562 5.562 14.571 0 20.133-5.562-5.562-5.562-14.571 0-20.133zm3.184 3.183c3.097 3.097 3.097 8.095 0 11.192-3.097-3.097-3.097-8.095 0-11.192zm-6.368 0c3.097 3.097 3.097 8.095 0 11.192-3.097-3.097-3.097-8.095 0-11.192z' fill='rgba(45, 126, 54, 0.15)'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    transform: rotate(45deg);
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.card-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-image:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f8f5e9' fill-opacity='1' d='M0,224L48,213.3C96,203,192,181,288,160C384,139,480,117,576,133.3C672,149,768,203,864,234.7C960,267,1056,277,1152,245.3C1248,213,1344,139,1392,101.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.service-card:hover .card-image:after {
+    opacity: 0.3;
+}
+
+.card-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.card-description {
+    color: var(--accent-color);
+}
+
+.card-link {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 4px;
+    padding: 8px 16px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-link:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.card-link:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+.card-link:hover:before {
+    left: 100%;
+}
+
+/* Stylisation des boutons et contrôles */
+.view-btn {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    color: var(--accent-color);
+}
+
+.view-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-hover);
+}
+
+.navbar-config-btn {
+    background-color: var(--primary-color);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar-config-btn:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+.navbar-config-btn.authenticated {
+    background-color: var(--success-color);
+}
+
+.navbar-config-btn.authenticated:hover {
+    background-color: var(--success-hover);
+}
+
+/* ================================================
+   NOTIFICATIONS TOAST
+   ================================================ */
+.toast {
+    background-color: var(--light-color);
+    border: 1px solid var(--border-color);
+}
+
+.toast-icon {
+    background-color: var(--primary-color);
+}
+
+/* Animations et effets spéciaux */
+@keyframes leaf-sway {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(3deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-3deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Style pour les arbres dynamiques */
+.jungle-tree {
+    position: fixed;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.jungle-tree svg {
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+}
+
+.jungle-trees-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Animation de balancement des arbres (défaut, sera remplacée par des animations spécifiques) */
+@keyframes tree-sway {
+    0% { transform: rotate(-2deg); }
+    100% { transform: rotate(2deg); }
+}
+
+/* Classes pour les éléments animés par JS */
+.jungle-leaf {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    animation: leaf-sway 5s ease-in-out infinite;
+}
+
+.jungle-animal {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+/* Loader personnalisé */
+.loader {
+    border: 3px solid rgba(45, 126, 54, 0.1);
+    border-top: 3px solid var(--primary-color);
+}
+
+/* Effets de hover pour les cartes en vue liste */
+.services-container.list-view .service-card:hover {
+    transform: translateX(5px);
+}
+
+/* Design responsive */
+@media (max-width: 768px) {
+    .navbar {
+        background-image: linear-gradient(to bottom, rgba(45, 126, 54, 0.9), rgba(45, 126, 54, 0.8)),
+                          url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264.888-.14 1.55-1.106 2.41-2.28 2.41-4.456 0-2.312-1.162-3.486-2.41-4.456-.168-.123-.53-.257-.887-.387 1.553-1.106 2.41-2.28 2.41-4.456 0-2.312-1.162-3.486-2.41-4.456-.167-.123-.53-.257-.887-.387 1.553-1.106 2.41-2.28 2.41-4.456 0-2.312-1.162-3.486-2.41-4.456-.167-.123-.53-.257-.888-.387L0 20h21.184z' fill='%231d5724' fill-opacity='0.4'/%3E%3C/svg%3E");
+    }
+    
+    .service-card:before {
+        width: 60px;
+        height: 60px;
+    }
+}

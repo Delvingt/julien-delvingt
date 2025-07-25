@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control Loop Editor - Home</title>
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- General CSS -->
+  <link rel="stylesheet" href="../../css/style.css" />
+
+  <!-- Page Specific CSS -->
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <script src="../../js/UiComponents.js"></script>
+
+    <!---------------->
+    <!-- Background -->
+    <!---------------->
+    <div class="background-animation" id="background-animation"></div>
+    <script>
+        const orbsHTML = renderOrbs();
+        document.getElementById('background-animation').innerHTML = orbsHTML;
+    </script>
+
+  <!-- Main Container -->
+  <main class="home-container">
+    <!-- Game Logo/Title -->
+    <div class="header">
+      <h1 class="title">The Convergence Chronicles</h1>
+      <p class="subtitle">Master the Art of Process Control</p>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <nav class="home-nav">
+      <a href="../Campaign/campaign.html" class="nav-button campaign">
+        <div class="button-glow"></div>
+        <i class="fas fa-gamepad button-icon"></i>
+        <span class="button-text">Campaign</span>
+        <span class="button-description">Start your journey</span>
+      </a>
+
+      <a href="../Creative/creative.html" class="nav-button creative">
+        <div class="button-glow"></div>
+        <i class="fas fa-palette button-icon"></i>
+        <span class="button-text">Creative</span>
+        <span class="button-description">Build freely</span>
+      </a>
+
+      <a href="library.html" class="nav-button library">
+        <div class="button-glow"></div>
+        <i class="fas fa-book button-icon"></i>
+        <span class="button-text">Library</span>
+        <span class="button-description">Resources & guides</span>
+      </a>
+
+      <a href="donate.html" class="nav-button donate">
+        <div class="button-glow"></div>
+        <i class="fas fa-heart button-icon"></i>
+        <span class="button-text">Donate</span>
+        <span class="button-description">Support us</span>
+      </a>
+
+      <a href="announcements.html" class="nav-button announcements">
+        <div class="button-glow"></div>
+        <i class="fas fa-bullhorn button-icon"></i>
+        <span class="button-text">Announcements</span>
+        <span class="button-description">Updates</span>
+      </a>
+
+      <a href="contact.html" class="nav-button contact">
+        <div class="button-glow"></div>
+        <i class="fas fa-envelope button-icon"></i>
+        <span class="button-text">Contact</span>
+        <span class="button-description">Get in touch</span>
+      </a>
+
+      <a href="about.html" class="nav-button about">
+        <div class="button-glow"></div>
+        <i class="fas fa-info-circle button-icon"></i>
+        <span class="button-text">About</span>
+        <span class="button-description">Learn more</span>
+      </a>
+
+    </nav>
+
+    <!-- Version info -->
+    <footer class="home-footer end">
+      <p class="version-info">Version 1.0.0</p>
+    </footer>
+  </main>
+</body>
+</html>

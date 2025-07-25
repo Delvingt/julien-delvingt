@@ -1,0 +1,407 @@
+/* ================================================
+   THÈME NUAGE - VARIABLES ET FONDATIONS
+   ================================================ */
+:root {
+    --primary-color: #5a9bd5;       /* Bleu ciel */
+    --secondary-color: #c9e0f7;     /* Bleu très clair */
+    --accent-color: #7ec0ee;        /* Bleu azur */
+    --highlight-color: #ff9e80;     /* Orange-pêche (pour le coucher de soleil) */
+    --success-color: #7bb77d;       /* Vert tendre */
+    --light-color: #ffffff;         /* Blanc pur */
+    --dark-color: #445b6e;          /* Bleu-gris foncé */
+    --card-light: rgba(255, 255, 255, 0.7);
+    --card-dark: rgba(68, 91, 110, 0.1);
+    --text-light: #ffffff;
+    --text-dark: #445b6e;
+    --transition: all 0.3s ease;
+    --sky-gradient: linear-gradient(135deg, #c9e0f7 0%, #e3f0fd 50%, #f6faff 100%);
+    --sunset-gradient: linear-gradient(45deg, #5a9bd5, #7ec0ee, #ff9e80, #ffffff);
+    --cloud-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================================
+   STYLE DE BASE POUR LE THÈME NUAGE
+   ================================================ */
+
+body {
+    background: var(--sky-gradient);
+    background-size: 400% 400%;
+    animation: skyShift 20s ease infinite;
+    color: var(--text-dark);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ================================================
+   ANIMATIONS DE BASE
+   ================================================ */
+
+@keyframes skyShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(-10px) translateX(5px); }
+    100% { transform: translateY(0px) translateX(0px); }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+@keyframes sunRay {
+    0% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: 0.7; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.8); }
+}
+
+@keyframes rainDrop {
+    0% { transform: translateY(-10px); opacity: 0; }
+    50% { opacity: 0.7; }
+    100% { transform: translateY(100px); opacity: 0; }
+}
+
+/* ================================================
+   NAVBAR ET CONTRÔLES - THÈME NUAGE
+   ================================================ */
+
+.navbar {
+    background-color: var(--card-light);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: var(--cloud-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de nuage flottant pour la navbar */
+.navbar::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 24' width='600' height='300' fill='%23ffffff' fill-opacity='0.3'%3E%3Cpath d='M42 12 c5 0, 14 3, 14 10 c0 7, -9 12, -14 12 c-3 0, -7 -2, -10 -5 c-3 3, -7 5, -10 5 c-5 0, -14 -5, -14 -12 c0 -7, 9 -10, 14 -10 c4 0, 8 2, 10 5 c2 -3, 6 -5, 10 -5'/%3E%3C/svg%3E") repeat;
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0.2;
+    animation: float 10s ease-in-out infinite;
+}
+
+.navbar-brand {
+    color: var(--primary-color);
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-brand i {
+    animation: float 6s ease-in-out infinite;
+}
+
+.navbar-config-btn {
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(90, 155, 213, 0.3);
+    transition: all 0.3s ease;
+}
+
+.navbar-config-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(90, 155, 213, 0.5);
+}
+
+.navbar-config-btn.authenticated {
+    background-color: var(--success-color);
+}
+
+/* ================================================
+   SECTIONS ET TITRES - THÈME NUAGE
+   ================================================ */
+
+.section-header {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+    position: relative;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 30%;
+    height: 2px;
+    background: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.section-title {
+    color: var(--dark-color);
+    position: relative;
+}
+
+.section-title i {
+    animation: float 5s ease-in-out infinite;
+    color: var(--primary-color);
+}
+
+.view-btn {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--dark-color);
+    backdrop-filter: blur(5px);
+}
+
+.view-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* ================================================
+   CARTES DE SERVICES - THÈME NUAGE
+   ================================================ */
+
+.service-card {
+    background-color: var(--card-light);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    box-shadow: var(--cloud-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+}
+
+/* Effet de nuage flottant pour les cartes */
+.service-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 24' width='600' height='300' fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M42 12 c5 0, 14 3, 14 10 c0 7, -9 12, -14 12 c-3 0, -7 -2, -10 -5 c-3 3, -7 5, -10 5 c-5 0, -14 -5, -14 -12 c0 -7, 9 -10, 14 -10 c4 0, 8 2, 10 5 c2 -3, 6 -5, 10 -5'/%3E%3C/svg%3E") repeat;
+    border-radius: 16px;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.card-image::after {
+    background: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.7) 100%);
+}
+
+.card-title {
+    color: var(--dark-color);
+}
+
+.card-description {
+    color: var(--dark-color);
+    opacity: 0.85;
+}
+
+.card-link {
+    background: var(--primary-color);
+    color: white;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(90, 155, 213, 0.3);
+}
+
+.card-link:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(90, 155, 213, 0.5);
+}
+
+/* ================================================
+   MODAL DE CONNEXION - THÈME NUAGE
+   ================================================ */
+
+.modal-content {
+    background-color: var(--card-light);
+    backdrop-filter: blur(15px);
+    color: var(--dark-color);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de nuage pour la modal */
+.modal-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 24' width='600' height='300' fill='%23ffffff' fill-opacity='0.07'%3E%3Cpath d='M42 12 c5 0, 14 3, 14 10 c0 7, -9 12, -14 12 c-3 0, -7 -2, -10 -5 c-3 3, -7 5, -10 5 c-5 0, -14 -5, -14 -12 c0 -7, 9 -10, 14 -10 c4 0, 8 2, 10 5 c2 -3, 6 -5, 10 -5'/%3E%3C/svg%3E") repeat;
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.modal-header h3 {
+    color: var(--primary-color);
+}
+
+.modal-form input {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: var(--dark-color);
+    border-radius: 8px;
+}
+
+.modal-form input:focus {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(90, 155, 213, 0.3);
+}
+
+.modal-form button {
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(90, 155, 213, 0.3);
+}
+
+.modal-form button:hover {
+    background: var(--accent-color);
+    box-shadow: 0 8px 20px rgba(90, 155, 213, 0.5);
+    transform: translateY(-2px);
+}
+
+.error-message {
+    background-color: rgba(255, 158, 128, 0.2);
+    border-left: 3px solid var(--highlight-color);
+}
+
+/* ================================================
+   NOTIFICATIONS TOAST - THÈME NUAGE
+   ================================================ */
+
+.toast {
+    background-color: var(--card-light);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.toast-icon {
+    background-color: var(--primary-color);
+}
+
+.toast-title {
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+.toast-message {
+    color: var(--dark-color);
+    opacity: 0.8;
+}
+
+/* ================================================
+   LOADER - THÈME NUAGE
+   ================================================ */
+
+.loader-container {
+    background: var(--sky-gradient);
+    backdrop-filter: blur(8px);
+}
+
+.loader {
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    border-top: 5px solid var(--primary-color);
+    animation: spin 1s linear infinite;
+}
+
+/* ================================================
+   FOOTER - THÈME NUAGE
+   ================================================ */
+
+footer {
+    background-color: var(--card-light);
+    backdrop-filter: blur(10px);
+    color: var(--dark-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: var(--cloud-shadow);
+    border-radius: 12px;
+}
+
+/* ================================================
+   MEDIA QUERIES - RESPONSIVE DESIGN
+   ================================================ */
+
+@media (max-width: 768px) {
+    .service-card {
+        background-color: var(--card-light);
+        backdrop-filter: blur(8px);
+    }
+    
+    .service-card::before {
+        border-radius: 12px;
+        opacity: 0.1;
+    }
+    
+    .card-link {
+        box-shadow: 0 3px 10px rgba(90, 155, 213, 0.3);
+    }
+}
+
+/* Éléments spécifiques au thème nuage */
+.cloud-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    filter: blur(20px);
+    z-index: -1;
+    animation: float 20s ease-in-out infinite;
+}
+
+/* Effet de pluie (pour l'animation JavaScript) */
+.rain-drop {
+    position: absolute;
+    width: 2px;
+    height: 15px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(126, 192, 238, 0.8));
+    border-radius: 50%;
+    animation: rainDrop 1.5s linear infinite;
+}
+
+/* Effet de rayon de soleil (pour l'animation JavaScript) */
+.sun-ray {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 158, 128, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    animation: sunRay 8s ease-in-out infinite;
+}

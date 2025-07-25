@@ -1,0 +1,500 @@
+/* Main Container */
+.campaign-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.campaign-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.campaign-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+  background: var(--accent-gradient-full);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.campaign-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin: 0 0 30px;
+  font-weight: 300;
+}
+
+/* Overall Progress */
+.overall-progress {
+  display: inline-block;
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 20px;
+  padding: 20px 40px;
+  box-shadow: var(--shadow-soft);
+}
+
+.progress-stats {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-item i {
+  font-size: 1.5rem;
+  color: var(--accent-primary);
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Chapters Container */
+.chapters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Chapter Card */
+.chapter {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-soft);
+}
+
+.chapter.unlocked {
+  cursor: pointer;
+}
+
+.chapter.unlocked:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+}
+
+.chapter.locked {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Chapter Header */
+.chapter-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.chapter-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(102, 126, 234, 0.05) 100%);
+  pointer-events: none;
+}
+
+.chapter-icon {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-gradient);
+  border-radius: 20px;
+  color: white;
+  font-size: 2rem;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.chapter-info {
+  position: relative;
+  z-index: 1;
+}
+
+.chapter-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 5px;
+  color: var(--text-primary);
+}
+
+.chapter-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0 0 15px;
+}
+
+.chapter-progress {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-gradient);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.chapter-stars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.chapter-stars i {
+  color: #ffd700;
+}
+
+.chapter-lock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 1;
+}
+
+.chapter-lock i {
+  font-size: 1.5rem;
+}
+
+.chapter-lock span {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Levels Grid */
+.levels-grid {
+  padding: 0 30px 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Level Button */
+.level {
+  aspect-ratio: 1;
+  border: 2px solid var(--glass-border-light);
+  background: var(--glass-bg);
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  animation: fadeInUp 0.6s ease-out backwards;
+  transition: var(--transition-smooth);
+  font-family: inherit;
+}
+
+.level:hover:not(.locked) {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+}
+
+/* Overlay for animation */
+.level-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0);
+    pointer-events: none;
+    z-index: 999;
+    transition: background 0.8s ease-out;
+}
+
+.level-overlay.active {
+    background: rgba(255, 255, 255, 0.95);
+    pointer-events: all;
+}
+
+/* Expansion animation */
+.level.expanding {
+    animation: levelExpand 1s ease-out forwards;
+}
+
+@keyframes levelExpand {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(40);
+        opacity: 0.9;
+    }
+}
+
+/* Shake animation for locked levels */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Fade out inner content during expansion */
+    .level.expanding .level-number,
+    .level.expanding .level-stars {
+        animation: fadeOutContent 0.4s ease-out forwards;
+    }
+
+    @keyframes fadeOutContent {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+    }
+
+.level-overlay.active {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Updated completed class */
+.level.completed {
+  background: var(--glass-green);
+  border: 1px solid var(--glass-green-border);
+  box-shadow: var(--glass-shadow-success), var(--glass-shadow-subtle);
+}
+
+.level.available {
+  background: var(--glass-blue);
+  border: 1px solid var(--glass-blue-border);
+  box-shadow: var(--glass-shadow-primary), var(--glass-shadow-subtle);
+}
+
+.level.current {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: var(--glass-shadow-primary), var(--glass-shadow-subtle);
+  }
+  50% {
+    box-shadow: var(--glass-shadow-primary-hover), var(--glass-shadow-subtle);
+  }
+}
+
+.level.locked {
+  background: var( --glass-bg);
+  border: 1px solid var(--glass-border);
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: var(--glass-shadow-subtle);
+}
+
+.level-number {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.level-stars {
+  display: flex;
+  gap: 2px;
+  font-size: 0.8rem;
+}
+
+.level-stars i {
+  color: #ffd700;
+}
+
+.level-stars .far {
+  color: #ddd;
+}
+
+.level-lock {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+/* Achievement Popup */
+.achievement-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: var(--shadow-dark);
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.achievement-popup.show {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.achievement-icon {
+  font-size: 3rem;
+  color: #ffd700;
+  margin-bottom: 20px;
+  animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.achievement-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+  color: var(--text-primary);
+}
+
+.achievement-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .back-button {
+    top: 15px;
+    left: 15px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .campaign-container {
+    padding: 80px 15px 30px;
+  }
+
+  .campaign-title {
+    font-size: 2rem;
+  }
+
+  .campaign-subtitle {
+    font-size: 1rem;
+  }
+
+  .progress-stats {
+    gap: 20px;
+  }
+
+  .stat-value {
+    font-size: 1.4rem;
+  }
+
+  .chapter-header {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .chapter-icon {
+    margin: 0 auto;
+  }
+
+  .chapter-progress {
+    justify-content: center;
+  }
+
+  .chapter-stars,
+  .chapter-lock {
+    margin: 0 auto;
+  }
+
+  .levels-grid {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 10px;
+    padding: 0 20px 20px;
+  }
+
+  .level-number {
+    font-size: 1.1rem;
+  }
+
+  .level-stars {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .overall-progress {
+    padding: 15px 20px;
+  }
+
+  .progress-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .progress-bar {
+    width: 150px;
+  }
+}

@@ -1,0 +1,402 @@
+/************************/
+/* Process Response Section */
+/************************/
+.processResponse-section {
+  width: 100%;
+  margin: 40px 0;
+}
+
+/************/
+/* Menu Bar */
+/************/
+.processResponse-menubar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 20px 20px 0 0;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.06),
+    inset 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.processResponse-menubar h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #ff0066 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.processResponse-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.response-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--text-primary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.response-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.response-btn.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.response-btn.primary:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46a0 100%);
+}
+
+.response-btn i {
+  font-size: 0.9rem;
+}
+
+/******************/
+/* Content Grid   */
+/******************/
+.processResponse-content {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  box-sizing: border-box;
+}
+
+/*****************/
+/* Charts Column */
+/*****************/
+.charts-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chart-container {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.04),
+    inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+#processOutputChart {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 400px;
+}
+
+#processInputChart {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 400px;
+}
+
+.sim-charts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sim-charts > * {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.04),
+    inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/******************/
+/* Results Column */
+/******************/
+.results-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.results-box {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.06),
+    inset 0 0 20px rgba(255, 255, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.results-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.results-box h3 {
+  margin: 0 0 25px 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #ff0066 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+}
+
+.result-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.result-item:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateX(5px);
+}
+
+.result-item:last-child {
+  margin-bottom: 0;
+}
+
+.result-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.result-label i {
+  color: var(--accent-primary);
+  font-size: 1rem;
+}
+
+.result-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-left: 26px;
+  transition: all 0.3s ease;
+}
+
+.result-value.updated {
+  animation: valueUpdate 0.5s ease;
+}
+
+@keyframes valueUpdate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); color: var(--accent-primary); }
+  100% { transform: scale(1); }
+}
+
+/* Submit Challenge Section */
+.submit-section {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px 30px;
+  background: var(--glass-dark-green);
+  border: var(--glass-dark-green-border);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 5px 15px var(--glass-shadow-green);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn:hover {
+  scale: 1.05;
+  box-shadow: 0 8px 25px var( --shadow-dark);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.submit-btn i {
+  font-size: 1.2rem;
+}
+
+/* Challenge Status */
+.challenge-status {
+  margin-top: 15px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.challenge-status.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.challenge-status.success {
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  color: #2e7d32;
+}
+
+.challenge-status.error {
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  color: #c62828;
+}
+
+.challenge-status.warning {
+  background: rgba(255, 152, 0, 0.1);
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  color: #ef6c00;
+}
+
+/* Success animation */
+@keyframes successPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.challenge-status.success {
+  animation: successPulse 0.5s ease;
+}
+
+/************************/
+/* Responsive Design    */
+/************************/
+@media (max-width: 1024px) {
+  .processResponse-content {
+    grid-template-columns: 65% 35%;
+  }
+}
+
+@media (max-width: 768px) {
+  .processResponse-menubar {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .processResponse-content {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+  
+  .charts-column,
+  .results-column {
+    width: 100%;
+  }
+  
+  #processOutputChart {
+    max-height: 300px;
+  }
+  #processOutputChart {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .processResponse-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .response-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .processResponse-menubar {
+    padding: 15px 20px;
+  }
+  
+  .results-box {
+    padding: 20px;
+  }
+  
+  .result-value {
+    font-size: 1.5rem;
+  }
+}

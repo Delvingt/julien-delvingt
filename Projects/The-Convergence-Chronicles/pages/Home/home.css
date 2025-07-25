@@ -1,0 +1,374 @@
+/* Main container */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+/* header */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  letter-spacing: -2px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 10px rgba(102, 126, 234, 0.2));
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  from {
+    filter: drop-shadow(0 2px 10px rgba(102, 126, 234, 0.2));
+  }
+  to {
+    filter: drop-shadow(0 4px 20px rgba(102, 126, 234, 0.4));
+  }
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Navigation grid */
+.home-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Navigation buttons with glassmorphism for light theme */
+.nav-button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--text-primary);
+  overflow: hidden;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition-smooth);
+  animation: fadeInUp 0.6s ease-out backwards;
+  width: 200px;
+
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation */
+.nav-button:nth-child(1) { animation-delay: 0.1s; }
+.nav-button:nth-child(2) { animation-delay: 0.2s; }
+.nav-button:nth-child(3) { animation-delay: 0.3s; }
+.nav-button:nth-child(4) { animation-delay: 0.4s; }
+.nav-button:nth-child(5) { animation-delay: 0.5s; }
+.nav-button:nth-child(6) { animation-delay: 0.6s; }
+.nav-button:nth-child(7) { animation-delay: 0.7s; }
+
+/* Button glow effect */
+.button-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* Enhanced button hover states for light theme */
+.nav-button:hover {
+  transform: translateY(-5px) scale(1.02);
+  background: var(--bg-card-hover);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 40px rgba(102, 126, 234, 0.1);
+}
+
+.nav-button.campaign:hover {
+  box-shadow: 
+    0 20px 40px rgba(102, 126, 234, 0.15),
+    0 0 40px rgba(102, 126, 234, 0.1);
+}
+
+.nav-button.campaign:hover .button-glow {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+}
+
+.nav-button.creative:hover {
+  box-shadow: 
+    0 20px 40px rgba(118, 75, 162, 0.15),
+    0 0 40px rgba(118, 75, 162, 0.1);
+}
+
+.nav-button.creative:hover .button-glow {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(118, 75, 162, 0.15) 0%, transparent 70%);
+}
+
+.nav-button.about:hover {
+  box-shadow: 
+    0 20px 40px rgba(67, 233, 123, 0.15),
+    0 0 40px rgba(67, 233, 123, 0.1);
+}
+
+.nav-button.about:hover .button-glow {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(67, 233, 123, 0.15) 0%, transparent 70%);
+}
+
+.nav-button.contact:hover {
+  box-shadow: 
+    0 20px 40px rgba(79, 172, 254, 0.15),
+    0 0 40px rgba(79, 172, 254, 0.1);
+}
+
+.nav-button.contact:hover .button-glow {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(79, 172, 254, 0.15) 0%, transparent 70%);
+}
+
+.nav-button.donate:hover {
+  box-shadow: 
+    0 20px 40px rgba(250, 112, 154, 0.15),
+    0 0 40px rgba(250, 112, 154, 0.1);
+}
+
+.nav-button.donate:hover .button-glow {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(250, 112, 154, 0.15) 0%, transparent 70%);
+}
+
+.nav-button.library:hover {
+  box-shadow: 
+    0 20px 40px rgba(255, 107, 107, 0.15),
+    0 0 40px rgba(255, 107, 107, 0.1);
+}
+
+.nav-button.library:hover .button-glow {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 107, 107, 0.15) 0%, transparent 70%);
+}
+
+.nav-button.announcements:hover {
+  box-shadow: 
+    0 20px 40px rgba(254, 202, 87, 0.15),
+    0 0 40px rgba(254, 202, 87, 0.1);
+}
+
+.nav-button.announcements:hover .button-glow {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(254, 202, 87, 0.15) 0%, transparent 70%);
+}
+
+/* Button content */
+.button-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  transition: var(--transition-smooth);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.nav-button:hover .button-icon {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* Icon colors using CSS variables */
+.campaign .button-icon { 
+  color: var(--accent-primary);
+}
+
+.creative .button-icon { 
+  color: var(--accent-secondary);
+}
+
+.about .button-icon { 
+  color: var(--accent-tertiary);
+}
+
+.contact .button-icon { 
+  color: var(--accent-quaternary);
+}
+
+.donate .button-icon { 
+  color: var(--accent-quinary);
+}
+
+.library .button-icon { 
+  color: #ff6b6b;  /* Coral red */
+}
+
+.announcements .button-icon { 
+  color: #feca57;  /* Golden yellow */
+}
+
+.button-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--text-primary);
+}
+
+.button-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+/* Footer */
+.home-footer {
+  margin-top: auto;
+}
+
+.version-info {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  opacity: 0.6;
+}
+
+/* Active/Focus states for accessibility */
+.nav-button:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 4px;
+}
+
+.nav-button:active {
+  transform: translateY(-2px) scale(1);
+  transition-duration: 0.1s;
+}
+
+/* Responsive design */
+@media (min-width: 1200px) {
+  .home-nav {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1000px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .home-nav {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .nav-button {
+    padding: 30px 20px;
+  }
+  
+  .button-icon {
+    font-size: 2rem;
+  }
+  
+  .button-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* Dark mode support if user prefers */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--bg-dark-primary);
+    color: var(--text-light-primary);
+  }
+  
+  .subtitle {
+    color: var(--text-light-secondary);
+  }
+  
+  .nav-button {
+    color: var(--text-light-primary);
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .button-text {
+    color: var(--text-light-primary);
+  }
+  
+  .button-description {
+    color: var(--text-light-secondary);
+  }
+  
+  .version-info {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Increase orb opacity for dark mode */
+  .orb-1, .orb-2 {
+    opacity: 2;
+  }
+  
+  .orb-3, .orb-4 {
+    opacity: 1.5;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .nav-button {
+    border: 2px solid var(--text-primary);
+  }
+  
+  .button-description {
+    color: var(--text-primary);
+  }
+}

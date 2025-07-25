@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campaign - The Convergence Chronicles</title>
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- General CSS -->
+  <link rel="stylesheet" href="../../css/style.css" />
+<link rel="stylesheet" href="../../css/menubar.css" />
+
+  <!-- Page Specific CSS -->
+  <link rel="stylesheet" href="campaign.css">
+</head>
+<body>
+    <script src="../../js/UiComponents.js"></script>
+
+    <!---------------->
+    <!-- Background -->
+    <!---------------->
+    <div class="background-animation" id="background-animation"></div>
+    <script>
+        const orbsHTML = renderOrbs();
+        document.getElementById('background-animation').innerHTML = orbsHTML;
+    </script>
+
+    <!------------>
+    <!-- Menubar-->
+    <!------------>
+    <nav class="menubar" id="Menubar"></nav>
+    <script>
+        const menuHTML = renderMenuBar({
+            title: 'The Convergence Chronicles',
+            exitText: 'Back to Home',
+            exitLink: '../Home/home.html',
+            backText: '',
+            backLink: '',
+            nextText: '',
+            nextLink: ''
+        });
+        document.getElementById('Menubar').innerHTML = menuHTML;
+    </script>
+
+  <!-- Main Container -->
+  <main class="campaign-container">
+    <!-- Header -->
+    <header class="campaign-header">
+      <h1 class="campaign-title">Campaign Mode</h1>
+      <p class="campaign-subtitle">Your journey through the world of process control</p>
+      
+      <!-- Overall Progress -->
+      <div class="overall-progress">
+        <div class="progress-stats">
+          <span class="stat-item">
+            <i class="fas fa-star"></i>
+            <span class="stat-value">127</span>
+            <span class="stat-label">Stars</span>
+          </span>
+          <span class="stat-item">
+            <i class="fas fa-trophy"></i>
+            <span class="stat-value">24/60</span>
+            <span class="stat-label">Levels</span>
+          </span>
+          <span class="stat-item">
+            <i class="fas fa-percentage"></i>
+            <span class="stat-value">40%</span>
+            <span class="stat-label">Complete</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Chapters Container -->
+    <div class="chapters-container">
+      
+      <!-- Chapter 1 -->
+      <section class="chapter unlocked" data-chapter="1">
+        <div class="chapter-header">
+          <div class="chapter-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <div class="chapter-info">
+            <h2 class="chapter-title">Chapter 1: Basic Principles</h2>
+            <p class="chapter-description">Learn the fundamentals of process control</p>
+            <div class="chapter-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+              </div>
+              <span class="progress-text">12/12 Levels</span>
+            </div>
+          </div>
+          <div class="chapter-stars">
+            <i class="fas fa-star"></i>
+            <span>36/36</span>
+          </div>
+        </div>
+        
+        <div class="levels-grid">
+          <button class="level completed" data-level="1" data-stars="3" data-href="../Ch1L1/ch1l1.html">
+            <span class="level-number">1</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level available" data-level="2" data-stars="3">
+            <span class="level-number">2</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="3" data-stars="3">
+            <span class="level-number">3</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="4" data-stars="3">
+            <span class="level-number">4</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="5" data-stars="3">
+            <span class="level-number">5</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="6" data-stars="3">
+            <span class="level-number">6</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="7" data-stars="3">
+            <span class="level-number">7</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="8" data-stars="3">
+            <span class="level-number">8</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="9" data-stars="3">
+            <span class="level-number">9</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="10" data-stars="3">
+            <span class="level-number">10</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="11" data-stars="3">
+            <span class="level-number">11</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="12" data-stars="3">
+            <span class="level-number">12</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Chapter 2 -->
+      <section class="chapter unlocked" data-chapter="2">
+        <div class="chapter-header">
+          <div class="chapter-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="chapter-info">
+            <h2 class="chapter-title">Chapter 2: PID Controllers</h2>
+            <p class="chapter-description">Master proportional, integral, and derivative control</p>
+            <div class="chapter-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+              </div>
+              <span class="progress-text">12/12 Levels</span>
+            </div>
+          </div>
+          <div class="chapter-stars">
+            <i class="fas fa-star"></i>
+            <span>35/36</span>
+          </div>
+        </div>
+        
+        <div class="levels-grid">
+          <button class="level completed" data-level="1" data-stars="3">
+            <span class="level-number">1</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="2" data-stars="3">
+            <span class="level-number">2</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="3" data-stars="2">
+            <span class="level-number">3</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="4" data-stars="3">
+            <span class="level-number">4</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="5" data-stars="3">
+            <span class="level-number">5</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="6" data-stars="3">
+            <span class="level-number">6</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="7" data-stars="3">
+            <span class="level-number">7</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="8" data-stars="3">
+            <span class="level-number">8</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="9" data-stars="3">
+            <span class="level-number">9</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="10" data-stars="3">
+            <span class="level-number">10</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="11" data-stars="3">
+            <span class="level-number">11</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+          <button class="level completed" data-level="12" data-stars="3">
+            <span class="level-number">12</span>
+            <div class="level-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Chapter 3 -->
+      <section class="chapter unlocked" data-chapter="3">
+        <div class="chapter-header">
+          <div class="chapter-icon">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <div class="chapter-info">
+            <h2 class="chapter-title">Chapter 3: Advanced Tuning</h2>
+            <p class="chapter-description">Fine-tune your control systems for optimal performance</p>
+            <div class="chapter-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+              </div>
+              <span class="progress-text">0/12 Levels</span>
+            </div>
+          </div>
+          <div class="chapter-stars">
+            <i class="fas fa-star"></i>
+            <span>0/36</span>
+          </div>
+        </div>
+        
+        <div class="levels-grid">
+          <button class="level available current" data-level="1">
+            <span class="level-number">1</span>
+            <div class="level-stars">
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+          </button>
+          <button class="level locked" data-level="2">
+            <span class="level-number">2</span>
+            <i class="fas fa-lock level-lock"></i>
+          </button>
+          <button class="level locked" data-level="3">
+            <span class="level-number">3</span>
+            <i class="fas fa-lock level-lock"></i>
+          </button>
+          <button class="level locked" data-level="4">
+            <span class="level-number">4</span>
+            <i class="fas fa-lock level-lock"></i>
+          </button>
+          <button class="level locked" data-level="5">
+            <span class="level-number">5</span>
+            <i class="fas fa-lock level-lock"></i>
+          </button>
+          <button class="level locked" data-level="6">
+            <span class="level-number">6</span>
+            <i class="fas fa-lock level-lock"></i>
+          </button>
+          <button class="level locked" data-level="7">
+            <span class="level-number">7</span>
+            <i class="fas fa-lock level-lock"></i>
+          </button>
+          <button class="level locked" data-level="8">
+            <span class="level-number">8</span>
+            <i class="fas fa-lock level-lock"></i>
+          </button>
+          <button class="level locked" data-level="9">
+            <span class="level-number">9</span>
+            <i class="fas fa-lock level-lock"></i>
+          </button>
+          <button class="level locked" data-level="10">
+            <span class="level-number">10</span>
+            <i class="fas fa-lock level-lock"></i>
+          </button>
+          <button class="level locked" data-level="11">
+            <span class="level-number">11</span>
+            <i class="fas fa-lock level-lock"></i>
+          </button>
+          <button class="level locked" data-level="12">
+            <span class="level-number">12</span>
+            <i class="fas fa-lock level-lock"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- Chapter 4 -->
+      <section class="chapter locked" data-chapter="4">
+        <div class="chapter-header">
+          <div class="chapter-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="chapter-info">
+            <h2 class="chapter-title">Chapter 4: Cascade Control</h2>
+            <p class="chapter-description">Implement multi-loop control strategies</p>
+            <div class="chapter-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+              </div>
+              <span class="progress-text">Locked</span>
+            </div>
+          </div>
+          <div class="chapter-lock">
+            <i class="fas fa-lock"></i>
+            <span>Complete Chapter 3</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chapter 5 -->
+      <section class="chapter locked" data-chapter="5">
+        <div class="chapter-header">
+          <div class="chapter-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="chapter-info">
+            <h2 class="chapter-title">Chapter 5: Model Predictive Control</h2>
+            <p class="chapter-description">Advanced control strategies and optimization</p>
+            <div class="chapter-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+              </div>
+              <span class="progress-text">Locked</span>
+            </div>
+          </div>
+          <div class="chapter-lock">
+            <i class="fas fa-lock"></i>
+            <span>Complete Chapter 4</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Achievement Popup (hidden by default) -->
+  <div class="achievement-popup" id="achievementPopup">
+    <div class="achievement-content">
+      <i class="fas fa-trophy achievement-icon"></i>
+      <h3 class="achievement-title">Achievement Unlocked!</h3>
+      <p class="achievement-text">PID Master - Complete all Chapter 2 levels</p>
+    </div>
+  </div>
+
+  <!-- Main JS -->
+  <script src="../../js/UiComponents.js"></script>
+
+  <!-- Level JS -->
+  <script src="../../js/levelHandler.js"></script>
+
+</body>
+</html>
