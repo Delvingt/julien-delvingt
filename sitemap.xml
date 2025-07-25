@@ -1,11 +1,59 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- Begin -->
 
+<!-- - - - -->
+<!-- Index -->
+<!-- - - - -->
 <url>
-  <loc>https://julien-delvingt.be/</loc>
-  <lastmod>2025-07-13</lastmod>
-  <priority>1.0</priority>
+<loc>https://julien-delvingt.be/</loc>
+<lastmod>2025-07-25T12:50:58+00:00</lastmod>
+<priority>1.00</priority>
 </url>
 
+<!-- - - - - - -->
+<!-- Projects  -->
+<!-- - - - - - -->
+
+<!-- CV -->
+<url>
+<loc>https://julien-delvingt.be/Projects/CV/index.html</loc>
+<lastmod>2025-07-25T12:50:58+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://julien-delvingt.be/Projects/CV/documents/Julien_Delvingt_CV.pdf</loc>
+<lastmod>2025-07-25T12:50:58+00:00</lastmod>
+<priority>0.60</priority>
+</url>
+
+<!-- The Convergence Chronicles -->
+<url>
+<loc>https://julien-delvingt.be/Projects/The-Convergence-Chronicles/pages/Home/home.html</loc>
+<lastmod>2025-07-25T12:50:58+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://julien-delvingt.be/Projects/The-Convergence-Chronicles/pages/Creative/creative.html</loc>
+<lastmod>2025-07-25T12:50:58+00:00</lastmod>
+<priority>0.60</priority>
+</url>
+<url>
+<loc>https://julien-delvingt.be/Projects/The-Convergence-Chronicles/pages/Campaign/Campaign.html</loc>
+<lastmod>2025-07-25T12:50:58+00:00</lastmod>
+<priority>0.60</priority>
+</url>
+<url>
+<loc>https://julien-delvingt.be/Projects/The-Convergence-Chronicles/pages/Ch1L1/ch1l1.html</loc>
+<lastmod>2025-07-25T12:50:58+00:00</lastmod>
+<priority>0.60</priority>
+</url>
+
+<!-- Spray Booth Simulator -->
+<url>
+<loc>https://julien-delvingt.be/Projects/Spray-Booth-Simulator/sprayBoothSimulator.html</loc>
+<lastmod>2025-07-25T12:50:58+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+
+<!-- END -->
 </urlset>
