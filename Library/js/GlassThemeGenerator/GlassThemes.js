@@ -109,19 +109,19 @@ const ThemeGenerator = (function() {
       warning: '#ffd93d'
     },
     sunset: {
-      primary: '#ff6b6b',
-      secondary: '#ff8e53',
-      accent: '#fe6b8b',
-      text: '#ffffff',
-      textMuted: 'rgba(255, 255, 255, 0.8)',
-      bgGlass: 'rgba(255, 255, 255, 0.1)',
-      bgGlassHover: 'rgba(255, 255, 255, 0.15)',
-      border: 'rgba(255, 255, 255, 0.25)',
-      borderHover: 'rgba(255, 107, 107, 0.5)',
-      shadow: 'rgba(255, 107, 107, 0.3)',
-      error: '#ff4757',
-      success: '#6bcf7f',
-      warning: '#ffd93d'
+      primary: '#dc2626',          // Darker red
+      secondary: '#ea580c',        // Darker orange
+      accent: '#db2777',           // Darker pink
+      text: '#1f2937',             // Very dark gray
+      textMuted: 'rgba(31, 41, 55, 0.8)',   // Dark gray with opacity
+      bgGlass: 'rgba(255, 255, 255, 0.7)',  // More opaque
+      bgGlassHover: 'rgba(255, 255, 255, 0.85)',
+      border: 'rgba(220, 38, 38, 0.3)',
+      borderHover: 'rgba(220, 38, 38, 0.5)',
+      shadow: 'rgba(220, 38, 38, 0.3)',
+      error: '#991b1b',            // Even darker red
+      success: '#059669',
+      warning: '#d97706'
     },
     forest: {
       primary: '#52b788',
@@ -169,34 +169,34 @@ const ThemeGenerator = (function() {
       warning: '#ffff00'
     },
     lavender: {
-      primary: '#c3b1e1',
-      secondary: '#e0c3fc',
-      accent: '#a8dadc',
-      text: '#ffffff',
-      textMuted: 'rgba(255, 255, 255, 0.8)',
-      bgGlass: 'rgba(255, 255, 255, 0.12)',
-      bgGlassHover: 'rgba(255, 255, 255, 0.18)',
-      border: 'rgba(255, 255, 255, 0.25)',
-      borderHover: 'rgba(195, 177, 225, 0.5)',
-      shadow: 'rgba(224, 195, 252, 0.3)',
-      error: '#ff6b6b',
-      success: '#a8dadc',
-      warning: '#ffd93d'
+      primary: '#8b7aa8',           // Darker purple for better contrast
+      secondary: '#b99bd8',         // Slightly darker lavender
+      accent: '#6ba3a7',           // Darker teal accent
+      text: '#2d3748',             // Dark gray instead of white
+      textMuted: 'rgba(45, 55, 72, 0.8)',  // Dark gray with opacity
+      bgGlass: 'rgba(255, 255, 255, 0.7)',  // More opaque white
+      bgGlassHover: 'rgba(255, 255, 255, 0.85)',  // Even more opaque on hover
+      border: 'rgba(139, 122, 168, 0.3)',   // Purple-tinted border
+      borderHover: 'rgba(139, 122, 168, 0.5)',  // Stronger on hover
+      shadow: 'rgba(139, 122, 168, 0.3)',   // Purple shadow
+      error: '#dc2626',            // Stronger red
+      success: '#059669',          // Stronger green
+      warning: '#d97706'           // Stronger amber
     },
     fire: {
-      primary: '#ff6348',
-      secondary: '#ff4757',
-      accent: '#ffa500',
-      text: '#ffffff',
-      textMuted: 'rgba(255, 255, 255, 0.8)',
-      bgGlass: 'rgba(255, 255, 255, 0.08)',
-      bgGlassHover: 'rgba(255, 255, 255, 0.12)',
-      border: 'rgba(255, 255, 255, 0.2)',
-      borderHover: 'rgba(255, 99, 72, 0.5)',
-      shadow: 'rgba(255, 71, 87, 0.3)',
-      error: '#ff4757',
-      success: '#6bcf7f',
-      warning: '#ffa500'
+      primary: '#dc2626',          // Darker red
+      secondary: '#ea580c',        // Darker orange
+      accent: '#f59e0b',           // Darker amber
+      text: '#1f2937',             // Very dark gray
+      textMuted: 'rgba(31, 41, 55, 0.8)',
+      bgGlass: 'rgba(255, 255, 255, 0.7)',
+      bgGlassHover: 'rgba(255, 255, 255, 0.85)',
+      border: 'rgba(220, 38, 38, 0.3)',
+      borderHover: 'rgba(220, 38, 38, 0.5)',
+      shadow: 'rgba(220, 38, 38, 0.3)',
+      error: '#991b1b',
+      success: '#059669',
+      warning: '#f59e0b'
     }
   };
 
@@ -318,6 +318,7 @@ const ThemeGenerator = (function() {
         background: linear-gradient(135deg, var(--glass-primary), var(--glass-secondary));
         border: 1px solid var(--glass-primary);
         color: white;
+        cursor: pointer;
       }
 
       .glass-button-primary:hover,
