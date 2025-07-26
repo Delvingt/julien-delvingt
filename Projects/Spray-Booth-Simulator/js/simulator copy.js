@@ -3,19 +3,16 @@ class Simulator {
         // Form Inputs
         this.Ls = 0;
         this.ds = 0;
-        this.spm = 0;
         this.Vc = 0;
         this.N = 0;
         this.x = 0;
         
         // Form optional
-        this.optimal_Ls_Enable = false;
-        this.optimal_ds_Enable = false;
-        this.optimal_spm_Enable = false;
-        this.optimal_Vc_Enable = false;
+        this.optimalCalc = false;
+        this.spm = 0;
 
         // Form output
-        this.distanceFromOptimal = 0;
+        this.spm_calc = 0;
         this.wavelength = 0;
         this.phaseShift = 0;
         this.signals = [];
@@ -27,9 +24,9 @@ class Simulator {
         // Simplified spray configuration
         this.sprayConfig = {
             sprayWidth: 10,         // Width of spray cone in meters
-            opacity: 0.5,           // Overall opacity of the spray
+            opacity: 0.8,           // Overall opacity of the spray
             sprayCoverage: 50,      // How quickly spray fades from center (higher = sharper)
-            color: { r: 0, g: 35, b: 150 }  // Spray color
+            color: { r: 100, g: 150, b: 200 }  // Spray color
         };
         
         // Default spray config for reset
@@ -56,30 +53,10 @@ class Simulator {
             e.preventDefault();
             this.simulate();
         });
-
-        //Optimal Checkboxes
-        const optimalCheckboxIds = ['optimal_Ls_Enable', 'optimal_ds_Enable', 'optimal_spm_Enable', 'optimal_Vc_Enable'];
-        const inputMapping =       ['Ls'               , 'ds'               , 'spm'               , 'Vc'];
-        optimalCheckboxIds.forEach(id => {
-            const checkbox = document.getElementById(id);
-            if (checkbox) {
-                checkbox.addEventListener('click', (event) => {
-                    if (event.target.checked) {
-                        this.singleChoiceCheckboxes(id, optimalCheckboxIds, inputMapping);
-                    } else {
-                        // If unchecking, enable its input
-                        const index = optimalCheckboxIds.indexOf(id);
-                        const inputId = inputMapping[index];
-                        if (inputId) {
-                            const input = document.getElementById(inputId);
-                            if (input) {
-                                input.disabled = false;
-                            }
-                        }
-                    }
-                });
-            }
-        });
+        
+        // Optimal Check Box
+        const checkbox = document.getElementById('optimal_calc');
+        checkbox.addEventListener('change', () => this.optionalFormVisibility());
 
         // Spray Gun Coverage
         document.getElementById('sprayCoverage').addEventListener('input', (e) => {
@@ -261,36 +238,6 @@ class Simulator {
         });
     }
 
-    singleChoiceCheckboxes(idClicked, checkboxIds, inputMapping = []) {
-        // Loop through all checkbox IDs
-        checkboxIds.forEach((id, index) => {
-            const checkbox = document.getElementById(id);
-            if (checkbox) {
-                // Uncheck all checkboxes except the one that was clicked
-                if (id !== idClicked) {
-                    checkbox.checked = false;
-                }
-                
-                // Only handle input enabling/disabling if mapping is provided
-                if (inputMapping.length > 0 && inputMapping[index]) {
-                    const input = document.getElementById(inputMapping[index]);
-                    
-                    if (input) {
-                        if (checkbox.checked) {
-                            // Enable the input
-                            input.disabled = true;
-
-                        } else {
-                            // Disable the input
-                            input.disabled = false;
-
-                        }
-                    }
-                }
-            }
-        });
-    }
-
     simulate() {
         this.getFormInputs();
         this.calculateSignals();
@@ -307,15 +254,12 @@ class Simulator {
     getFormInputs() {
         this.Ls = parseFloat(document.getElementById('Ls').value);
         this.ds = parseFloat(document.getElementById('ds').value) / 100;    // Convert cm to m
-        this.spm = parseFloat(document.getElementById('spm').value);
-        this.Vc = parseFloat(document.getElementById('Vc').value) / 60;     // Convert m/min to m/s
+        this.Vc = parseFloat(document.getElementById('Vs').value) / 60;     // Convert m/min to m/s
         this.N = parseInt(document.getElementById('N').value);  
         this.x = parseInt(document.getElementById('x').value);
-
-        this.optimal_Ls_Enable = document.getElementById('optimal_Ls_Enable').checked;
-        this.optimal_ds_Enable = document.getElementById('optimal_ds_Enable').checked;
-        this.optimal_spm_Enable = document.getElementById('optimal_spm_Enable').checked;
-        this.optimal_Vc_Enable  = document.getElementById('optimal_Vc_Enable').checked;
+        
+        this.optimalCalc = document.getElementById('optimal_calc').checked;
+        this.spm = this.optimalCalc ? parseFloat(document.getElementById('spm').value) : null;
 
         this.sprayConfig.sprayWidth = parseFloat(document.getElementById('sprayWidth').value);
         this.sprayConfig.opacity = parseFloat(document.getElementById('sprayOpacity').value);
@@ -341,78 +285,25 @@ class Simulator {
     }
 
     calculateSignals() {
-
-        // --- If Stroke Ls is unknown ---
-        // Ls = (Vs * T) / 2                                                    [m] Sprayer stroke amplitude (half stroke)
-        // Using T = λ_opt / Vc and λ_opt = (N * ds) / (N - 1)^x:
-        // Ls = (Vs / 2) * (λ_opt / Vc)
-        // Ls = (Vs / 2) * ((N * ds) / (Vc * (N - 1)^x))
-
-        // --- If Nozzle Spacing ds is unknown ---
-        // λ_opt = Vc / fs = (N * ds) / (N - 1)^x 
-        // ds     = (Vc / fs) * (N - 1)^x / N                                   [m] Optimal Nozzle Spacing
-
-        // --- If Frequency fs is unknown ---
-        // λ_opt = (N * ds) / (N - 1)^x
-        // fs     = Vc / λ_opt                                                  [Hz] Optimal Frequency
-        //        = Vc / ((N * ds) / (N - 1)^x)
-
-        // --- If Conveyor Speed Vc is unknown ---
-        // λ_opt = (N * ds) / (N - 1)^x
-        // Vc     = fs * λ_opt                                                  [m/s] Optimal Conveyor Speed
-        //        = fs * ((N * ds) / (N - 1)^x)
-
-        // --- When everything is defined ---
-        // Vc = 2Ls / T
-        // T  = λ / Vc                                                          [s] Period
-        // fs = 1 / T                                                           [Hz] Frequency
-        // λ  = Vc / fs                                                         [m] Wavelength
-        // φ[n] = 2π * n * ds / λ                                               [rad] Phaseshift
-
-        let Ls = this.Ls;
-        let ds = this.ds;
-        let fs = 0;
-        let spm = this.spm;
-        let Vc = this.Vc;
-        let N = this.N;
-        let x = this.x;
-        let lambda = 0;
-
-        if (this.optimal_Ls_Enable) {
-            lambda = (N * ds) / Math.pow(N - 1, x);
-            Ls = lambda / 2;
-            fs = spm/60;            
-        } else if (this.optimal_ds_Enable) {
-            fs = spm / 60; // Convert spm to Hz
-            ds = (Vc / fs) * Math.pow(N - 1, x) / N;
-            lambda = (N * ds) / Math.pow(N - 1, x);         
-        } else if (this.optimal_spm_Enable) {
-            lambda = (N * ds) / Math.pow(N - 1, x);
-            fs = Vc / lambda;
-            spm = fs * 60; // Convert Hz to strokes per minute
-        } else if (this.optimal_Vc_Enable) {
-            fs = spm / 60; // Convert spm to Hz
-            lambda = (N * ds) / Math.pow(N - 1, x);
-            Vc = fs * lambda;            
+        const lambda_opt = (this.ds * this.N) / Math.pow(this.N - 1, this.x);
+        
+        let lambda;
+        if (!this.optimalCalc || !this.spm) {
+            lambda = lambda_opt;
         } else {
-            const lambda_opt = (N * ds) / Math.pow(N - 1, x);
-            fs = spm / 60; // Convert spm to Hz
-            lambda = Vc / fs;
-            fs = spm/60;
-            this.distanceFromOptimal = Math.round(Math.abs( lambda - lambda_opt)*100)/100;
+            lambda = 60 * this.Vc / this.spm;
         }
 
-        // Update the object properties
-        this.Ls = Ls;
-        this.ds = ds;
-        this.spm = spm;
-        this.Vc = Vc;
         this.wavelength = lambda;
+        const Ts = lambda / this.Vc;
+        const fs = 1 / Ts;
+
+        this.spm_opt = 60 * this.Vc / lambda_opt;
 
         // Simulation parameters
-        const Tsim = 10; // Simulation time in seconds
+        const T = 10; // Simulation time in seconds
         const dt = 0.01; // Time step
-        const steps = Math.floor(Tsim / dt);
+        const steps = Math.floor(T / dt);
 
         // Clear previous signals
         this.signals = [];
@@ -426,7 +317,7 @@ class Simulator {
         // Calculate sprayer positions
         for (let n = 0; n < this.N; n++) {
             // Phase shift for each sprayer
-            const phaseShift = (2 * Math.PI * n * ds) / lambda;
+            const phaseShift = (2 * Math.PI * n * this.ds) / lambda;
             
             if (n === 1) {
                 this.phaseShift = phaseShift / (this.x + 1);
@@ -435,38 +326,12 @@ class Simulator {
             // Calculate travel positions
             const travelData = Array.from({ length: steps }, (_, i) => {
                 const t = i * dt;
-                const position = Ls / 2 + (Ls / 2) * Math.cos(2 * Math.PI * fs * t + phaseShift);
+                const position = this.Ls / 2 + (this.Ls / 2) * Math.cos(2 * Math.PI * fs * t + phaseShift);
                 return Math.round(position * 1000) / 1000;
             });
 
             this.signals.push(travelData);
         }
-    }
-
-    updateResultsDisplay() {
-        // Show results section
-        document.getElementById('resultsStats').style.display = 'flex';
-
-        if (this.optimal_Ls_Enable) {
-            document.getElementById('optimalSelectedLabel').textContent = 'Optimal Stroke (Ls)';
-            document.getElementById('optimalSelectedValue').textContent = this.Ls ? this.Ls.toFixed(3) + ' m' : '-';           
-        } else if (this.optimal_ds_Enable) {
-            document.getElementById('optimalSelectedLabel').textContent = 'Optimal Spacing (ds)';
-            document.getElementById('optimalSelectedValue').textContent = this.ds ? (this.ds * 100).toFixed(2) + ' cm' : '-';
-        } else if (this.optimal_spm_Enable) {
-            document.getElementById('optimalSelectedLabel').textContent = 'Optimal Frequency (SPM)';
-            document.getElementById('optimalSelectedValue').textContent = this.spm ? this.spm.toFixed(2) + ' spm' : '-';
-        } else if (this.optimal_Vc_Enable) {
-            document.getElementById('optimalSelectedLabel').textContent = 'Optimal Conveyor Speed (Vc)';
-            document.getElementById('optimalSelectedValue').textContent = this.Vc ? (this.Vc * 60).toFixed(2) + ' m/min' : '-';
-        } else {
-            document.getElementById('optimalSelectedLabel').textContent = 'Distance FromOptimal';
-            document.getElementById('optimalSelectedValue').textContent = this.distanceFromOptimal;
-        }
-        
-        // Update values
-        document.getElementById('wavelength').textContent = this.wavelength ? this.wavelength.toFixed(3) + ' m' : '-';
-        document.getElementById('phaseShift').textContent = this.phaseShift ? (this.phaseShift * 180 / Math.PI).toFixed(2) + '°' : '-';
     }
 
     updateSprayerTravelChart() {
@@ -507,6 +372,7 @@ class Simulator {
 
     updatePaintPatternChart() {
         // Get Form Input & Calibration
+        this.getFormInputs();
         this.sprayConfig.sprayWidth = this.sprayConfig.sprayWidth * 0.03;
 
         const gradientSlope = this.coverageToGradientSlope(this.sprayConfig.sprayCoverage);
@@ -563,7 +429,7 @@ class Simulator {
         this.paintPatternChart.update('resize');
     }
 
-    calculateDerivatives(xData, yData) {
+    calculateDerivatives(xData, yData){
         const derivatives = [];
         const n = xData.length;
         
@@ -733,5 +599,25 @@ class Simulator {
             this.sprayConfig.color.b
         );
         this.updateColorInputs(this.sprayConfig.color);
+    }
+
+    optionalFormVisibility() {
+        const optionalForm = document.getElementById('optionalForm');
+        const checkbox = document.getElementById('optimal_calc');
+        if (checkbox.checked) {
+            optionalForm.style.display = 'block';
+        } else {
+            optionalForm.style.display = 'none';
+        }
+    }
+
+    updateResultsDisplay() {
+        // Show results section
+        document.getElementById('resultsStats').style.display = 'flex';
+        
+        // Update values
+        document.getElementById('optimalSPM').textContent = this.spm_opt ? this.spm_opt.toFixed(2) : '-';
+        document.getElementById('wavelength').textContent = this.wavelength ? this.wavelength.toFixed(3) + ' m' : '-';
+        document.getElementById('phaseShift').textContent = this.phaseShift ? (this.phaseShift * 180 / Math.PI).toFixed(2) + '°' : '-';
     }
 }

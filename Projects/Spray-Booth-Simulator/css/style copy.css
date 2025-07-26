@@ -68,12 +68,6 @@ body {
     font-size: 0.95rem;
 }
 
-.input-title-wrapper {
-    display: flex;
-    align-items: center center;
-    gap: 10px;
-}
-
 .input-wrapper {
     display: flex;
     align-items: center;
@@ -142,13 +136,6 @@ body {
 
 .optional-form:has(.glass-input:focus) {
     opacity: 1;
-}
-
-.disabled-input {
-    background-color: #f0f0f0 !important;
-    color: #999999 !important;
-    cursor: not-allowed !important;
-    opacity: 0.6;
 }
 
 /* Enhanced buttons */

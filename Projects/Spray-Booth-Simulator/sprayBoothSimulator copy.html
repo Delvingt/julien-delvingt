@@ -26,13 +26,10 @@
         <!-- Main Content Grid -->
         <div class="main-content">
             <!-- Simulation Form Section -->
-            <section class="simulation-section glass-box">
+            <section class="simulation-section glass-card">
                 <form id="simulationForm">
                     <div class="form-group">
-                        <div class="input-title-wrapper">
-                            <input type="checkbox" id="optimal_Ls_Enable" name="optimal_Ls_Enable" class="glass-checkbox">
-                            <label for="Ls" class="glass-label">🎯 Sprayer Stroke Distance (Ls)</label>
-                        </div>
+                        <label for="Ls" class="glass-label">🎯 Sprayer Stroke Distance (Ls)</label>
                         <div class="input-wrapper">
                             <input type="number" id="Ls" name="Ls" step="0.1" required class="glass-input">
                             <span class="unit glass-text-muted">m</span>
@@ -40,10 +37,7 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="input-title-wrapper">
-                            <input type="checkbox" id="optimal_ds_Enable" name="optimal_ds_Enable" class="glass-checkbox">
-                            <label for="ds" class="glass-label">📏 Nozzle Spacing (ds)</label>
-                        </div>
+                        <label for="ds" class="glass-label">📏 Nozzle Spacing (ds)</label>
                         <div class="input-wrapper">
                             <input type="number" id="ds" name="ds" step="0.1" required class="glass-input">
                             <span class="unit glass-text-muted">cm</span>
@@ -51,28 +45,9 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="input-title-wrapper">
-                            <input type="checkbox" id="optimal_spm_Enable" name="optimal_spm_Enable" class="glass-checkbox">
-                            <label for="spm" class="glass-label">⚡ Strokes per Minute (spm)</label>
-                        </div>
+                        <label for="Vs" class="glass-label">🚀 Belt Speed (Vc)</label>
                         <div class="input-wrapper">
-                            <input type="number" id="spm" name="spm" step="1" class="glass-input">
-                            <span class="unit glass-text-muted">
-                                <span class="fraction">
-                                    <span class="top">1</span>
-                                    <span class="bottom">min</span>
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="input-title-wrapper">
-                            <input type="checkbox" id="optimal_Vc_Enable" name="optimal_Vc_Enable" class="glass-checkbox">
-                            <label for="Vs" class="glass-label">🚀 Belt Speed (Vc)</label>
-                        </div>
-                        <div class="input-wrapper">
-                            <input type="number" id="Vc" name="Vs" step="0.1" required class="glass-input">
+                            <input type="number" id="Vs" name="Vs" step="0.1" required class="glass-input">
                             <span class="unit glass-text-muted">
                                 <span class="fraction">
                                     <span class="top">m</span>
@@ -93,6 +68,26 @@
                         <label for="x" class="glass-label">🔄 Oscillation Factor (x)</label>
                         <div class="input-wrapper">
                             <input type="number" id="x" name="x" step="1" min="0" max="10" required class="glass-input">
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="optimal_calc" name="optimal_calc" class="glass-checkbox">
+                        <label for="optimal_calc" class="glass-label">Use Custom Strokes per Minute</label>
+                    </div>
+
+                    <div class="optional-form glass-box" id="optionalForm">
+                        <div class="form-group">
+                            <label for="spm" class="glass-label">⚡ Strokes per Minute</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="spm" name="spm" step="1" class="glass-input">
+                                <span class="unit glass-text-muted">
+                                    <span class="fraction">
+                                        <span class="top">1</span>
+                                        <span class="bottom">min</span>
+                                    </span>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
@@ -151,15 +146,15 @@
             </section>
 
             <!-- Results Section -->
-            <section class="results-section glass-box">
+            <section class="results-section glass-card">
                 <div class="results-header">
                     <h3>Simulation Results</h3>
                 </div>
                 
                 <div class="results-stats" id="resultsStats" style="display: none;">
                     <div class="stat-card glass-box">
-                        <div class="label glass-text-muted" id = "optimalSelectedLabel">Optimal SPM</div>
-                        <div class="value glass-text-primary" id="optimalSelectedValue">-</div>
+                        <div class="label glass-text-muted">Optimal SPM</div>
+                        <div class="value glass-text-primary" id="optimalSPM">-</div>
                     </div>
                     <div class="stat-card glass-box">
                         <div class="label glass-text-muted">Wavelength</div>
