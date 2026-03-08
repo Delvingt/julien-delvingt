@@ -1,0 +1,7 @@
+/* Ch1L1 - The Water Valve
+ * Level styling is handled by GlassThemes (colorTheme: 'ocean').
+ * level-style.css reads from CSS variables (--accent-gradient, etc.)
+ * so no manual gradient overrides are needed here.
+ *
+ * Add custom block styles below if registering custom block types.
+ */

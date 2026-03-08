@@ -1,0 +1,8 @@
+/* Level Template CSS
+ *
+ * Level styling is handled by GlassThemes via ThemeGenerator.init({ colorTheme: '...' }).
+ * The level-style.css already uses CSS variables (--accent-gradient, etc.) provided by
+ * the theme, so changing the colorTheme in the HTML is enough for a new look.
+ *
+ * Only add CSS here if you register custom block types that need node styling.
+ */

@@ -1,0 +1,15 @@
+/* Level Template CSS
+ *
+ * Level styling is handled by GlassThemes via ThemeGenerator.init({ colorTheme: '...' }).
+ * The level-style.css already uses CSS variables (--accent-gradient, etc.) provided by
+ * the theme, so changing the colorTheme in the HTML is enough for a new look.
+ *
+ * Only add CSS here if you register custom block types that need node styling, e.g.:
+ *
+ * .drawflow-node.my_custom_block {
+ *     background: linear-gradient(135deg, rgba(52, 152, 219, 0.15), rgba(41, 128, 185, 0.1));
+ *     border: 2px solid rgba(52, 152, 219, 0.4);
+ *     border-radius: 12px;
+ *     min-width: 160px;
+ * }
+ */

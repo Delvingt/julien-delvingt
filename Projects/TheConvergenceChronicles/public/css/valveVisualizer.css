@@ -1,0 +1,321 @@
+/**
+ * Valve Visualizer Styles
+ * Water-themed styling for the valve control visualization
+ */
+
+.valve-visualizer {
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border-light);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--glass-shadow-primary);
+}
+
+/* Header */
+.valve-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--glass-border-light);
+}
+
+.valve-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.valve-header h4::before {
+    content: '\f043'; /* water droplet */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: #3498db;
+}
+
+.target-indicator {
+    background: rgba(67, 233, 123, 0.1);
+    border: 1px solid rgba(67, 233, 123, 0.3);
+    border-radius: 8px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.target-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.target-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-tertiary);
+}
+
+/* Valve Diagram */
+.valve-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Pipe System */
+.pipe-system {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 20px 0;
+}
+
+.pipe {
+    width: 80px;
+    height: 30px;
+    background: linear-gradient(180deg, #95a5a6 0%, #7f8c8d 50%, #95a5a6 100%);
+    border: 2px solid #5d6d7e;
+    position: relative;
+    overflow: hidden;
+}
+
+.pipe-inlet {
+    border-radius: 15px 0 0 15px;
+    border-right: none;
+}
+
+.pipe-outlet {
+    border-radius: 0 15px 15px 0;
+    border-left: none;
+}
+
+/* Water Flow Animation */
+.water-flow {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    right: 0;
+    bottom: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(52, 152, 219, 0.6) 20%,
+        rgba(52, 152, 219, 0.8) 50%,
+        rgba(52, 152, 219, 0.6) 80%,
+        transparent 100%
+    );
+    opacity: 0.1;
+}
+
+/* Valve Assembly */
+.valve-assembly {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.valve-body {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+    border: 3px solid #1a252f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.valve-handle {
+    width: 8px;
+    height: 28px;
+    background: linear-gradient(180deg, #e74c3c 0%, #c0392b 100%);
+    border-radius: 4px;
+    position: absolute;
+    top: -5px;
+    transform-origin: center bottom;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.valve-handle::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 8px;
+    background: linear-gradient(180deg, #e74c3c 0%, #c0392b 100%);
+    border-radius: 4px 4px 0 0;
+}
+
+.valve-indicator {
+    position: absolute;
+    bottom: -25px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    background: var(--bg-secondary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--glass-border-light);
+}
+
+.valve-label {
+    margin-top: 30px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Flow Meter */
+.flow-meter {
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border-light);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.meter-display {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 5px;
+}
+
+.meter-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+}
+
+.meter-unit {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.meter-gauge {
+    height: 12px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gauge-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    border-radius: 6px;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.gauge-fill.at-target {
+    background: linear-gradient(90deg, #27ae60, #2ecc71);
+}
+
+.gauge-fill.near-target {
+    background: linear-gradient(90deg, #f39c12, #e67e22);
+}
+
+.gauge-fill.off-target {
+    background: linear-gradient(90deg, #3498db, #2980b9);
+}
+
+.gauge-target {
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    width: 3px;
+    background: var(--accent-tertiary);
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(67, 233, 123, 0.5);
+}
+
+.meter-label {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Status Indicator */
+.valve-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.status-icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.status-icon.status-success {
+    background: #27ae60;
+    box-shadow: 0 0 10px rgba(39, 174, 96, 0.5);
+}
+
+.status-icon.status-close {
+    background: #f39c12;
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+}
+
+.status-icon.status-off {
+    background: #95a5a6;
+    box-shadow: none;
+    animation: none;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+.status-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .valve-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .pipe {
+        width: 60px;
+    }
+
+    .meter-value {
+        font-size: 1.5rem;
+    }
+}

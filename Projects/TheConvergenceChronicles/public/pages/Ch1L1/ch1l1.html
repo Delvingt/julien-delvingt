@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="../../js/Analytics.js"></script>
+  <script>
+      Analytics.loadGoogleAnalytics('G-R8WH8Z7KHL', { debug: false, config: { page_title: 'The Convergence Chronicles - Chapter 1 Level 1',}});
+      Analytics.trackPageView('/The Convergence Chronicles', 'Chapter 1 Level 1');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Water Source - Chapter 1 Level 1</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/drawflow/dist/drawflow.min.css">
+
+  <!-- General CSS -->
+  <link rel="stylesheet" href="../../css/main.css" />
+  <link rel="stylesheet" href="../../css/menubar.css" />
+  <link rel="stylesheet" href="../../css/level-style.css" />
+  <link rel="stylesheet" href="../../css/processModel.css" />
+  <link rel="stylesheet" href="../../css/processResponse.css" />
+  <link rel="stylesheet" href="../../css/tutorialBoxes.css" />
+
+  <!-- Level CSS -->
+  <link rel="stylesheet" href="ch1l1.css" />
+
+
+</head>
+<body>
+
+    <!-- Initialize Theme -->
+    <script src="../../js/UI/GlassThemes.js"></script>
+    <script>
+        ThemeGenerator.init({
+            backgroundMode: 'absolute',
+            colorTheme: 'ocean',
+            applyThemeStyles: true
+        });
+    </script>
+
+
+    <!------------>
+    <!-- Menubar-->
+    <!------------>
+    <script src="../../js/UI/menubar.js"></script>
+    <nav class="menubar" id="Menubar"></nav>
+    <script>
+        const menuHTML = renderMenuBar({
+            title: 'The Convergence Chronicles',
+            exitText: 'Back to Campaign',
+            exitLink: '../Campaign/campaign.html',
+            backText: '',
+            backLink: '',
+            nextText: 'Next Level',
+            nextLink: '../Ch1L2/ch1l2.html'
+        });
+        document.getElementById('Menubar').innerHTML = menuHTML;
+    </script>
+
+
+  <main>
+    <!----------------------->
+    <!-- Level Description -->
+    <!----------------------->
+    <section class="levelDescription-section">
+      <div class="level-header">
+        <h1>Chapter 1: The Water Source</h1>
+        <div class="level-subtitle">Understanding Input-Output Relationships</div>
+      </div>
+
+      <div class="story-container">
+        <div class="story-intro">
+          <h2>Welcome to The Convergence Chronicles</h2>
+          <p>You're about to learn the fundamentals of process control engineering through interactive simulations. Every control system starts with a simple relationship: an input that affects an output.</p>
+        </div>
+
+        <div class="story-text">
+          <p>Welcome, Engineer, to the Convergence Institute.</p>
+          <p>Before you can control complex systems, you must understand the most fundamental concept: <strong>how inputs affect outputs</strong>.</p>
+          <p>In front of you is a simple water system. A pump controls the flow of water through a pipe. Speed up the pump, and water flows. Stop it, and the flow stops. The relationship is direct and instantaneous.</p>
+          <p>Your task is simple: <strong>set the pump to achieve exactly 1.0 L/s of water flow</strong>.</p>
+        </div>
+
+        <div class="objective-box">
+          <h3><i class="fas fa-bullseye"></i> Objective</h3>
+          <p>The <strong>Pump</strong> and <strong>Flow Sensor</strong> blocks are connected in the Flow Editor. Adjust the pump slider until the flow sensor reads exactly <strong>1.0 L/s</strong></p>
+        </div>
+
+        <div class="tutorial-start">
+
+      </div>
+    </section>
+    
+    <!-- Tutorial Step 1: Interface Overview -->
+    <div
+      class="tutorial-box arrow-left" id="tutorialBox1"
+      data-position="relative"
+      data-position-target=".toolbox"
+      data-position-side="right"
+      data-position-offset-x="-150"
+      data-position-offset-y="-100">
+      <div class="tutorial-header">
+        <h3>Your Control Engineering Workspace</h3>
+        <span class="tutorial-step-indicator">1 / 3</span>
+      </div>
+      <div class="tutorial-content">
+        <p>Your workspace has two main areas:</p>
+        <ul>
+          <li><strong>Flow Editor (Left):</strong> Where you'll see the pump and flow sensor blocks</li>
+          <li><strong>Results Panel (Right):</strong> Shows your current flow reading and submit button</li>
+        </ul>
+        <p>For this level, everything is already set up - you just need to adjust the pump!</p>
+      </div>
+      <div class="tutorial-footer">
+        <button class="tutorial-btn primary" onclick="closeTutorialBox('tutorialBox1')">Got it<i class="fas fa-check"></i></button>
+      </div>
+    </div>
+
+    <!-- Tutorial Step 2: Understanding the Pump -->
+    <div
+      class="tutorial-box" id="tutorialBox2"
+      data-position="relative"
+      data-position-target=".toolbox"
+      data-position-side="right"
+      data-position-offset-x="300px"
+      data-position-offset-y="-50">
+      <div class="tutorial-header">
+        <h3>Understanding the Blocks</h3>
+        <span class="tutorial-step-indicator">2 / 3</span>
+      </div>
+      <div class="tutorial-content">
+        <p>In the Flow Editor, you'll see two connected blocks:</p>
+        <div class="node-examples">
+          <div class="node-example">
+            <span><strong>Pump Speed:</strong> Source block with output port (right side)</span>
+          </div>
+          <div class="node-example">
+            <span><strong>Flow Sensor:</strong> Sink block with input port (left side)</span>
+          </div>
+        </div>
+        <p>The wire connects pump output to flow sensor input.</p>
+      </div>
+      <div class="tutorial-footer">
+        <button class="tutorial-btn primary" onclick="closeTutorialBox('tutorialBox2')">Got it <i class="fas fa-check"></i></button>
+      </div>
+    </div>
+
+    <!-- Tutorial Step 3: Achieving the Target -->
+    <div
+      class="tutorial-box highlighted" id="tutorialBox3"
+      data-position="relative"
+      data-position-target=".processModel-section"
+      data-position-side="right"
+      data-position-offset-x="-400"
+      data-position-offset-y="-100">
+      <div class="tutorial-header">
+        <h3>Achieving Your Target</h3>
+        <span class="tutorial-step-indicator">3 / 3</span>
+      </div>
+      <div class="tutorial-content">
+        <p><strong>To complete this level:</strong></p>
+        <ol>
+          <li>Find the Pump block with the slider</li>
+          <li>Drag the slider to adjust the pump speed</li>
+          <li>When the flow reaches 1.0 L/s, click check flow in the bottom simulation</li>
+          <li>Submit your model!</li>
+        </ol>
+        <p class="tutorial-tip"><i class="fas fa-lightbulb"></i> <strong>Hint:</strong> What pump speed gives you a flow of 1.0?</p>
+      </div>
+      <div class="tutorial-footer">
+        <button class="tutorial-btn primary" onclick="closeTutorialBox('tutorialBox3')">Got it! <i class="fas fa-check"></i></button>
+      </div>
+    </div>
+
+    <!------------------>
+    <!-- Process Model-->
+    <!------------------>
+    <section class="processModel-section">
+      <!-- Toolbox-->
+      <div class="toolbox">
+        <div class="menu-bar">
+          <h3>Toolbox</h3>
+        </div>
+        <div class="toolbox-content">
+        </div>
+      </div>
+      <!-- Drawflow Container-->
+      <div class="drawflow-wrapper">
+        <div class="menu-bar">
+          <div class="menu-tabs">
+            <div class="menu-tab active">Flow 1</div>
+          </div>
+          <div class="menu-btns">
+            <button class="menu-btn" onclick="model.resetNodeScheme()">
+              <i class="fas fa-rotate-right"></i>
+              Reset Model
+            </button>
+            <button class="menu-btn" onclick="model.exportNodeScheme()">
+              <i class="fas fa-file-export"></i>
+              Export Model
+            </button>
+            <button class="menu-btn" onclick="model.importNodeScheme()">
+              <i class="fas fa-file-import"></i>
+              Import Model
+            </button>
+          </div>
+        </div>
+        <div id="drawflow" class="drawflow"></div>
+      </div>
+    </section>
+
+    <!---------------------->
+    <!-- Process Response -->
+    <!---------------------->
+    <section class="processResponse-section">
+      <!-- Menu Bar -->
+      <div class="processResponse-menubar">
+        <h3>Process Response</h3>
+        <div class="processResponse-buttons">
+          <button class="response-btn primary" onclick="runSimulation()">
+            <i class="fas fa-play"></i>
+            Check Flow
+          </button>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="processResponse-content">
+        <!-- Charts Column -->
+        <div class="charts-column">
+          <div class="chart-container">
+            <canvas id="processOutputChart" width="600" height="300"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="processInputChart" width="600" height="300"></canvas>
+          </div>
+
+        </div>
+
+        <!-- Results Column -->
+        <div class="results-column">
+          <div class="results-box">
+            <h3>Simulation Results</h3>
+            <div class="result-item">
+              <div class="result-label">
+                <i class="fas fa-clock"></i>
+                Response Time
+              </div>
+              <div class="result-value" id="responseTime">--</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">
+                <i class="fas fa-chart-line"></i>
+                Overshoot
+              </div>
+              <div class="result-value" id="overshoot">--</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">
+                <i class="fas fa-bolt-lightning"></i>
+                Needed Power
+              </div>
+              <div class="result-value" id="maxPower">--</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">
+                <i class="fas fa-bolt"></i>
+                Input Energy to Steady State
+              </div>
+              <div class="result-value" id="inputEnergyToSettle">--</div>
+            </div>
+            <div class="submit-section">
+              <div class="challenge-status" id="challengeStatus"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- External JS Libraries-->
+  <script src="https://cdn.jsdelivr.net/npm/drawflow/dist/drawflow.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- External JS Libraries Override-->
+  <script src="../../js/drawflowOveride.js"></script>
+
+  <!-- Level Configuration System -->
+  <script src="../../js/levelConfig.js"></script>
+
+  <!-- Simulation JS (processModel must load first for BlockRegistry) -->
+  <script src="../../js/Solver/processModel.js"></script>
+  <script src="../../js/Solver/laplaceParser.js"></script>
+  <script src="../../js/Solver/processResults.js"></script>
+  <script src="../../js/cacheManager.js"></script>
+
+  <!-- Level Base (shared level infrastructure) -->
+  <script src="../../js/levelBase.js"></script>
+
+  <!-- Level JS (must load BEFORE initSimulator to register blocks and LEVEL_CONFIG) -->
+  <script src="ch1l1.js"></script>
+
+  <!-- Initialize Simulator (runs after level config is set) -->
+  <script src="../../js/Solver/initSimulator.js"></script>
+
+  <!-- UI Components -->
+  <script src="../../js/UI/tutorailBoxes.js"></script>
+
+</body>
+</html>
